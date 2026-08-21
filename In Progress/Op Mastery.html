@@ -1,101 +1,612 @@
+<style>
+  :root {
+    --bg-dark: #0b0e14;
+    --card-bg: #151a23;
+    --card-border: #232d3f;
+    --text-primary: #f0f4f8;
+    --text-muted: #94a3b8;
+
+    /* Faction Theme Colors */
+    --atk-color: #ff4655;
+    --atk-bg-glow: rgba(255, 70, 85, 0.15);
+    --dfn-color: #00a2ff;
+    --dfn-bg-glow: rgba(0, 162, 255, 0.15);
+
+    --accent-gold: #ffb703;
+    --radius: 8px;
+  }
+
+  /* Scoped Container Styles */
+  .banner {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 24px;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    background: #000;
+  }
+
+  .banner img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  .overview-heading {
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid var(--card-border);
+    padding-bottom: 10px;
+  }
+
+  .op-instructions {
+    background-color: var(--card-bg);
+    border-left: 4px solid var(--accent-gold);
+    padding: 14px 18px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  .op-instructions strong {
+    color: var(--text-primary);
+  }
+
+  /* SIDE-BY-SIDE ROLES GRID LAYOUT */
+  .roles-grid-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .roles-column {
+    flex: 1;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .column-header {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header-atk {
+    background-color: var(--atk-bg-glow);
+    color: var(--atk-color) !important;
+    border: 1px solid rgba(255, 70, 85, 0.4);
+    border-left: 5px solid var(--atk-color);
+  }
+
+  .header-dfn {
+    background-color: var(--dfn-bg-glow);
+    color: var(--dfn-color) !important;
+    border: 1px solid rgba(0, 162, 255, 0.4);
+    border-left: 5px solid var(--dfn-color);
+  }
+
+  /* EXPANDABLE ROLE CARDS & TOOLTIPS */
+  .role-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .role-card[open] {
+    border-color: #3b485d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  .role-summary {
+    padding: 14px 18px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    list-style: none;
+  }
+
+  .role-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .role-summary::after {
+    content: "▲";
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+  }
+
+  .role-card[open] .role-summary::after {
+    transform: rotate(180deg);
+  }
+
+  .role-name {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+  }
+
+  /* Tooltip Badge */
+  .role-tooltip-badge {
+    position: relative;
+    background-color: #232d3f;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .role-tooltip-badge[data-tooltip]:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    right: 0;
+    width: 240px;
+    padding: 8px 12px;
+    background-color: #000000;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.3;
+    border-radius: 6px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+    pointer-events: none;
+    text-transform: none;
+  }
+
+  .role-expanded-body {
+    padding: 16px 18px 20px 18px;
+    border-top: 1px solid var(--card-border);
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: 0.92rem;
+    color: #cbd5e1;
+  }
+
+  .role-expanded-body p {
+    margin-bottom: 10px;
+  }
+
+  .role-expanded-body ul {
+    margin-left: 20px;
+    margin-bottom: 12px;
+  }
+
+  .role-expanded-body li {
+    margin-bottom: 6px;
+  }
+
+  .pro-tip {
+    background-color: rgba(255, 183, 3, 0.08);
+    border-left: 3px solid var(--accent-gold);
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-style: normal;
+    border-radius: 0 4px 4px 0;
+    color: #e2e8f0;
+  }
+
+  /* OPERATOR MASTERY CARDS */
+  .operator-mastery-container {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .op-column {
+    flex: 1;
+    min-width: 320px;
+  }
+
+  .op-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .op-header {
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+
+  .op-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    position: relative;
+  }
+
+  .op-loadout ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .op-loadout li {
+    background-color: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--card-border);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+
+  .item-head {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .atts {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* Tags & Badges */
+  .rec-tag {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .rec-meta {
+    background-color: #2d3748;
+    color: #a0aec0;
+  }
+
+  .rec-beginner {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.4);
+  }
+
+  .rec-advanced {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    border: 1px solid rgba(231, 76, 60, 0.4);
+  }
+
+  .tier-box {
+    border: 1px solid var(--card-border);
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .tier-box p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  .op-desc {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    border-top: 1px dashed var(--card-border);
+    padding-top: 12px;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .roles-grid-wrapper,
+    .operator-mastery-container {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<!-- ==========================================================================
+     BLOGGER BODY HTML
+     ========================================================================== -->
 <div class="banner">
   <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjn47tHRdf_MzC7VI_60hH5snAAydGfxrOBZDcBR_TCn-cq9CTzW3jEBHinHfjOZ_voxsuczLW1NJHlDkDdCEsn4L39HMghP5ysp9TwC9OAFN-1YXwXpAgPchv32vtJfB9kxgP0MvOfS6Y/w400-h210/Rainbow-Six-Siege-Banner%25281%2529.jpg" width="400" alt="Tom Clancy's Rainbow Six Siege Banner" />
 </div>
 
-<!-- 2. Your Existing Overview Heading -->
 <div class="overview-heading">Operator Mastery</div>
 
-<!-- 3. Mobile/User Instructions (Shown on post preview before the break) -->
-<p class="op-instructions">📱 <strong>How to use:</strong> Click or tap any operator's name below to expand their full weapon loadouts, recommended gadgets, and tactical playstyle guides.</p>
+<p class="op-instructions">📱 <strong>How to use:</strong> Click or tap any operator's name or role below to expand their full weapon loadouts, recommended gadgets, and tactical playstyle guides.</p>
 
 <span><!--more--></span>
 
-<div class="operator-mastery-container" style="display: flex; gap: 20px; flex-wrap: wrap">
+<div class="roles-grid-wrapper">
+  <!-- ================= ATTACK COLUMN ================= -->
+  <div class="roles-column">
+    <div class="column-header header-atk">ATTACK ROLES</div>
+
+    <!-- 1. HARD BREACH -->
+    <details class="role-card">
+      <summary class="role-summary">
+        <span class="role-name">Hard Breach</span>
+        <span class="role-tooltip-badge" data-tooltip="Facilitates site access by destroying reinforced walls and hatches. Survival is mandatory."> Core Objective </span>
+      </summary>
+      <div class="role-expanded-body">
+        <p><strong>Key Responsibilities &amp; Detailed Breakdown:</strong></p>
+        <p>Hard breach operators are primarily responsible for site access. They open key walls to the site and create critical lines of sight, such as opening hatches. There are three main hard breachers, each with their own distinct strengths: Thermite, Ace, and Hibana.</p>
+        <ul>
+          <li><strong>Thermite:</strong> His core strength is creating maximum line-of-sight exposure and large walk-in openings.</li>
+          <li><strong>Ace:</strong> Offers full immunity to Mute jammers and safe site opening from a distance, though he opens slightly smaller holes compared to Thermite.</li>
+          <li><strong>Hibana:</strong> The undisputed queen of opening hatches. Thanks to the hatch health pool system, she uses significantly less utility to open hatches compared to Thermite or Ace.</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- 2. SUPPORT -->
+    <details class="role-card">
+      <summary class="role-summary">
+        <span class="role-name">Support</span>
+        <span class="role-tooltip-badge" data-tooltip="Clears wall denial utility, drones entry fraggers, and enables site execution."> Core Objective </span>
+      </summary>
+      <div class="role-expanded-body">
+        <p><strong>Key Responsibilities &amp; Detailed Breakdown:</strong></p>
+        <p>Support is a broad term in Siege. It isn't limited to physical operator utility—like Doc's Stim Pistol or Valkyrie's Black Eye cameras. Support also means active yellow pings, drone work, and clear vocal callouts.</p>
+        <p>Because of this, even an eliminated player can actively support their team and lead them to victory. The scoreboard doesn't dictate your true KOST or your impact on the win rate.</p>
+        <blockquote class="pro-tip"><strong>Solo Queue Reality Check:</strong> You don't need to top-frag to carry rounds. Providing precise, actionable intel—like yellow-pinging defenders or calling out swings for your entry players—can single-handedly maintain a high win rate.</blockquote>
+      </div>
+    </details>
+
+    <!-- 3. INTEL / COUNTER-INTEL -->
+    <details class="role-card">
+      <summary class="role-summary">
+        <span class="role-name">Intel / Counter-Intel</span>
+        <span class="role-tooltip-badge" data-tooltip="Gathers real-time defender locations or scrambles/deceives defender surveillance systems."> Core Objective </span>
+      </summary>
+      <div class="role-expanded-body">
+        <p>Intel can make or break a round. Knowing precise camera placement is essential—you need high-visibility angles that aren't easily spotted or destroyed. In higher-tier play, <strong>Yellow Pings and voice callouts</strong> are almost always superior to Red Pings, as a Red Ping instantly alerts the enemy that they are being watched, prompting them to destroy the camera or alter their position.</p>
+
+        <ul>
+          <li><strong>Strategic Placement:</strong> Hide cameras in ambient environment debris, dark ceiling corners, or behind destroyed props. Long-term surveillance outweighs temporary 360-degree vision.</li>
+          <li><strong>Yellow Ping / Voice Callout Protocol:</strong> Use non-invasive callouts to keep enemies oblivious right up until a teammate swings or lines up a wallbang.</li>
+          <li><strong>When to Red Ping:</strong> Reserve active scans for chaotic last-second site executes, syncing precise wallbangs, or pressuring a roamer alongside a Jackal or Deimos track.</li>
+          <li><strong>Default Camera Clearance:</strong> Memorizing default camera locations on attack is vital. Stripping basic defender vision in the first 10 seconds strips away their early round awareness and opens safe entry routes.</li>
+        </ul>
+
+        <blockquote class="pro-tip"><strong>Intel Tip:</strong> Don't give away your team's tactical advantage for a free scan score. Maintain camera stealth until a scan directly guarantees a kill or ensures a defuser plant.</blockquote>
+      </div>
+    </details>
+
+    <!-- 4. FRAGGER -->
+    <details class="role-card">
+      <summary class="role-summary">
+        <span class="role-name">Fragger</span>
+        <span class="role-tooltip-badge" data-tooltip="Takes early map control, wins initial duels, and clears power positions."> Core Objective </span>
+      </summary>
+      <div class="role-expanded-body">
+        <p><strong>Key Responsibilities &amp; Detailed Breakdown:</strong></p>
+        <p>Fragging isn't for everyone, so don't feel bad if pure mechanical gunskill isn't your main strength. Siege is built on intel and teamwork first. However, if you have reliable callouts or a yellow ping from a teammate, line up your crosshair, trust the swing, and commit to the duel with confidence.</p>
+
+        <ul>
+          <li><strong>Intel-Backed Swings:</strong> Never swing completely blind. Use live drone intel, yellow pings, and audio cues to pre-aim common defender power positions before breaking line of sight.</li>
+          <li><strong>Aim &amp; Recoil Practice:</strong> Spend dedicated time in the Shooting Range to fine-tune your target acquisition speed and adjust your look sensitivity until recoil control feels second nature.</li>
+          <li><strong>Map Flow &amp; Prefiring:</strong> Practice map runs and target drills (like Clear House) to build muscle memory for crosshair placement at head height and pre-firing common anchor angles.</li>
+        </ul>
+
+        <blockquote class="pro-tip"><strong>Aim Tip:</strong> Confidence is half the battle. Use warm-up drills in the Shooting Range to dial in your sensitivity so you can swing on fresh intel without second-guessing your recoil control.</blockquote>
+      </div>
+    </details>
+  </div>
+
+  <!-- ================= DEFENSE COLUMN ================= -->
+  <div class="roles-column">
+    <div class="column-header header-dfn">DEFENSE ROLES</div>
+
+    <!-- 1. ROAMER -->
+    <details class="role-card">
+      <summary class="role-summary">
+        <span class="role-name">Roamer</span>
+        <span class="role-tooltip-badge" data-tooltip="Wastes round time and delays perimeter entry. Time waste takes priority over frags."> Core Objective </span>
+      </summary>
+      <div class="role-expanded-body">
+        <p><strong>Key Responsibilities &amp; Detailed Breakdown:</strong></p>
+        <p>Most players misinterpret roaming as purely hunting for kills, but a roamer's true primary directive is <strong>time waste</strong>. Every second an attacker spends chasing you through off-site hallways or clearing rooms is time stolen from their final site push and defuser plant execution.</p>
+
+        <ul>
+          <li><strong>Delay Over Frags:</strong> Forcing attackers to burn drone utility and waste clock management is a massive win, even if you don't land a single kill. Prioritize survival over greedy swings.</li>
+          <li><strong>Dual-Role Flexibility:</strong> Certain operators naturally blend roaming with secondary utility—such as <strong>Caveira</strong> acting as a Roamer/Intel hybrid, using Silent Step to manipulate map presence and Silent Interrogations to expose the entire enemy team.</li>
+          <li><strong>Anchor Pincer Synergy:</strong> Coordinate directly with your site anchors. When an attacker focuses their push on an anchor holding a key site angle, execute a late-round flank to strike while their attention is completely split.</li>
+        </ul>
+
+        <blockquote class="pro-tip"><strong>Roamer Tip:</strong> Your value is measured by the timer, not just the kill feed. Stalling an attack until the 30-second mark forces a desperate, uncoordinated site rush that your anchors can clean up with ease.</blockquote>
+      </div>
+    </details>
+
+    <!-- 2. TRAPPER -->
+    <details class="role-card">
+      <summary class="role-summary">
+        <span class="role-name">Trapper</span>
+        <span class="role-tooltip-badge" data-tooltip="Denies entry choke points, slows down rushes, and provides visual/audio intel."> Core Objective </span>
+      </summary>
+      <div class="role-expanded-body">
+        <p><strong>Key Responsibilities &amp; Detailed Breakdown:</strong></p>
+        <p>Trappers function as crucial utility sinks and time wasters. Their primary goal is to disrupt attacker momentum, slow down aggressive site rushes, and force enemies to waste valuable explosive utility or time dealing with traps before they can enter critical choke points.</p>
+    
+        <ul>
+          <li><strong>Shield &amp; Rush Denial:</strong> Traps severely punish shield operators and fast-paced pushes by inflicting damage, applying visual/audio disorientation, or physically restricting movement.</li>
+          <li><strong>Key Trapper Roster:</strong> Core trappers and entry-denial operators include <strong>Kapkan, Jäger, Frost, Lesion, Ela, Wamai, Melusi, Aruni, Thorn, Fenrir, and Denari</strong>.</li>
+          <li><strong>Intel &amp; Sound Cues:</strong> Beyond pure damage, triggered traps act as immediate audio proxies, alerting your anchors and roamers to exact attacker push directions.</li>
+        </ul>
+
+        <blockquote class="pro-tip">
+          <strong>Trap Synergy (Lethal Combinations):</strong> Layer your traps for guaranteed kills! Pairing <strong>Thorn + Lesion</strong> forces attackers into a nightmare scenario where the Gu Mine prevents sprinting out of the Razorbloom blast zone while inflicting tick damage. Alternatively, pairing <strong>Thorn + Frost</strong> ensures a guaranteed finish when a trapped attacker can't escape the detonation in time.
+        </blockquote>
+    </details>
+
+    <!-- 3. INTEL / COUNTER-INTEL -->
+    <details class="role-card">
+      <summary class="role-summary">
+        <span class="role-name">Intel / Counter-Intel</span>
+        <span class="role-tooltip-badge" data-tooltip="Gathers attacker movement vision while actively denying, hijacking, or hiding from attacker drones."> Core Objective </span>
+      </summary>
+      <div class="role-expanded-body">
+        <p><strong>Key Responsibilities &amp; Detailed Breakdown:</strong></p>
+        <p>On defense, vision control dictates round tempo. Camera placement is everything—you need lines of sight that stay alive as long as possible while remaining vigilant against destruction or gadget theft from <strong>Brava's Kludge Drones</strong>. Furthermore, <strong>sound cues are just as critical as visual feed</strong> for tracking enemy pinpoints through walls.</p>
+  
+        <ul>
+          <li><strong>Intel Gathering &amp; Counter-Intel:</strong> Deployable cameras, bulletproof cams, and static site cams map out attacker pushes. Operators like <strong>Mozzie</strong> actively deny attacker scouting while stealing their drones to turn their own vision network against them.</li>
+          <li><strong>Audio Surveillance:</strong> Don't rely solely on visual feeds. Listening for footsteps, breach deployments, and utility audio cues gives precise directional awareness without exposing camera positions.</li>
+          <li><strong>Anti-Hacking Precautions:</strong> Place high-value intel devices in angles that force Brava to expose her Kludge Drone to destroyers, preventing attackers from hijacking your own defense network.</li>
+        </ul>
+
+        <blockquote class="pro-tip">
+          <strong>Intel Tip:</strong> Sound cues don't give off a red ping warning. Use your headset alongside hidden cams to track attacker movements silently, giving your anchors or roamers the perfect timing for a surprise swing.
+        </blockquote>
+      </div>
+    </details>
+
+    <!-- 4. ANCHOR -->
+    <details class="role-card">
+      <summary class="role-summary">
+        <span class="role-name">Anchor</span>
+        <span class="role-tooltip-badge" data-tooltip="Holds site power positions, absorbs utility, and prevents late-round defuser plants."> Core Objective </span>
+      </summary>
+      <div class="role-expanded-body">
+        <p><strong>Key Responsibilities &amp; Detailed Breakdown:</strong></p>
+        <p>Anchors are the backbone of site defense. Holding site control is vital, which is why a solid setup requires at least <strong>2–3 anchors on site at all times</strong>. If an anchor falls, roamers must recognize the collapse and immediately rotate back to site to reinforce power positions and prevent a breach execution.</p>
+  
+        <ul>
+          <li><strong>3-Armor Profile:</strong> Most dedicated anchors are heavy 3-Armor operators. Since their heavy movement makes the most noise, remaining stationary on site and holding tight lines of sight maximizes their health pool without giving away position through footstep audio.</li>
+          <li><strong>Angle Discipline &amp; Repositioning:</strong> Holding tight angles is essential for shutting down entry points. However, if an attacker spots or pings your location, <strong>reposition immediately</strong>—holding a burnt angle leaves you completely vulnerable to a swift pre-fire.</li>
+          <li><strong>Late-Round Plant Denial:</strong> Anchors absorb initial attacker utility push and use site geometry, shields, and area-denial gadgets to stall defuser plants as the clock runs down.</li>
+        </ul>
+
+        <blockquote class="pro-tip">
+          <strong>Anchor Tip:</strong> Don't fall in love with a single sightline. The moment an attacker drones you out or fires a test spray at your cover, shift to a secondary angle on site before they swing on fresh intel.
+        </blockquote>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ================= OPERATOR CARDS SECTION ================= -->
+<div class="operator-mastery-container">
   <!-- ATTACKERS COLUMN -->
-  <div class="op-column" style="flex: 1; min-width: 300px">
-    <h2 class="op-column-title op-attackers" style="color: #ff4655 !important; border-bottom: 2px solid #ff4655; padding-bottom: 6px; margin-bottom: 16px; font-size: 1.5rem; text-transform: uppercase; font-weight: 800">⚔️ Attackers</h2>
+  <div class="op-column">
+    <h2 class="op-column-title header-atk">⚔️ Attackers</h2>
 
     <article class="op-card">
       <header class="op-header">
-        <span class="op-name" data-tooltip="Sledge is a 2 armour Soft Breacher">Sledge</span>
+        <span class="op-name" title="Sledge is a 2 Armour / 2 Speed Soft Breacher">Sledge</span>
       </header>
-      
+
       <div class="op-details">
         <section class="op-loadout">
-          
           <ul>
-            <!-- Primary 1 -->
             <li>
-              <div class="item-head">
-                PRIMARY_WEAPON_1 <span class="atts">(ATTACHMENTS)</span>
-              </div>
+              <div class="item-head">L85A2 <span class="atts">(Holosight / Flash Hider / Vertical Grip)</span></div>
             </li>
-            
-<ul>
-            <!-- Primary 1 -->
             <li>
-              <div class="item-head">
-                PRIMARY_WEAPON_2 <span class="atts">(ATTACHMENTS)</span>
-              </div>
+              <div class="item-head">M590A1 <span class="atts">(Laser / Red Dot)</span></div>
             </li>
-
-            <!-- Secondary 1 -->
             <li>
-              <div class="item-head">
-                SECONDARY_WEAPON_1 <span class="atts">(ATTACHMENTS)</span>
-              </div>
+              <div class="item-head">P9 <span class="atts">(Suppressor)</span></div>
             </li>
-
-                        <!-- Secondary 1 -->
             <li>
               <div class="item-head">
-                SECONDARY_WEAPON_2 <span class="atts">(ATTACHMENTS)</span>
+                Frag Grenades
+                <span class="rec-tag rec-meta">Meta Pick</span>
               </div>
-            </li>
-    
-            
-            <!-- Secondary Gadget 1 -->
-            <li>
-              <div class="item-head">
-                GADGET_1
-                <span class="rec-tag rec-meta">PLaceholder 1</span>
-              </div>
-              <p>Why choose this gadget.</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px">Primary choice for soft destruction &amp; clearing utility behind cover.</p>
             </li>
           </ul>
-    
-          <!-- Beginner Loadout Summary -->
-          <div class="tier-box beginner">
+
+          <div class="tier-box">
             <div class="item-head">
               Beginner Loadout
               <span class="rec-tag rec-beginner">Low Skill Floor</span>
             </div>
-            <p><strong>PRIMARY + GADGET:</strong> Why this set is forgiving.</p>
+            <p><strong>L85A2 + Stun Grenades:</strong> Low recoil assault rifle makes it very forgiving for learning vertical gameplay mechanics.</p>
           </div>
-    
-          <!-- Advanced Loadout Summary -->
-          <div class="tier-box advanced">
+
+          <div class="tier-box">
             <div class="item-head">
               Advanced Loadout
               <span class="rec-tag rec-advanced">High Skill Ceiling</span>
             </div>
-            <p><strong>PRIMARY + GADGET:</strong> Why this set works for high-tier play.</p>
+            <p><strong>M590A1 + Frag Grenades:</strong> Shotgun for fast site destruction combined with vertical frag grenade throws.</p>
           </div>
-    
         </section>
-    
-        <p class="op-desc">
-          <strong>Dev Intended Playstyle:</strong> Full description and tactical breakdown.
-        </p>
+
+        <p class="op-desc"><strong>Dev Intended Playstyle:</strong> Vertical soft breacher designed to collapse ceiling defense utility and destroy defender gadgets from above.</p>
       </div>
     </article>
-
   </div>
 
   <!-- DEFENDERS COLUMN -->
-  <div class="op-column" style="flex: 1; min-width: 300px">
-    <h2 class="op-column-title op-defenders" style="color: #00a2ff !important; border-bottom: 2px solid #00a2ff; padding-bottom: 6px; margin-bottom: 16px; font-size: 1.5rem; text-transform: uppercase; font-weight: 800">🛡️ Defenders</h2>
+  <div class="op-column">
+    <h2 class="op-column-title header-dfn">🛡️ Defenders</h2>
 
-    <!-- DEFENDER CARDS GO HERE -->
+    <article class="op-card">
+      <header class="op-header">
+        <span class="op-name" title="Smoke is a 2 Armour / 2 Speed Area Denial Anchor">Smoke</span>
+      </header>
+
+      <div class="op-details">
+        <section class="op-loadout">
+          <ul>
+            <li>
+              <div class="item-head">M590A1 Shotgun <span class="atts">(Laser)</span></div>
+            </li>
+            <li>
+              <div class="item-head">FMG-9 <span class="atts">(1.5x / Flash Hider)</span></div>
+            </li>
+            <li>
+              <div class="item-head">SMG-11 <span class="atts">(Vertical Grip / Compensator)</span></div>
+            </li>
+            <li>
+              <div class="item-head">
+                Deployable Shield
+                <span class="rec-tag rec-meta">Meta Pick</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px">Provides power position protection and line-of-sight denial.</p>
+            </li>
+          </ul>
+
+          <div class="tier-box">
+            <div class="item-head">
+              Pro Loadout
+              <span class="rec-tag rec-advanced">High Skill Ceiling</span>
+            </div>
+            <p><strong>M590A1 + SMG-11:</strong> M590A1 for site setup (rotations/hatches) and SMG-11 for primary engagements.</p>
+          </div>
+        </section>
+
+        <p class="op-desc"><strong>Dev Intended Playstyle:</strong> Late-round area denial anchor using Toxic Babes to deny plant attempts in final 30 seconds.</p>
+      </div>
+    </article>
   </div>
 </div>
