@@ -1,0 +1,241 @@
+{
+  "Trophy Item": {
+    "prefix": "trophy",
+    "body": [
+      "<div class=\"trophy\" data-name=\"$1\">",
+      "    <img src=\"$2\" class=\"trophy-img\" alt=\"${3: Trophy}\">",
+      "    <div class=\"trophy-desc\">",
+      "        <strong>$4</strong>",
+      "        <div class=\"trophy-tags\">",
+      "            <span class=\"hud-tag tag-story\">Story</span>",
+      "            <span class=\"hud-tag tag-sidequest\">Sidequest</span>",
+      "            <span class=\"hud-tag tag-difficulty-specific\">Difficulty Specific</span>",
+      "            <span class=\"hud-tag tag-stackable\">Stackable</span>",
+      "            <span class=\"hud-tag tag-collectable\">Collectable</span>",
+      "            <span class=\"hud-tag tag-grind\">Grind</span>",
+      "            <span class=\"hud-tag tag-online-only\">Online Only</span>",
+      "            <span class=\"hud-tag tag-multiplayer-required\">Multiplayer Required</span>",
+      "            <span class=\"hud-tag tag-coop-required\">Co-op Required</span>",
+      "            <span class=\"hud-tag tag-solo-recommended\">Solo Recommended</span>",
+      "            <span class=\"hud-tag tag-coop-recommended\">Co-op Recommended</span>",
+      "            <span class=\"hud-tag tag-multiplayer-recommended\">Multiplayer Recommended</span>",
+      "            <span class=\"hud-tag tag-boosting-recommended\">Boosting Recommended</span>",
+      "            <span class=\"hud-tag tag-time-limited\">Time Limited</span>",
+      "            <span class=\"hud-tag tag-buggy\">Buggy</span>",
+      "            <span class=\"hud-tag tag-paid-dlc\">Paid DLC</span>",
+      "            <span class=\"hud-tag tag-free-dlc\">Free DLC</span>",
+      "        </div>",
+      "        <p>$5</p>",
+      "    </div>",
+      "</div>"
+    ],
+    "description": "Insert a formatted trophy block with custom HUD tags"
+  },
+  "Video": {
+    "prefix": "video",
+    "body": [
+      "<div class=\"video-container\">",
+      "    <iframe src=\"https://www.youtube.com/embed/${1:VideoID}\" width=\"320\" height=\"266\" frameborder=\"0\" allowfullscreen></iframe>",
+      "</div>"
+    ],
+    "description": "Insert a 320x266 YouTube embed"
+  },
+  "Overview": {
+    "prefix": "overview",
+    "body": [
+      "<div class=\"banner\">",
+      "    <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">",
+      "</div>",
+      "",
+      "<div class=\"overview-heading\">Quick Overview</div>",
+      "<p>${2:Game Description}</p>",
+      "",
+      "<div class=\"overview-heading\">Difficulty Rating</div>",
+      "<p>${3:5/10}</p>",
+      "",
+      "<div class=\"overview-heading\">Online/Offline Trophies</div>",
+      "<p>${4:Online/Offline status.}</p>",
+      "",
+      "<span><!--more--></span>",
+      "<div class=\"search-container\">",
+      "    <input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\" placeholder=\"Filter by Trophy Name...\">",
+      "    <p id=\"counter\">Showing all Trophies</p>",
+      "</div>",
+      "<hr />"
+    ],
+    "description": "Insert the overview"
+  },
+  "Universal Link": {
+    "prefix": "ext-link",
+    "body": [
+      "<a href=\"${1:https://URL}\" target=\"_blank\" rel=\"noopener noreferrer\">${2:Link Text}</a>"
+    ],
+    "description": "Insert a secure link to any external site (Boosting, Guides, etc.)"
+  },
+  "Searchable Overview": {
+    "prefix": "dlc-overview",
+    "body": [
+      "<div class=\"overview-node\" data-group=\"${1:DLC Name}\">",
+      "    <div class=\"banner\">",
+      "        <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">",
+      "    </div>",
+      "    <div class=\"overview-heading\">DLC Name</div>",
+      "",
+      "    <div class=\"overview-heading\">Quick Overview</div>",
+      "    <p>${3:DLC Description}</p>",
+      "",
+      "    <div class=\"overview-heading\">Difficulty Rating</div>",
+      "    <p>${4:5/10}</p>",
+      "",
+      "    <div class=\"overview-heading\">Online/Offline Trophies</div>",
+      "    <p>${5:Online/Offline status.}</p>",
+      "</div>"
+    ],
+    "description": "Insert the searchable Payday/DBD overview"
+  },
+  "DLC Trophy Item": {
+    "prefix": "dlc-trophy",
+    "body": [
+      "<div class=\"trophy\" data-name=\"$1\" data-group=\"$2\">",
+      "    <img src=\"$3\" class=\"trophy-img\" alt=\"${4: Trophy}\">",
+      "    <div class=\"trophy-desc\">",
+      "        <strong>$5</strong>",
+      "        <div class=\"trophy-tags\">",
+      "            <span class=\"hud-tag tag-story\">Story</span>",
+      "            <span class=\"hud-tag tag-sidequest\">Sidequest</span>",
+      "            <span class=\"hud-tag tag-difficulty-specific\">Difficulty Specific</span>",
+      "            <span class=\"hud-tag tag-stackable\">Stackable</span>",
+      "            <span class=\"hud-tag tag-collectable\">Collectable</span>",
+      "            <span class=\"hud-tag tag-grind\">Grind</span>",
+      "            <span class=\"hud-tag tag-online-only\">Online Only</span>",
+      "            <span class=\"hud-tag tag-multiplayer-required\">Multiplayer Required</span>",
+      "            <span class=\"hud-tag tag-coop-required\">Co-op Required</span>",
+      "            <span class=\"hud-tag tag-solo-recommended\">Solo Recommended</span>",
+      "            <span class=\"hud-tag tag-coop-recommended\">Co-op Recommended</span>",
+      "            <span class=\"hud-tag tag-multiplayer-recommended\">Multiplayer Recommended</span>",
+      "            <span class=\"hud-tag tag-boosting-recommended\">Boosting Recommended</span>",
+      "            <span class=\"hud-tag tag-time-limited\">Time Limited</span>",
+      "            <span class=\"hud-tag tag-buggy\">Buggy</span>",
+      "            <span class=\"hud-tag tag-paid-dlc\">Paid DLC</span>",
+      "            <span class=\"hud-tag tag-free-dlc\">Free DLC</span>",
+      "            <span class=\"hud-tag tag-platinum\">Platinum</span>",
+      "        </div>",
+      "        <p>$6</p>",
+      "    </div>",
+      "</div>"
+    ],
+    "description": "Insert a formatted DLC trophy block with custom HUD tags"
+  },
+  "Simple Image Template": {
+    "prefix": "img",
+    "body": [
+      "<img src=\"${1:url}\" alt=\"${2:description}\">"
+    ],
+    "description": "Inserts an image tag with placeholders for the URL and alt text."
+  },
+  "Overview Heading": {
+    "prefix": "overiew-heading",
+    "body": [
+      "<div class=\"overview-heading\">${1:Overview Heading}</div>"
+    ],
+    "description": "Standardized heading with the overview-heading class."
+  },
+
+  "Delta Location Header": {
+    "prefix": "delta-location",
+    "body": [
+      "<div data-group=\"${1:AREA NAME HERE}\">",
+      "  <h3 style=\"text-align: center; text-transform: uppercase;\">${1:AREA NAME HERE}</h3>",
+      "</div>"
+    ]
+  },
+
+  "Delta Collectible Entry": {
+    "prefix": "delta-collectible",
+    "body": [
+      "<div data-group=\"${1:AREA NAME HERE}\" data-name=\"${2:COLLECTIBLE NAME & NUMBER HERE}\" style=\"margin-bottom: 25px;\">",
+      "  <h4 style=\"margin-bottom: 5px;\">${2:COLLECTIBLE NAME & NUMBER HERE}</h4>",
+      "  ",
+      "  <details>",
+      "    <summary style=\"cursor: pointer; font-weight: bold;\">🔍 Click to Expand Location &amp; Screenshots</summary>",
+      "    <div style=\"padding-top: 10px;\">",
+      "      ",
+      "      <p style=\"text-align: left\">${3:Insert step-by-step description of how to reach/find the collectible here...}</p>",
+      "      ",
+      "      <div style=\"text-align: center; margin-top: 15px;\">",
+      "        <img src=\"${4:YOUR_LOCATION_IMAGE_1_URL.png}\" alt=\"Location Screenshot 1\" style=\"max-width: 100%; height: auto; display: block; margin: 8px auto;\">",
+      "        <img src=\"${5:YOUR_LOCATION_IMAGE_2_URL.png}\" alt=\"Location Screenshot 2\" style=\"max-width: 100%; height: auto; display: block; margin: 8px auto;\">",
+      "        <img src=\"${6:YOUR_MAP_IMAGE_URL.png}\" alt=\"Map Screenshot\" style=\"max-width: 100%; height: auto; display: block; margin: 8px auto;\">",
+      "      </div>",
+      "    </div>",
+      "  </details>",
+      "</div>",
+      "$0"
+    ]
+  },
+
+  "Rainbow Six Siege Operator Card": {
+    "prefix": "r6opcard",
+    "description": "Inserts an R6 Siege operator card (Hover name for role tooltip, Click name for full details)",
+    "body": [
+      "<article class=\"op-card\">",
+      "  <header class=\"op-header\">",
+      "    <span class=\"op-name\" data-tooltip=\"${2:SPEED_ARMOR} ${3:INTENDED_ROLE}\">${1:OPERATOR_NAME}</span>",
+      "  </header>",
+      "  ",
+      "  <div class=\"op-details\">",
+      "    <section class=\"op-loadout\">",
+      "      ",
+      "      <ul>",
+      "        <!-- Primary 1 -->",
+      "        <li>",
+      "          <div class=\"item-head\">",
+      "            ${4:PRIMARY_WEAPON_1} <span class=\"atts\">(${5:ATTACHMENTS})</span>",
+      "          </div>",
+      "        </li>",
+      "",
+      "        <!-- Secondary 1 -->",
+      "        <li>",
+      "          <div class=\"item-head\">",
+      "            ${6:SECONDARY_WEAPON_1} <span class=\"atts\">(${7:ATTACHMENTS})</span>",
+      "          </div>",
+      "        </li>",
+      "",
+      "        <!-- Secondary Gadget 1 -->",
+      "        <li>",
+      "          <div class=\"item-head\">",
+      "            ${8:GADGET_1}",
+      "            <span class=\"rec-tag rec-${9|meta,beginner,advanced|}\">${10:TACTICAL_TAG}</span>",
+      "          </div>",
+      "          <p>${11:Why choose this gadget.}</p>",
+      "        </li>",
+      "      </ul>",
+      "",
+      "      <!-- Beginner Loadout Summary -->",
+      "      <div class=\"tier-box beginner\">",
+      "        <div class=\"item-head\">",
+      "          Beginner Loadout",
+      "          <span class=\"rec-tag rec-beginner\">${12:Low Skill Floor}</span>",
+      "        </div>",
+      "        <p><strong>${13:PRIMARY} + ${14:GADGET}:</strong> ${15:Why this set is forgiving.}</p>",
+      "      </div>",
+      "",
+      "      <!-- Advanced Loadout Summary -->",
+      "      <div class=\"tier-box advanced\">",
+      "        <div class=\"item-head\">",
+      "          Advanced Loadout",
+      "          <span class=\"rec-tag rec-advanced\">${16:High Skill Ceiling}</span>",
+      "        </div>",
+      "        <p><strong>${17:PRIMARY} + ${18:GADGET}:</strong> ${19:Why this set works for high-tier play.}</p>",
+      "      </div>",
+      "",
+      "    </section>",
+      "",
+      "    <p class=\"op-desc\">",
+      "      <strong>Dev Intended Playstyle:</strong> ${20:Full description and tactical breakdown.}",
+      "    </p>",
+      "  </div>",
+      "</article>"
+    ]
+  }
+}
