@@ -10,7 +10,7 @@ Originally hosted on *TrueTrophies*, administrative bottlenecks and strict walkt
 
 ## 🎓 Self-Taught Developer Evolution
 
-In September 2025, enrollment began in a college program for **Mobile and Web Development**. Leveraging optional class formats, theoretical coursework was bypassed in favor of hands-on, self-directed learning. 
+In September 2026, enrollment began in a college program for **Mobile and Web Development**. Leveraging optional class formats, theoretical coursework was bypassed in favor of hands-on, self-directed learning. 
 
 Instead of building generic classroom assignments, practical coursework was directly channeled into improving this platform and building real-world tools:
 - **Custom Site Architecture:** Transformed the platform using modern HTML5, CSS3, and DOM-manipulation techniques learned through live development.
