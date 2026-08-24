@@ -108,9 +108,7 @@
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
     overflow: hidden;
-    transition:
-      border-color 0.2s ease,
-      box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .role-card[open] {
@@ -213,7 +211,7 @@
     color: #e2e8f0;
   }
 
-  /* OPERATOR MASTERY CARDS */
+  /* OPERATOR MASTERY ACCORDION CARDS */
   .operator-mastery-container {
     display: flex;
     gap: 24px;
@@ -229,98 +227,146 @@
     background-color: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
-    padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .op-card[open] {
+    border-color: #3b485d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   }
 
   .op-header {
-    border-bottom: 1px solid var(--card-border);
-    padding-bottom: 10px;
-    margin-bottom: 16px;
+    padding: 14px 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    list-style: none;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  .op-header::-webkit-details-marker {
+    display: none;
+  }
+
+  .op-header::after {
+    content: "▲";
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+    margin-left: 12px;
+  }
+
+  .op-card[open] .op-header::after {
+    transform: rotate(180deg);
   }
 
   .op-name {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     font-weight: 800;
-    letter-spacing: 1px;
-    position: relative;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
+    cursor: help;
+    text-decoration: underline dotted rgba(255, 255, 255, 0.3);
+    text-underline-offset: 4px;
   }
 
-  .op-loadout ul {
-    list-style: none !important;
-    padding: 0 !important;
-    margin-bottom: 16px !important;
+  .op-stats {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background-color: #0b0e14;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
   }
 
-  .op-loadout li {
+  .op-details {
+    padding: 18px;
+    border-top: 1px solid var(--card-border);
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .op-dev-note {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--dfn-color);
+    padding: 12px 14px;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+    line-height: 1.45;
+  }
+
+  .note-label {
+    display: block;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .op-loadout h4 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .loadout-option {
     background-color: rgba(0, 0, 0, 0.25);
     border: 1px solid var(--card-border);
-    padding: 10px 14px;
     border-radius: 6px;
-    margin-bottom: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
   }
 
   .item-head {
     font-weight: 700;
-    font-size: 0.95rem;
-    color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .loadout-build {
+    font-size: 0.88rem;
+    color: #e2e8f0;
+    line-height: 1.6;
   }
 
   .atts {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
     font-weight: 400;
   }
 
-  /* Tags & Badges */
-  .rec-tag {
-    font-size: 0.7rem;
-    padding: 3px 8px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-
-  .rec-meta {
-    background-color: #2d3748;
-    color: #a0aec0;
-  }
-
-  .rec-beginner {
-    background-color: rgba(46, 204, 113, 0.2);
-    color: #2ecc71;
-    border: 1px solid rgba(46, 204, 113, 0.4);
-  }
-
-  .rec-advanced {
-    background-color: rgba(231, 76, 60, 0.2);
-    color: #e74c3c;
-    border: 1px solid rgba(231, 76, 60, 0.4);
-  }
-
-  .tier-box {
-    border: 1px solid var(--card-border);
-    background-color: rgba(255, 255, 255, 0.02);
+  .personal-pick {
+    background-color: rgba(255, 183, 3, 0.06);
+    border: 1px solid rgba(255, 183, 3, 0.25);
+    border-left: 4px solid var(--accent-gold);
     border-radius: 6px;
-    padding: 12px;
-    margin-bottom: 12px;
-  }
-
-  .tier-box p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    margin-top: 6px;
-  }
-
-  .op-desc {
-    font-size: 0.92rem;
-    color: #cbd5e1;
-    border-top: 1px dashed var(--card-border);
-    padding-top: 12px;
+    padding: 12px 14px;
     margin-top: 16px;
+  }
+
+  .loadout-notes {
+    font-size: 0.9rem;
+    color: #f1f5f9;
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  .loadout-notes strong {
+    color: var(--accent-gold);
   }
 
   @media (max-width: 768px) {
@@ -517,54 +563,62 @@
   <!-- ATTACKERS COLUMN -->
   <div class="op-column">
     <h2 class="op-column-title header-atk">⚔️ Attackers</h2>
-
-    <article class="op-card">
-      <header class="op-header">
-        <span class="op-name" title="Sledge is a 2 Armour / 2 Speed Soft Breacher">Sledge</span>
-      </header>
-
+    <!-- OPERATOR ACCORDION TEMPLATE -->
+    <details class="op-card">
+      <summary class="op-header">
+        <span class="op-name" title="Roles / Playstyle: Soft Breacher | ">Sledge</span>
+        <span class="op-stats">3 Armor / 1 Speed</span>
+      </summary>
+    
       <div class="op-details">
+        <div class="op-dev-note">
+          <span class="note-label">How to Master This Operator's Key Role:</span> Sledge is often misplayed as a simple entry fragger, but his true value lies in executing high-value utility denial and vertical pressure without consuming limited attacker explosives. The Tactical Breaching Hammer (Caber) instantly destroys Barbed Wire, Castle Panels, Kiba Barriers, and Deployable Shields with a single swing—bypassing electro-charged surfaces or signal disruptors entirely. When taking top-down control above the objective, prioritize line-of-sight creation over raw gunfights by stripping away soft flooring to expose metal beams. This allows you to drop utility between beams, flush anchored defenders out of safe positions, and systematically dismantle site setups while preserving your team's secondary gadgets.
+        </div>
+    
         <section class="op-loadout">
-          <ul>
-            <li>
-              <div class="item-head">L85A2 <span class="atts">(Holosight / Flash Hider / Vertical Grip)</span></div>
-            </li>
-            <li>
-              <div class="item-head">M590A1 <span class="atts">(Laser / Red Dot)</span></div>
-            </li>
-            <li>
-              <div class="item-head">P9 <span class="atts">(Suppressor)</span></div>
-            </li>
-            <li>
-              <div class="item-head">
-                Frag Grenades
-                <span class="rec-tag rec-meta">Meta Pick</span>
-              </div>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px">Primary choice for soft destruction &amp; clearing utility behind cover.</p>
-            </li>
-          </ul>
-
-          <div class="tier-box">
-            <div class="item-head">
-              Beginner Loadout
-              <span class="rec-tag rec-beginner">Low Skill Floor</span>
+          <h4>Loadout Options</h4>
+    
+          <!-- Option 1 -->
+          <div class="loadout-option">
+            <div class="item-head">Option 1: L85A2</div>
+            <div class="loadout-build">
+              <strong>Primary:</strong> PRIMARY_WEAPON_1 <span class="atts">(Recommended: SIGHT / BARREL / GRIP)</span><br>
+              <strong>Secondary:</strong> SECONDARY_WEAPON_1 <span class="atts">(Recommended: BARREL / LASER)</span><br>
+              <strong>Gadget:</strong> UTILITY_GADGET_1
             </div>
-            <p><strong>L85A2 + Stun Grenades:</strong> Low recoil assault rifle makes it very forgiving for learning vertical gameplay mechanics.</p>
           </div>
-
-          <div class="tier-box">
-            <div class="item-head">
-              Advanced Loadout
-              <span class="rec-tag rec-advanced">High Skill Ceiling</span>
+    
+          <!-- Option 2 -->
+          <div class="loadout-option">
+            <div class="item-head">Option 2: PRIMARY_WEAPON_2_NAME</div>
+            <div class="loadout-build">
+              <strong>Primary:</strong> PRIMARY_WEAPON_2 <span class="atts">(Recommended: SIGHT / BARREL / GRIP)</span><br>
+              <strong>Secondary:</strong> SECONDARY_WEAPON_2 <span class="atts">(Recommended: BARREL / LASER)</span><br>
+              <strong>Gadget:</strong> UTILITY_GADGET_2
             </div>
-            <p><strong>M590A1 + Frag Grenades:</strong> Shotgun for fast site destruction combined with vertical frag grenade throws.</p>
           </div>
+    
+          <!-- Option 3 -->
+          <div class="loadout-option">
+            <div class="item-head">Option 3: PRIMARY_WEAPON_3_NAME</div>
+            <div class="loadout-build">
+              <strong>Primary:</strong> PRIMARY_WEAPON_3 <span class="atts">(Recommended: SIGHT / BARREL / GRIP)</span><br>
+              <strong>Secondary:</strong> SECONDARY_WEAPON_2 <span class="atts">(Recommended: BARREL / LASER)</span><br>
+              <strong>Gadget:</strong> UTILITY_GADGET_3
+            </div>
+          </div>
+    
+          <!-- Personal Recommendation Box -->
+          <div class="personal-pick">
+            <p class="loadout-notes">
+              <strong>Personal Choice &amp; Reason:</strong> WHY_YOU_USE_THIS_SPECIFIC_SETUP
+            </p>
+          </div>
+    
         </section>
-
-        <p class="op-desc"><strong>Dev Intended Playstyle:</strong> Vertical soft breacher designed to collapse ceiling defense utility and destroy defender gadgets from above.</p>
       </div>
-    </article>
-  </div>
+    </details>
+    </div>
 
   <!-- DEFENDERS COLUMN -->
   <div class="op-column">

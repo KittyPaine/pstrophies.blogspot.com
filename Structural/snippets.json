@@ -33,64 +33,22 @@
   },
   "Video": {
     "prefix": "video",
-    "body": [
-      "<div class=\"video-container\">",
-      "    <iframe src=\"https://www.youtube.com/embed/${1:VideoID}\" width=\"320\" height=\"266\" frameborder=\"0\" allowfullscreen></iframe>",
-      "</div>"
-    ],
+    "body": ["<div class=\"video-container\">", "    <iframe src=\"https://www.youtube.com/embed/${1:VideoID}\" width=\"320\" height=\"266\" frameborder=\"0\" allowfullscreen></iframe>", "</div>"],
     "description": "Insert a 320x266 YouTube embed"
   },
   "Overview": {
     "prefix": "overview",
-    "body": [
-      "<div class=\"banner\">",
-      "    <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">",
-      "</div>",
-      "",
-      "<div class=\"overview-heading\">Quick Overview</div>",
-      "<p>${2:Game Description}</p>",
-      "",
-      "<div class=\"overview-heading\">Difficulty Rating</div>",
-      "<p>${3:5/10}</p>",
-      "",
-      "<div class=\"overview-heading\">Online/Offline Trophies</div>",
-      "<p>${4:Online/Offline status.}</p>",
-      "",
-      "<span><!--more--></span>",
-      "<div class=\"search-container\">",
-      "    <input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\" placeholder=\"Filter by Trophy Name...\">",
-      "    <p id=\"counter\">Showing all Trophies</p>",
-      "</div>",
-      "<hr />"
-    ],
+    "body": ["<div class=\"banner\">", "    <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${2:Game Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "<p>${3:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${4:Online/Offline status.}</p>", "", "<span><!--more--></span>", "<div class=\"search-container\">", "    <input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\" placeholder=\"Filter by Trophy Name...\">", "    <p id=\"counter\">Showing all Trophies</p>", "</div>", "<hr />"],
     "description": "Insert the overview"
   },
   "Universal Link": {
     "prefix": "ext-link",
-    "body": [
-      "<a href=\"${1:https://URL}\" target=\"_blank\" rel=\"noopener noreferrer\">${2:Link Text}</a>"
-    ],
+    "body": ["<a href=\"${1:https://URL}\" target=\"_blank\" rel=\"noopener noreferrer\">${2:Link Text}</a>"],
     "description": "Insert a secure link to any external site (Boosting, Guides, etc.)"
   },
   "Searchable Overview": {
     "prefix": "dlc-overview",
-    "body": [
-      "<div class=\"overview-node\" data-group=\"${1:DLC Name}\">",
-      "    <div class=\"banner\">",
-      "        <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">",
-      "    </div>",
-      "    <div class=\"overview-heading\">DLC Name</div>",
-      "",
-      "    <div class=\"overview-heading\">Quick Overview</div>",
-      "    <p>${3:DLC Description}</p>",
-      "",
-      "    <div class=\"overview-heading\">Difficulty Rating</div>",
-      "    <p>${4:5/10}</p>",
-      "",
-      "    <div class=\"overview-heading\">Online/Offline Trophies</div>",
-      "    <p>${5:Online/Offline status.}</p>",
-      "</div>"
-    ],
+    "body": ["<div class=\"overview-node\" data-group=\"${1:DLC Name}\">", "    <div class=\"banner\">", "        <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">", "    </div>", "    <div class=\"overview-heading\">DLC Name</div>", "", "    <div class=\"overview-heading\">Quick Overview</div>", "    <p>${3:DLC Description}</p>", "", "    <div class=\"overview-heading\">Difficulty Rating</div>", "    <p>${4:5/10}</p>", "", "    <div class=\"overview-heading\">Online/Offline Trophies</div>", "    <p>${5:Online/Offline status.}</p>", "</div>"],
     "description": "Insert the searchable Payday/DBD overview"
   },
   "DLC Trophy Item": {
@@ -128,26 +86,18 @@
   },
   "Simple Image Template": {
     "prefix": "img",
-    "body": [
-      "<img src=\"${1:url}\" alt=\"${2:description}\">"
-    ],
+    "body": ["<img src=\"${1:url}\" alt=\"${2:description}\">"],
     "description": "Inserts an image tag with placeholders for the URL and alt text."
   },
   "Overview Heading": {
     "prefix": "overiew-heading",
-    "body": [
-      "<div class=\"overview-heading\">${1:Overview Heading}</div>"
-    ],
+    "body": ["<div class=\"overview-heading\">${1:Overview Heading}</div>"],
     "description": "Standardized heading with the overview-heading class."
   },
 
   "Delta Location Header": {
     "prefix": "delta-location",
-    "body": [
-      "<div data-group=\"${1:AREA NAME HERE}\">",
-      "  <h3 style=\"text-align: center; text-transform: uppercase;\">${1:AREA NAME HERE}</h3>",
-      "</div>"
-    ]
+    "body": ["<div data-group=\"${1:AREA NAME HERE}\">", "  <h3 style=\"text-align: center; text-transform: uppercase;\">${1:AREA NAME HERE}</h3>", "</div>"]
   },
 
   "Delta Collectible Entry": {
@@ -174,68 +124,65 @@
     ]
   },
 
-  "Rainbow Six Siege Operator Card": {
-    "prefix": "r6opcard",
-    "description": "Inserts an R6 Siege operator card (Hover name for role tooltip, Click name for full details)",
+  "Siege Operator Card Accordion": {
+    "prefix": "opcard",
     "body": [
-      "<article class=\"op-card\">",
-      "  <header class=\"op-header\">",
-      "    <span class=\"op-name\" data-tooltip=\"${2:SPEED_ARMOR} ${3:INTENDED_ROLE}\">${1:OPERATOR_NAME}</span>",
-      "  </header>",
-      "  ",
+      "<!-- OPERATOR ACCORDION TEMPLATE -->",
+      "<details class=\"op-card\">",
+      "  <summary class=\"op-header\">",
+      "    <span class=\"op-name\" title=\"Roles / Playstyle: ${1:DEV_ROLES_AND_PLAYSTYLE}\">${2:OPERATOR_NAME}</span>",
+      "    <span class=\"op-stats\">${3:X} Armor / ${4:X} Speed</span>",
+      "  </summary>",
+      "",
       "  <div class=\"op-details\">",
+      "    <div class=\"op-dev-note\">",
+      "      <span class=\"note-label\">How to Master This Operator's Key Role:</span> ${5:INSERT_TACTICAL_EXECUTION_STRATEGY}",
+      "    </div>",
+      "",
       "    <section class=\"op-loadout\">",
-      "      ",
-      "      <ul>",
-      "        <!-- Primary 1 -->",
-      "        <li>",
-      "          <div class=\"item-head\">",
-      "            ${4:PRIMARY_WEAPON_1} <span class=\"atts\">(${5:ATTACHMENTS})</span>",
-      "          </div>",
-      "        </li>",
+      "      <h4>Loadout Options</h4>",
       "",
-      "        <!-- Secondary 1 -->",
-      "        <li>",
-      "          <div class=\"item-head\">",
-      "            ${6:SECONDARY_WEAPON_1} <span class=\"atts\">(${7:ATTACHMENTS})</span>",
-      "          </div>",
-      "        </li>",
-      "",
-      "        <!-- Secondary Gadget 1 -->",
-      "        <li>",
-      "          <div class=\"item-head\">",
-      "            ${8:GADGET_1}",
-      "            <span class=\"rec-tag rec-${9|meta,beginner,advanced|}\">${10:TACTICAL_TAG}</span>",
-      "          </div>",
-      "          <p>${11:Why choose this gadget.}</p>",
-      "        </li>",
-      "      </ul>",
-      "",
-      "      <!-- Beginner Loadout Summary -->",
-      "      <div class=\"tier-box beginner\">",
-      "        <div class=\"item-head\">",
-      "          Beginner Loadout",
-      "          <span class=\"rec-tag rec-beginner\">${12:Low Skill Floor}</span>",
+      "      <!-- Option 1 -->",
+      "      <div class=\"loadout-option\">",
+      "        <div class=\"item-head\">Option 1: ${6:PRIMARY_WEAPON_1_NAME}</div>",
+      "        <div class=\"loadout-build\">",
+      "          <strong>Primary:</strong> ${7:PRIMARY_WEAPON_1} <span class=\"atts\">(Recommended: ${9:BARREL} / ${10:GRIP})</span><br>",
+      "          <strong>Secondary:</strong> ${11:SECONDARY_WEAPON_1} <span class=\"atts\">(Recommended: ${12:BARREL} / ${13:LASER})</span><br>",
+      "          <strong>Gadget:</strong> ${14:UTILITY_GADGET_1}",
       "        </div>",
-      "        <p><strong>${13:PRIMARY} + ${14:GADGET}:</strong> ${15:Why this set is forgiving.}</p>",
       "      </div>",
       "",
-      "      <!-- Advanced Loadout Summary -->",
-      "      <div class=\"tier-box advanced\">",
-      "        <div class=\"item-head\">",
-      "          Advanced Loadout",
-      "          <span class=\"rec-tag rec-advanced\">${16:High Skill Ceiling}</span>",
+      "      <!-- Option 2 -->",
+      "      <div class=\"loadout-option\">",
+      "        <div class=\"item-head\">Option 2: ${15:PRIMARY_WEAPON_2_NAME}</div>",
+      "        <div class=\"loadout-build\">",
+      "          <strong>Primary:</strong> ${16:PRIMARY_WEAPON_2} <span class=\"atts\">(Recommended: ${17:SIGHT} / ${18:BARREL} / ${19:GRIP})</span><br>",
+      "          <strong>Secondary:</strong> ${20:SECONDARY_WEAPON_2} <span class=\"atts\">(Recommended: ${21:BARREL} / ${22:LASER})</span><br>",
+      "          <strong>Gadget:</strong> ${23:UTILITY_GADGET_2}",
       "        </div>",
-      "        <p><strong>${17:PRIMARY} + ${18:GADGET}:</strong> ${19:Why this set works for high-tier play.}</p>",
+      "      </div>",
+      "",
+      "      <!-- Option 3 -->",
+      "      <div class=\"loadout-option\">",
+      "        <div class=\"item-head\">Option 3: ${24:PRIMARY_WEAPON_3_NAME}</div>",
+      "        <div class=\"loadout-build\">",
+      "          <strong>Primary:</strong> ${25:PRIMARY_WEAPON_3} <span class=\"atts\">(Recommended: ${26:SIGHT} / ${27:BARREL} / ${28:GRIP})</span><br>",
+      "          <strong>Secondary:</strong> ${29:SECONDARY_WEAPON_2} <span class=\"atts\">(Recommended: ${30:BARREL} / ${31:LASER})</span><br>",
+      "          <strong>Gadget:</strong> ${32:UTILITY_GADGET_3}",
+      "        </div>",
+      "      </div>",
+      "",
+      "      <!-- Personal Recommendation Box -->",
+      "      <div class=\"personal-pick\">",
+      "        <p class=\"loadout-notes\">",
+      "          <strong>Personal Choice &amp; Reason:</strong> ${33:WHY_YOU_USE_THIS_SPECIFIC_SETUP}",
+      "        </p>",
       "      </div>",
       "",
       "    </section>",
-      "",
-      "    <p class=\"op-desc\">",
-      "      <strong>Dev Intended Playstyle:</strong> ${20:Full description and tactical breakdown.}",
-      "    </p>",
       "  </div>",
-      "</article>"
-    ]
+      "</details>"
+    ],
+    "description": "HTML accordion card template for Siege Operator Mastery Guide"
   }
 }
