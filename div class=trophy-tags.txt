@@ -1,0 +1,19 @@
+  <div class="trophy-tags">
+    <span class="hud-tag tag-platinum">Platinum</span>
+    <span class="hud-tag tag-story">Story</span>
+    <span class="hud-tag tag-sidequest">Sidequest</span>
+    <span class="hud-tag tag-difficulty-specific">Diff. Spec.</span>
+    <span class="hud-tag tag-stackable">Stackable</span>
+    <span class="hud-tag tag-collectable">Collect.</span>
+    <span class="hud-tag tag-grind">Grind</span>
+    <span class="hud-tag tag-multiplayer-required">MP ONLY</span>
+    <span class="hud-tag tag-coop-required">CO-OP ONLY</span>
+    <span class="hud-tag tag-solo-recommended">SOLO Rec.</span>
+    <span class="hud-tag tag-coop-recommended">CO-OP Rec.</span>
+    <span class="hud-tag tag-multiplayer-recommended">MP Rec.</span>
+    <span class="hud-tag tag-boosting-recommended">Boost Rec.</span>
+    <span class="hud-tag tag-time-limited">Time Limited</span>
+    <span class="hud-tag tag-buggy">Buggy</span>
+    <span class="hud-tag tag-paid-dlc">Paid DLC</span>
+    <span class="hud-tag tag-free-dlc">Free DLC</span>
+  </div>

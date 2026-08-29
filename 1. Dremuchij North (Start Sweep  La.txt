@@ -1,0 +1,22 @@
+1. Dremuchij North (Start Sweep / Landing spot)
+      │
+      ▼ [Take Northwest Exit]
+2. Dremuchij Swampland
+      │
+      ▼ [Take West Exit]
+3. Dolinovodno
+      │
+      ▼ [Cross Suspension Bridge Northwest]
+4. Rassvet (Turnaround Point)
+      │
+      ▼ [Turn around: Walk Back Southeast across Bridge]
+5. Dolinovodno
+      │
+      ▼ [Walk Back East]
+6. Dremuchij Swampland
+      │
+      ▼ [Take Northeast Exit]
+7. Chyornyj Prud
+      │
+      ▼ [Take North Exit]
+8. Bolshaya Past South (Fence / Ocelot Duel Point of No Return)
