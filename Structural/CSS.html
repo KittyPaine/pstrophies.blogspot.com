@@ -1,6 +1,6 @@
 <style>
   /* ==========================================================================
-     [ ENGINE: SURGICAL HUD MASTER CONFIGURATION v4.2 ]
+     [ ENGINE: SURGICAL HUD MASTER CONFIGURATION v4.5 ]
      ========================================================================== */
 
   /* ==========================================================================
@@ -87,10 +87,10 @@
   div.post,
   .sidebar .widget {
     background-color: rgba(11, 14, 19, 0.94) !important;
-    border: 1.5px solid #0070cc !important; /* Updated to Blue */
+    border: 1.5px solid #0070cc !important;
     box-shadow:
       0 0 20px rgba(0, 112, 204, 0.6),
-      /* Updated to Blue */ inset 0 0 10px rgba(0, 112, 204, 0.2) !important;
+      inset 0 0 10px rgba(0, 112, 204, 0.2) !important;
     border-radius: 12px !important;
     color: #c5c5c5 !important;
     padding: 20px !important;
@@ -108,11 +108,25 @@
   .post-body,
   .post-body p,
   .post-body span,
-  .post-body li,
   .post-body td,
   .post-body div {
     font-size: 16px !important;
     line-height: 1.6 !important;
+  }
+
+  .post-body ul,
+  .trophy-desc ul {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin-top: 8px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .post-body li,
+  .trophy-desc li {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 4px !important;
   }
 
   .post-body {
@@ -142,6 +156,9 @@
     color: #7ab9f0 !important;
     font-weight: bold !important;
     font-size: 20px !important;
+    width: 100% !important;
+    clear: both !important;
+    display: block !important;
   }
 
   .silver-btn {
@@ -150,7 +167,7 @@
   }
 
   .silver-btn:hover {
-    box-shadow: 0 0 15px #0070cc !important; /* Updated to Blue */
+    box-shadow: 0 0 15px #0070cc !important;
   }
 
   a:hover {
@@ -193,7 +210,7 @@
   }
 
   .table-container {
-    border: 2px solid #c5a059; /* Updated to Gold */
+    border: 2px solid #c5a059;
   }
 
   td {
@@ -203,10 +220,8 @@
   /* ==========================================================================
      [ CATEGORY 07: STABLE CLASS-BASED TROPHY GRID ENGINE ]
      ========================================================================== */
-  /* 1. The Container: Create a rigid grid template */
   .trophy {
     display: grid !important;
-    /* Col 1: Exactly 100px wide (matches image/tag width) | Col 2: Rest of space */
     grid-template-columns: 100px 1fr !important;
     column-gap: 20px !important;
     align-items: start !important;
@@ -216,88 +231,98 @@
     padding-bottom: 25px !important;
     border-bottom: 2px solid #333 !important;
     box-sizing: border-box !important;
-    position: relative !important; /* Establishes positioning context */
+    position: relative !important;
+    min-height: 270px !important;
   }
 
-  /* 2. Left Side: Image and Tags */
-
-  /* Image sits in Column 1, Row 1 */
   .trophy-img {
     grid-column: 1 !important;
     grid-row: 1 !important;
     width: 100px !important;
     height: 100px !important;
-    margin: 0 0 108px 0 !important; /* Hardcoded bottom margin to leave exact room for the tags */
+    margin: 0 0 108px 0 !important;
     display: block !important;
-
-    /* --- TRANSPARENCY & CLEANUP FIXES --- */
-    background: transparent !important; /* Forces the background to be completely clear */
-    background-color: transparent !important; /* Double-down to override any inherited theme colors */
-    border: none !important; /* Strips any default borders from Blogger */
-    box-shadow: none !important; /* Removes any default shadows around the image container */
-    padding: 0 !important; /* Removes any internal padding pushing the image */
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
   }
 
-  /* Tags are absolutely positioned directly under the image */
-  /* This prevents the height of the description from ever stretching them downward! */
   .trophy-tags {
     position: absolute !important;
     left: 0 !important;
-    top: 108px !important; /* Positions them exactly 8px below the 100px tall image */
-    width: 100px !important; /* Matches image width perfectly */
+    top: 108px !important;
+    width: 100px !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 4px !important; /* Space between individual stacked tags */
+    gap: 4px !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  /* Ensure individual tags render perfectly */
-  .hud-tag {
-    position: relative;
-    cursor: help;
-    display: block !important;
+  /* HIGH-SPECIFICITY CRISP HUD TAG SIZING ENGINE */
+  .trophy-tags .hud-tag,
+  .trophy-tags span.hud-tag,
+  div.post-body .trophy-tags .hud-tag,
+  div.post-body .trophy-tags span.hud-tag {
+    position: relative !important;
+    cursor: help !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
     width: 100% !important;
-    max-width: 100px !important; /* Locks tags precisely to image width */
+    max-width: 100px !important;
     text-align: center !important;
     box-sizing: border-box !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+    padding: 5px 3px !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    letter-spacing: 0.2px !important;
+    border-radius: 3px !important;
   }
 
-  /* 3. Right Side: Description */
-  /* This takes up Column 2 and dynamically calculates its own height independently */
+  .trophy-tags .hud-tag *,
+  div.post-body .trophy-tags .hud-tag * {
+    font-size: 10px !important;
+    line-height: 1.15 !important;
+  }
+
   .trophy-desc {
     grid-column: 2 !important;
     grid-row: 1 !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 10px !important;
-    min-height: 180px !important; /* Ensures the parent card container stays tall enough for image + tags */
-    min-width: 0 !important; /* Prevents YouTube embeds from blowing out container width */
+    min-height: 230px !important;
+    min-width: 0 !important;
   }
 
-  /* Styled to ensure the Bold Trophy Title stands out cleanly */
-  /* Styled to ensure the Bold Trophy Title stands out cleanly in Antique Gold */
   .trophy-desc strong {
     font-size: 1.25rem !important;
     font-weight: bold !important;
-    color: #c5a059 !important; /* Updated to Gold */
+    color: #c5a059 !important;
     display: block !important;
     margin: 0 !important;
-    text-shadow: 0 0 8px rgba(197, 160, 89, 0.2) !important; /* Updated to Gold aura */
+    text-shadow: 0 0 8px rgba(197, 160, 89, 0.2) !important;
   }
 
-  /* Clean up paragraphs inside descriptions */
   .trophy-desc p {
     margin: 0 0 10px 0 !important;
     font-size: 15px !important;
     line-height: 1.6 !important;
     color: #c5c5c5 !important;
   }
+
   .trophy-desc p:last-child {
     margin-bottom: 0 !important;
   }
 
-  /* --- TOOLTIP MANAGEMENT --- */
   .hud-tag::after {
     content: attr(data-tooltip);
     display: none;
@@ -320,29 +345,12 @@
   }
 
   /* --- TROPHY TAG CLASSIFICATIONS & THEMES --- */
-  /* 1. SEVERE CRITICAL ALERTS */
-  .trophy-tags .tag-buggy {
-    background-color: rgba(255, 51, 51, 0.15) !important;
-    color: #ff3333 !important;
-    border: 1px solid rgba(255, 51, 51, 0.4) !important;
+  .trophy-tags .tag-platinum {
+    background: linear-gradient(135deg, rgba(138, 180, 248, 0.25), rgba(210, 227, 252, 0.15)) !important;
+    color: #a6c8ff !important;
+    border: 1px dashed rgba(166, 200, 255, 0.6) !important;
   }
 
-  /* 2. MULTIPLAYER & MATCHMAKING */
-  .trophy-tags .tag-multiplayer-required,
-  .trophy-tags .tag-multiplayer-recommended {
-    background-color: rgba(255, 204, 0, 0.15) !important;
-    color: #ffcc00 !important;
-    border: 1px solid rgba(255, 204, 0, 0.4) !important;
-  }
-
-  /* 3. HARDWARE & ROADMAP EFFICIENCY */
-  .trophy-tags .tag-stackable {
-    background-color: rgba(0, 230, 115, 0.15) !important;
-    color: #00e673 !important;
-    border: 1px solid rgba(0, 230, 115, 0.4) !important;
-  }
-
-  /* 4. CORE NARRATIVE & CAMPAIGN */
   .trophy-tags .tag-story,
   .trophy-tags .tag-sidequest {
     background-color: rgba(122, 185, 240, 0.15) !important;
@@ -350,7 +358,29 @@
     border: 1px solid rgba(122, 185, 240, 0.4) !important;
   }
 
-  /* 5. PLAYSTYLE RECOMMENDATIONS */
+  .trophy-tags .tag-difficulty-specific,
+  .trophy-tags .tag-online-only,
+  .trophy-tags .tag-multiplayer-required,
+  .trophy-tags .tag-multiplayer-recommended {
+    background-color: rgba(255, 204, 0, 0.15) !important;
+    color: #ffcc00 !important;
+    border: 1px solid rgba(255, 204, 0, 0.4) !important;
+  }
+
+  .trophy-tags .tag-stackable {
+    background-color: rgba(0, 230, 115, 0.15) !important;
+    color: #00e673 !important;
+    border: 1px solid rgba(0, 230, 115, 0.4) !important;
+  }
+
+  .trophy-tags .tag-grind,
+  .trophy-tags .tag-collectable {
+    background-color: rgba(204, 102, 255, 0.15) !important;
+    color: #cc66ff !important;
+    border: 1px solid rgba(204, 102, 255, 0.4) !important;
+  }
+
+  .trophy-tags .tag-coop-required,
   .trophy-tags .tag-coop-recommended,
   .trophy-tags .tag-solo-recommended,
   .trophy-tags .tag-boosting-recommended {
@@ -359,30 +389,6 @@
     border: 1px solid rgba(180, 180, 180, 0.3) !important;
   }
 
-  /* 6. EXTENDED ACTIVITIES */
-  .trophy-tags .tag-grind,
-  .trophy-tags .tag-collectable {
-    background-color: rgba(204, 102, 255, 0.15) !important;
-    color: #cc66ff !important;
-    border: 1px solid rgba(204, 102, 255, 0.4) !important;
-  }
-
-  /* 7. EXPANSION MODULATORS */
-  .trophy-tags .tag-paid-dlc,
-  .trophy-tags .tag-free-dlc {
-    background-color: rgba(255, 0, 255, 0.12) !important;
-    color: #ff00ff !important;
-    border: 1px solid rgba(255, 0, 255, 0.3) !important;
-  }
-
-  /* 8. ELITE COMPLETION STATUS */
-  .trophy-tags .tag-platinum {
-    background: linear-gradient(135deg, rgba(138, 180, 248, 0.25), rgba(210, 227, 252, 0.15)) !important;
-    color: #a6c8ff !important;
-    border: 1px dashed rgba(166, 200, 255, 0.6) !important;
-  }
-
-  /* 9. TIME SENSITIVE / MISSABLE ALERTS */
   .trophy-tags .tag-time-limited,
   .trophy-tags .tag-missable {
     background-color: rgba(255, 102, 0, 0.15) !important;
@@ -390,82 +396,22 @@
     border: 1px solid rgba(255, 102, 0, 0.4) !important;
   }
 
+  .trophy-tags .tag-buggy {
+    background-color: rgba(255, 51, 51, 0.15) !important;
+    color: #ff3333 !important;
+    border: 1px solid rgba(255, 51, 51, 0.4) !important;
+  }
+
+  .trophy-tags .tag-paid-dlc,
+  .trophy-tags .tag-free-dlc {
+    background-color: rgba(255, 0, 255, 0.12) !important;
+    color: #ff00ff !important;
+    border: 1px solid rgba(255, 0, 255, 0.3) !important;
+  }
+
   /* ==========================================================================
      [ CATEGORY 08: GAME ENGINE ARCHETYPES & COMPONENT CARD SYSTEM ]
      ========================================================================== */
-
-  /* --- SYSTEM A: OPERATOR CARD LAYOUTS --- */
-  .operator-challenges-container {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .faction-division {
-    background-color: #c5a059;
-    color: #000000;
-    font-weight: bold;
-    padding: 10px;
-    margin: 20px 0 10px 0;
-    letter-spacing: 1px;
-    text-align: center;
-    border-radius: 4px;
-  }
-
-  .op-challenge-card {
-    border-bottom: 1px solid #333;
-    padding: 15px 0;
-    width: 100%;
-  }
-
-  .op-meta-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    border-left: 3px solid #ffd700;
-    padding-left: 10px;
-  }
-
-  .op-specialty {
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-  }
-
-  .op-reward-badge {
-    background: rgba(255, 215, 0, 0.15);
-    color: #ffd700;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: bold;
-  }
-
-  .challenges-flex-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  .challenge-column {
-    flex: 1;
-    min-width: 160px;
-  }
-
-  .challenge-column strong {
-    display: block;
-    color: #c5a059;
-    font-size: 13px;
-    margin-bottom: 4px;
-  }
-
-  .challenge-column ul {
-    margin: 0;
-    padding-left: 15px;
-    color: #c5c5c5;
-    font-size: 13px;
-  }
 
   /* --- SYSTEM B: DANGANRONPA CARD COMPONENTS --- */
   .dr-mode-container {
@@ -689,293 +635,5 @@
   .search-container input:focus {
     border-color: #ffffff;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-  }
-
-  /* ==========================================================================
-   [ R6 SIEGE OPERATOR MASTERY ENGINE - FULL STACK ]
-   ========================================================================== */
-
-  /* 1. Main 2-Column Layout Grid */
-  .operator-mastery-container {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 20px !important;
-    width: 100% !important;
-    max-width: 1000px !important;
-    margin: 0 auto !important;
-    box-sizing: border-box !important;
-  }
-
-  .op-column {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-  }
-
-  .op-column-title {
-    font-size: 1.4rem !important;
-    font-weight: bold !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    padding-bottom: 8px !important;
-    border-bottom: 2px solid #333 !important;
-    margin: 0 0 10px 0 !important;
-  }
-
-  .op-column-title.attackers {
-    color: #ff9900 !important; /* Siege Attacker Amber */
-  }
-
-  .op-column-title.defenders {
-    color: #00a2ff !important; /* Siege Defender Blue */
-  }
-
-  /* 2. Operator Accordion Card Structure */
-  .op-card {
-    background: #18191c !important;
-    border: 1px solid #2d3035 !important;
-    border-radius: 6px !important;
-    overflow: hidden !important;
-    transition: border-color 0.2s ease !important;
-  }
-
-  .op-card:hover {
-    border-color: #555 !important;
-  }
-
-  .op-header {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 14px 16px !important;
-    cursor: pointer !important;
-    user-select: none !important;
-    background: #1e2024 !important;
-  }
-
-  .op-name {
-    font-size: 1.15rem !important;
-    font-weight: bold !important;
-    color: #d4af37 !important; /* Antique Gold Accent */
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    cursor: help !important;
-  }
-
-  .op-name::before {
-    content: "▶" !important;
-    font-size: 0.75rem !important;
-    color: #888 !important;
-    transition: transform 0.2s ease !important;
-  }
-
-  .op-card.active .op-name::before {
-    transform: rotate(90deg) !important;
-    color: #d4af37 !important;
-  }
-
-  .op-role {
-    font-size: 0.8rem !important;
-    color: #a0a0a0 !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    padding: 3px 8px !important;
-    border-radius: 4px !important;
-  }
-
-  /* 3. Collapsible Details Area */
-  .op-details {
-    max-height: 0 !important;
-    overflow: hidden !important;
-    transition:
-      max-height 0.3s ease-out,
-      padding 0.3s ease !important;
-    padding: 0 16px !important;
-    background: #18191c !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-  }
-
-  .op-card.active .op-details {
-    max-height: 1400px !important;
-    padding: 16px !important;
-    border-top: 1px solid #2a2d32 !important;
-  }
-
-  /* 4. Streamlined Loadout Container */
-  .op-loadout {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-    background: #111214 !important;
-    padding: 14px 16px !important;
-    border-radius: 5px !important;
-    border-left: 3px solid #d4af37 !important;
-  }
-
-  .op-loadout ul {
-    list-style-type: disc !important;
-    padding-left: 18px !important;
-    margin: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-
-  .op-loadout li {
-    color: #d4af37 !important; /* Gold Bullet Points */
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-    border-radius: 4px !important;
-    padding: 8px 10px !important;
-  }
-
-  .item-head {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    font-size: 0.9rem !important;
-    font-weight: bold !important;
-    color: #ffffff !important;
-  }
-
-  .atts {
-    font-size: 0.82rem !important;
-    color: #00a2ff !important; /* Attachment Accent Blue */
-    font-weight: normal !important;
-  }
-
-  .op-loadout p {
-    font-size: 0.82rem !important;
-    line-height: 1.4 !important;
-    color: #a0a0a0 !important;
-    margin: 4px 0 0 0 !important;
-  }
-
-  /* 5. Beginner vs Advanced Recommendation Tier Boxes */
-  .tier-box {
-    padding: 8px 10px !important;
-    border-radius: 4px !important;
-  }
-
-  .tier-box.beginner {
-    background: rgba(0, 162, 255, 0.05) !important;
-    border: 1px solid rgba(0, 162, 255, 0.25) !important;
-  }
-
-  .tier-box.advanced {
-    background: rgba(255, 51, 51, 0.05) !important;
-    border: 1px solid rgba(255, 51, 51, 0.25) !important;
-  }
-
-  /* 6. Tactical Recommendation Badges */
-  .rec-tag {
-    font-size: 0.7rem !important;
-    font-weight: bold !important;
-    padding: 2px 6px !important;
-    border-radius: 3px !important;
-    text-transform: uppercase !important;
-    white-space: nowrap !important;
-  }
-
-  .rec-beginner {
-    background: rgba(0, 162, 255, 0.15) !important;
-    color: #00a2ff !important;
-    border: 1px solid rgba(0, 162, 255, 0.4) !important;
-  }
-
-  .rec-advanced {
-    background: rgba(255, 51, 51, 0.15) !important;
-    color: #ff3333 !important;
-    border: 1px solid rgba(255, 51, 51, 0.4) !important;
-  }
-
-  .rec-meta {
-    background: rgba(212, 175, 55, 0.15) !important;
-    color: #d4af37 !important;
-    border: 1px solid rgba(212, 175, 55, 0.4) !important;
-  }
-
-  .op-desc {
-    font-size: 0.88rem !important;
-    line-height: 1.5 !important;
-    color: #b5b5b5 !important;
-    margin: 0 !important;
-  }
-
-  /* 7. Hover Tooltip Window (Only Triggers on Operator Name) */
-  #custom-tooltip {
-    position: fixed !important;
-    display: none;
-    background: #0d0e10 !important;
-    color: #ffffff !important;
-    border: 1px solid #d4af37 !important;
-    padding: 8px 12px !important;
-    border-radius: 4px !important;
-    font-size: 0.85rem !important;
-    max-width: 260px !important;
-    z-index: 99999 !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
-    pointer-events: none !important;
-  }
-
-  /* Responsive Mobile Fallback */
-  @media (max-width: 768px) {
-    .operator-mastery-container {
-      grid-template-columns: 1fr !important;
-    }
-  }
-
-  /* ==========================================================================
-   [ OPERATOR MASTERY BASE & COLUMN TITLES ]
-   ========================================================================== */
-
-  /* Instructional Callout Box */
-  .op-instructions {
-    background: #18191c !important;
-    border-left: 3px solid #00a2ff !important;
-    color: #b5b5b5 !important;
-    font-size: 0.9rem !important;
-    padding: 10px 14px !important;
-    margin: 12px 0 20px 0 !important;
-    border-radius: 0 4px 4px 0 !important;
-  }
-
-  /* Master Column Grid */
-  .operator-mastery-container {
-    display: flex !important;
-    gap: 20px !important;
-    flex-wrap: wrap !important;
-    width: 100% !important;
-  }
-
-  .op-column {
-    flex: 1 !important;
-    min-width: 300px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-  }
-
-  /* Shared Column Title Styles */
-  .op-column-title {
-    font-size: 1.5rem !important;
-    font-weight: 800 !important;
-    text-transform: uppercase !important;
-    padding-bottom: 6px !important;
-    margin-bottom: 16px !important;
-  }
-
-  /* Red Attacker Accent */
-  .op-column-title.op-attackers {
-    color: #ff4655 !important;
-    border-bottom: 2px solid #ff4655 !important;
-  }
-
-  /* Blue Defender Accent */
-  .op-column-title.op-defenders {
-    color: #00a2ff !important;
-    border-bottom: 2px solid #00a2ff !important;
   }
 </style>
