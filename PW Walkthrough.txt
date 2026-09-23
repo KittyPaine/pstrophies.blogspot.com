@@ -1,0 +1,39 @@
+Legend: A# = Area, E = Enemies, N/S/E/W = North, South, East, West POW = Prisoner of War
+
+
+Main Ops Walkthrough
+
+Investigate Supply Facility
+A1: Grenade gate | A2: 3E (Mk.22, avoid) | A3: 4E [Love Box on the left between shelves], North building exit.
+
+Sandinista Comandante
+A1: 2E | A3: 3E | A4: 6E, clear all.
+
+Pursue Amanda
+A1: 4E | A2S: 2E (or A2N: 1E) | A3: 2E, Exit N | A4: 3E [M10 Doc] | A5: 3E [Twin Barrel Doc, Far W POW, Tiger Stripe left of exit].
+
+Armored Vehicle Battle: LAV-Type G
+
+Rescue Chico
+A1: 2E | A2: 3E (1 sniper upper L, POW on train car) | A3: 4E (Check map for 4 orange sheds with blue doors, random).
+
+Pursue Jungle Train
+A1: 4E | A2: 3E (1 sniper left of train) | A3S: 2E + 1 POW | A3N: 5E, 2 POWs (1 guard 2nd floor after entry, 1 POW to the right & guard ahead on upper catwalk) | Optional: Western exit [Love Box] | A4: 2E + POWs (Guard on the left as you enter guarding a POW and another POW in the middle of the building before climbing up) | A5: 5E Secure the area and approach the train.
+
+Tank Battle: T-72U
+
+Destroy the Barricade
+A1: 2E | A2: 3E 1st enemy is on the 2nd catwalk | A3S: 2E Sniper on the upper left and right | A4S: 1 POW | A3W: 4E Blow the wall to the north to reach the exit.
+
+Infiltrate the Crater Base
+A1: 3 enemies 1 above, 2 below | A2: 3E | A3: 4E 1 Below, 3 above 1 POW
+
+Pupa Battle
+
+Travel to the Cloud Forest
+A1: 3E, 2 in the first section hiding behind the large trees, 3rd is prone on the platform ahead. | A2: 3E, Carefull walk down the ramp or jump off the side, there is an enemy on the platform ahead hiding next to the tree log in the bushes. The 2nd one is opposite of the 1st next to a large tree. The third is ahead prone in the middle of the path. A POW next to the western exit.
+
+Attack Chopper Battle: Mi-24A
+
+Head for the Lab
+A2: 1E To the right of a large tree by the entry point.  | A3S: | A3N:  
