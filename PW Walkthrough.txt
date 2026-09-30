@@ -1,42 +1,36 @@
-Legend: A# = Area, E = Enemies, N/S/E/W = North, South, East, West POW = Prisoner of War
+Travel to the Mine Base
+A1: 5E 1 POW Be careful as one is on a rooftop.
 
+Eliminate the Guards
 
-Main Ops Walkthrough
+Cocoon Battle
 
-Investigate Supply Facility
-A1: Grenade gate | A2: 3E (Mk.22, avoid) | A3: 4E [Love Box on the left between shelves], North building exit.
+Infiltrate the Underground Base
+A1: 6E 1 POW | A2: 6E 1 POW | A3: 4E Make sure to bring smoke grenades, quickly run down the stairs to your right, there are enemies receiving instructions from their commander quickly throw a smoke grenade into the middle of the group, jump over the railing and press circle to let go, run over and take them all out with CQC, this should net you CQC Six Shot if you haven't already got it. If you wait too long they will quickly disperse across the map.
 
-Sandinista Comandante
-A1: 2E | A3: 3E | A4: 6E, clear all.
+Escape the Torture Chamber
+A1: 6E
 
-Pursue Amanda
-A1: 4E | A2S: 2E (or A2N: 1E) | A3: 2E, Exit N | A4: 3E [M10 Doc] | A5: 3E [Twin Barrel Doc, Far W POW, Tiger Stripe left of exit].
+Head for Peace Walker's Hangar
+A1: 5E | A2: 6E 1 POW 2 Enemies upstairs with the POW and 4 downstairs. | A3:6E 1 POW 2 Enemies upstairs with the POW and 4 downstairs.
 
-Armored Vehicle Battle: LAV-Type G
+Peace Walker Battle
 
-Rescue Chico
-A1: 2E | A2: 3E (1 sniper upper L, POW on train car) | A3: 4E (Check map for 4 orange sheds with blue doors, random).
+Infiltrate the U.S. Missile Base
+A1: 4 1 POW The POW is in the basement 1 enemy is on the upper catwalk. Shooting the Kidnapper causes a single reinforcement to appear. | A2: 3E 2 POWs | A3: 3E 1 POW Shooting the Kidnapper causes 1 reinforcement to appear.
 
-Pursue Jungle Train
-A1: 4E | A2: 3E (1 sniper left of train) | A3S: 2E + 1 POW | A3N: 5E, 2 POWs (1 guard 2nd floor after entry, 1 POW to the right & guard ahead on upper catwalk) | Optional: Western exit [Love Box] | A4: 2E + POWs (Guard on the left as you enter guarding a POW and another POW in the middle of the building before climbing up) | A5: 5E Secure the area and approach the train.
+Head to the Control Tower
+The enemy is already on high alert, wear the battle dress, bring healing items, an assault rifle and the Mosin Nagant.
 
-Tank Battle: T-72U
+Peace Walker Battle 2
 
-Destroy the Barricade
-A1: 2E | A2: 3E 1st enemy is on the 2nd catwalk | A3S: 2E Sniper on the upper left and right | A4S: 1 POW | A3W: 4E Blow the wall to the north to reach the exit.
+Peace Walker Battle 3
 
-Infiltrate the Crater Base
-A1: 3 enemies 1 above, 2 below | A2: 3E | A3: 4E 1 Below, 3 above 1 POW
+Zadornov Search Mission
+A1: 1E | A2E: 4E | A3: 2E Design Spec | A4: 1E | A5: 2E | A6: 4E Zadornov can spawn in multiple locations including in the southern building in Rio del Jade or up in a tower by the boathouse.  Otherwise he is in Bananal Fruta de Oro: Sorting Shed either in the side room in the factory or in a building to the left of the exit to the farm. If he is not there you may find a POW.
 
-Pupa Battle
+Zadornov Search Mission 2
+A1: 4E | A2: 3E Design Spec. Zadornov may be lying on the ground in the far east or right in the center of the level behind a log Bosque de Alba. Walk to the end of the upper hallway and you should spot him lying prostrate in Puerto del Alba.
 
-Travel to the Cloud Forest
-A1: 3E, 2 in the first section hiding behind the large trees, 3rd is prone on the platform ahead. | A2: 3E, Carefull walk down the ramp or jump off the side, there is an enemy on the platform ahead hiding next to the tree log in the bushes. The 2nd one is opposite of the 1st next to a large tree. The third is ahead prone in the middle of the path. A POW next to the western exit.
-
-Attack Chopper Battle: Mi-24A
-
-Head for the Lab
-A2: 3E To the right of a large tree by the entry point. Opposite of enemy one, prone next to a large tree. Enemy 3 is just to the left of enemy 2 prone on the platform by a log. | A3S: 3E, 1 POW On the platform by the large tree. Follow the path and you should she him straight ahead sitting by a large tree and the last enemy is also by a tree just past enemy 2. The POW is at the far end of the river. | A3N: 2E There are 2 enemies wearing ghillie suits in the ruins. | A4: 4E Behind a large tree straight ahead. There are 2 walls just ahead he is behind the wall on the left.  Enemy 3 is a sniper, stand by the nearby exterior wall he is straight ahead by a damaged wall. To spot him easier consider bringing the M. Nagant but unless it's Rank 5 you must use the Mk. 22 to knock him out other wise you risk alerting Enemy 4. Enemy 4 is straight ahead from your current position prone next to the large base of a tree, you can use the M. Nagant to try to spot him but he is slightly blocked by a fern leaf, carefully creep up to the right towards the sniper and follow along the edge of the platform to reach the stairs so you can creep on him without being spotted. | A6: 5E They are all patrolling on foot, Enemy 5 is patrolling just ahead of the POW you find on the left of the broken arch.
-
-Locate the Id Card
-A1: 5E patrolling on foot. There is a POW hidden on the right just past the patrolling enemy. | A2: 4E 2 Close to the entrance and 2 close to the exit. 2 of which are ghillie suits. Follow along the right side to spot them. | A3: 2E they are both close to the exit, creep along the right side to avoid them. | A4: 1E He's posted on the east side of the area. | A5: 3E | A6: 2E 1 POW The soldier in the orange coat is RNG on each start up of the mission.
+Zadornov Search Mission 3
+A1: 3E | A2: 3E | A3: 1 POW on the eastern side. | A4:  Be sure to equip NVG, you'll need them. A1: Just up ahead prone in the bushes to your left. Not too far ahead there in another enemy prone in the bushes on the right behind a tree and just feet from him another crouched behind a tree on the left. | Down the incline there is an enemy hiding beside the tree. Climb onto the platform and you should see an enemy across from you on the left side prone. Look to the right of him at the base of the large tree for another prone enemy.
