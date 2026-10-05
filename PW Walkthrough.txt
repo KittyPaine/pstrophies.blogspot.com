@@ -6,7 +6,7 @@ Eliminate the Guards
 Cocoon Battle
 
 Infiltrate the Underground Base
-A1: 6E 1 POW | A2: 6E 1 POW | A3: 4E Make sure to bring smoke grenades, quickly run down the stairs to your right, there are enemies receiving instructions from their commander quickly throw a smoke grenade into the middle of the group, jump over the railing and press circle to let go, run over and take them all out with CQC, this should net you CQC Six Shot if you haven't already got it. If you wait too long they will quickly disperse across the map.
+A1: 6E 1 POW | A2: 6E 1 POW | A3: 4E Bring Smoke Grenades. Sprint down the stairs and look to your right. Throw a Smoke Grenade directly into the center of the grouped enemy squad listening to their commander. Vault over the railing, drop down (Circle), and execute a CQC chain on all 6 enemies while they cough. This easily unlocks "CQC Six Shot" (6 consecutive CQC hits). DUAL PURPOSE: 1. Trophy Unlock: Effortlessly unlocks "CQC Six Shot" (6 consecutive CQC hits). 2. Elevator Access: Instantly clears the entire sector, giving you direct, unhindered access to the elevator without having to dodge complex patrol paths. CAUTION: Do NOT hesitate—if you wait even a few seconds, the group disperses across the sector.
 
 Escape the Torture Chamber
 A1: 6E
@@ -33,4 +33,66 @@ Zadornov Search Mission 2
 A1: 4E | A2: 3E Design Spec. Zadornov may be lying on the ground in the far east or right in the center of the level behind a log Bosque de Alba. Walk to the end of the upper hallway and you should spot him lying prostrate in Puerto del Alba.
 
 Zadornov Search Mission 3
-A1: 3E | A2: 3E | A3: 1 POW on the eastern side. | A4:  Be sure to equip NVG, you'll need them. A1: Just up ahead prone in the bushes to your left. Not too far ahead there in another enemy prone in the bushes on the right behind a tree and just feet from him another crouched behind a tree on the left. | Down the incline there is an enemy hiding beside the tree. Climb onto the platform and you should see an enemy across from you on the left side prone. Look to the right of him at the base of the large tree for another prone enemy.
+A1: 3E | A2: 3E | A3: 1 POW on the eastern side. | A4: 2E | A5: 3E | A6: 5E 1 POW Be sure to equip NVG, you'll need them. Just up ahead prone in the bushes to your left. Not too far ahead there in another enemy prone in the bushes on the right behind a tree and just feet from him another crouched behind a tree on the left. | Down the incline there is an enemy hiding beside the tree. Climb onto the platform and you should see an enemy across from you on the left side prone. Look to the right of him at the base of the large tree for another prone enemy. | Both enemies are prone in the ruins. Follow along the left hand side. | 1 Enemy behind the crumbling wall to your right. Forward past the trees next to the left outer wall prone. And the last 2 are prone on the platform at the back. | 5 Patrolling guards a POW on the right path past the arch. | Zadornov may hide in the middle of Catarata de la Muerte. Along the east wall inside the destroyed building in Selva de la Muerte: Bottom of Cliff. Right in the middle of the eastern portion with his back against a wall in Selva de la Muerte: Top of Cliff. The final location is opposite of the POW in Ruins de Xochiquetzal.
+
+Zadornov Search Mission 4
+A1: 3E M1C (PR) Design Spec in the NE corner. | A2: 3E One is a sniper on the upper right cliff. | A3W: 4E | A4: 5E Enemy 1 POW 3 is in the guard tower up the hill, you may need NVG to see him clearly in the dark. The next 2 are on the catwalks above you and the POW is under the metal roofing on your right just past the first catwalk. | A5: 2E 2 POWs One on tne ground floor and one on the upper floor. PoW 1 is in the middle of the north most area of the first floor and POW 2 is underneath the outdoor staircase. | Zadornov is in one of the buildings with the blue doors in Aldea Los Despiertos.
+
+Zadornov Search Mission 5
+A1: 4E 1 POW The Pow is behind the truck. Smoke Box Design Spec NW of the truck next to the wall.| A2: 4E 2 above 2 below at the far end. | A3: 4E | A4: 6E 4 Enemies on the gate, wait for the one by the ladder to face away before climbing up to deal with the other 3. Zadornov is in the truck with the license place 6EN.
+
+Zadornov Search Mission 6
+A1: 5E 4 Patrolling on the ground and the last one is on the roof of the west most building. Stun Box Design Spec in the NW corner by the wall. There are love boxes scattered on the map, Zadornov is hiding in one of them.
+
+Metal Gear ZEKE
+<h3>Metal Gear ZEKE Unlock Requirements:</h3>
+<ol>
+  <li><b>Zadornov Searches 1–6:</b> Complete all six official Zadornov Search missions in Main Ops.</li>
+  <li><b>ZEKE Basic Assembly:</b> Collect and attach the Head, Legs, Right Arm, and Left Arm parts.</li>
+  <li><b>ZEKE Railgun (Mandatory):</b> Attach the <b>Railgun</b> (obtained from Chrysalis). This is required to trigger Main Ops 33 and for related boss fight trophies.</li>
+  <li><b>Mother Base Assignment:</b> Remove ZEKE from any active Outer Ops deployments (must be docked at base).</li>
+  <li><b>Intel Unit Level:</b> Level up your Intel Team to <b>~40+</b> to trigger the final Mother Base Command Post expansion.</li>
+<li><b>Mother Base Deveopment:</b> Your Mission Support Rank, which is visible in Mother Base data, must be a minimum of 2 or higher. Once Command Center reaches Rank 6 complete missions to passively raise it's rank progress.</li>
+<p><b>Pro-Tip (Fast-Track Intel Level 40):</b> To hit the ~Level 40 Intel requirement quickly for Chapter 5, farm high-stat staff in these missions:</p>
+<ul>
+  <li><b>Main Ops: Infiltrate the Crater Base (Free S-Rank):</b> Inspect the truck with license plate <code>63824</code> during the mission to extract Hideo Kojima. He comes pre-packaged with an immediate S-Rank in Intel.</li>
+  <li><b>Main Ops: Destroy the Barricade (2x S-Rank Intel):</b> At <i>Camino de Lava: Junction</i>, look at the high sniper cliff. Both snipers possess S-Rank Intel stats. Extract them using the Fulton Launcher or by detonating a Fulton Mine against the wall directly underneath their ledge.</li>
+  <li><b>Extra Ops 014 / 016 (A/B-Rank Ground Route):</b> If you lack Fulton Mines or the Fulton Launcher, run Extra Ops 014 or 016 with the Mk22 and Sneaking Suit. Extract the ground guards for guaranteed A/B-Rank Intel staff in under 60 seconds per run.</li>
+</ul>
+  <li><b>Trigger Kaz's Call:</b> Play 1–3 brief Extra Ops missions until Miller calls to report Zadornov's 7th escape.</li>
+  <li><b>Locate Zadornov (Extra Ops 001):</b> Sortie as <b>Snake</b> into <i>Extra Ops 001: Target Practice</i>, head to the 2nd floor catwalk, and locate Zadornov behind the wall.</li>
+</ol>
+
+Extra Ops 001
+T-Shirt is found on the upper catwalk.
+
+Extra Op 015
+UZ61 Design Specs next to the exterior wall on your right. 
+
+Extra Op 016
+PM Design Specs are found next to a tree by the train in Camino de Lava: Junction.
+
+Extra Op 022
+Stun Grenade Design Spec in the north east corner of the warehouse.
+
+Extra Ops 023
+M16A1 STG Design Spec on the lower bridge.
+
+Extra Ops 030
+The first doc you pick up is the RPG2 Design Spec. Squares in the shed just below the design spec.
+
+Extra Ops 031
+The first doc you pick up is the MG3 Design Spec.
+
+Extra Ops 034
+Use NVG to help you spot the Claymores easier and carefully crouch walk up them, use triangle to disarm them. The M1911A Custom Design Spec is in the SW exit.
+
+Extra Ops 036
+Fal Design Specs in the side room in the warehouse. M10 BJ Design Spec in the northern shed to the left of the exit.
+
+Extra Ops 051
+Magazine Layout Design Spec on the incline to the left of your starting position.
+
+Extra Ops 059
+Splitter is on top of the crate in the NW corner, equip the love box then press x to drop it you can then climb on top of it to reach it. The ghost can be found on the western staircase. Pull out the camera and when in range it will glow orange. Initially it climbs up from the south, it can and will attack if it spots you. Use the Sonic Eye to track it's movement.
+
