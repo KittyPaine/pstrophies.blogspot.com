@@ -2,124 +2,157 @@
 // PSTrophyGuides — Main Client-Side Utility Engine
 // ==================================================
 
-// Set placeholder text for search inputs on page load
-document.addEventListener("DOMContentLoaded", function () {
-  var searchInputs = document.querySelectorAll("#trophySearch");
-  searchInputs.forEach(function (input) {
-    input.setAttribute("placeholder", "Filter by Trophy or DLC Name...");
-  });
+//<![CDATA[
+document.addEventListener("DOMContentLoaded", function() {
+    var searchInputs = document.querySelectorAll('#trophySearch');
+    searchInputs.forEach(function(input) {
+        input.setAttribute('placeholder', 'Filter by Trophy or DLC Name...');
+    });
 });
 
-// Dual-Attribute Search & Section Filtering
 function filterTrophies() {
-  const input = document.getElementById("trophySearch").value.toLowerCase().trim();
-  const trophies = document.querySelectorAll(".trophy");
-  const sections = document.querySelectorAll(".category-section");
-  let totalVisible = 0;
+    const input = document.getElementById('trophySearch').value.toLowerCase().trim();
+    const trophies = document.querySelectorAll('.trophy');
+    const sections = document.querySelectorAll('.category-section');
+    let totalVisible = 0;
 
-  // Word boundary search matching starting characters
-  const searchRegex = new RegExp("\\b" + input, "i");
+    // \b = Word Boundary. Matches "Grin" in "Grinch" but NOT "Grind".
+    const searchRegex = new RegExp('\\b' + input, 'i');
 
-  // 1. Filter trophies by data-name or data-group
-  for (let i = 0; i < trophies.length; i++) {
-    const t = trophies[i];
-    const nameAttr = t.getAttribute("data-name") || "";
-    const groupAttr = t.getAttribute("data-group") || "";
+    // 1. DUAL-ATTRIBUTE FILTER
+    for (let i = 0; i < trophies.length; i++) {
+        const t = trophies[i];
+        const nameAttr = t.getAttribute('data-name') || "";
+        const groupAttr = t.getAttribute('data-group') || "";
 
-    const isMatch = input === "" || searchRegex.test(nameAttr) || searchRegex.test(groupAttr);
+        // Success if input matches either the name OR the group
+        const isMatch = (input === "" || searchRegex.test(nameAttr) || searchRegex.test(groupAttr));
 
-    if (isMatch) {
-      t.style.setProperty("display", "flex", "important");
-      t.classList.remove("is-hidden");
-      totalVisible++;
-    } else {
-      t.style.setProperty("display", "none", "important");
-      t.classList.add("is-hidden");
+        if (isMatch) {
+            t.style.setProperty("display", "flex", "important");
+            t.classList.remove('is-hidden');
+            totalVisible++;
+        } else {
+            t.style.setProperty("display", "none", "important");
+            t.classList.add('is-hidden');
+        }
     }
-  }
 
-  // 2. Hide empty sections automatically
-  for (let j = 0; j < sections.length; j++) {
-    const sec = sections[j];
-    const hasVisible = sec.querySelector(".trophy:not(.is-hidden)");
+    // 2. PARENT SECTION REACTION
+    // Now that your </div> is fixed, this correctly wipes the 
+    // Banner/Overview/Difficulty if no trophies inside match.
+    for (let j = 0; j < sections.length; j++) {
+        const sec = sections[j];
+        const hasVisible = sec.querySelector('.trophy:not(.is-hidden)');
 
-    if (input === "" || hasVisible) {
-      sec.style.setProperty("display", "block", "important");
-    } else {
-      sec.style.setProperty("display", "none", "important");
+        if (input === "" || hasVisible) {
+            sec.style.setProperty("display", "block", "important");
+        } else {
+            sec.style.setProperty("display", "none", "important");
+        }
     }
-  }
 
-  const counter = document.getElementById("counter");
-  if (counter) counter.innerText = "Showing " + totalVisible + " Trophies";
+    const counter = document.getElementById('counter');
+    if (counter) counter.innerText = "Showing " + totalVisible + " Trophies";
 }
 
-// Trigger filter on live user typing
-document.addEventListener("input", function (e) {
-  if (e.target && e.target.id === "trophySearch") {
-    filterTrophies();
-  }
-});
-
-// HUD Tag Tooltip Mapper
-document.addEventListener("DOMContentLoaded", function () {
-  const tooltips = {
-    Platinum: "Unlocked after earning all other base game trophies.",
-    Story: "This trophy is earned by completing certain in game checkpoints, such as chapter end or ending.",
-    Sidequest: "This trophy is earned by completing optional side content.",
-    "Diff. Spec.": "This trophy is tied to completing the game on a specific difficulty setting.",
-    Stackable: "This trophy can be earned simultaneously with other trophies in the same playthrough.",
-    "Collect.": "This trophy involves collecting items or collectibles.",
-    Grind: "This trophy requires repetitive tasks or a significant time investment.",
-    "MP ONLY": "This trophy requires an online connection and is Player vs Player.",
-    "CO-OP ONLY": "This trophy requires an online connection and is Player vs Enviroment.",
-    "SOLO Rec.": "This trophy is recommended to be done alone for ease or efficiency.",
-    "CO-OP Rec.": "This trophy is easier or more efficient to perform in Co-op.",
-    "MP Rec.": "This trophy is recommended to be done in Multiplayer as it is not worth boosting.",
-    "Boost Rec.": "This trophy is best earned by coordinating with others to boost.",
-    "Time Limited": "This trophy has a time limit.",
-    Buggy: "Be careful: This trophy is known to be glitchy and may not pop when intended. Save often.",
-    "Paid DLC": "This trophy requires a paid expansion pack.",
-    "Free DLC": "This trophy is part of a free update.",
-  };
-
-  document.querySelectorAll(".hud-tag").forEach((tag) => {
-    const text = tag.textContent.trim();
-    if (tooltips[text]) {
-      tag.setAttribute("data-tooltip", tooltips[text]);
+document.addEventListener('input', function (e) {
+    if (e.target && e.target.id === 'trophySearch') {
+        filterTrophies();
     }
-  });
 });
+//]]>
 
-// Interactive Operator Card Tooltips & Collapsible Toggle
-document.addEventListener("DOMContentLoaded", () => {
-  const tooltip = document.getElementById("custom-tooltip");
+document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+    // 1. The Source of Truth: Mapping exact tag text to definitions
+    const tooltips = {
+        &quot;Platinum&quot;: &quot;Unlocked after earning all other base game trophies.&quot;,
+        &quot;Story&quot;: &quot;This trophy is earned by completing certain in game checkpoints, such as chapter end or ending.&quot;,
+        &quot;Sidequest&quot;: &quot;This trophy is earned by completing optional side content.&quot;,
+        &quot;Diff. Spec.&quot;: &quot;This trophy is tied to completing the game on a specific difficulty setting.&quot;,
+        &quot;Stackable&quot;: &quot;This trophy can be earned simultaneously with other trophies in the same playthrough.&quot;,
+        &quot;Collect.&quot;: &quot;This trophy involves collecting items or collectibles.&quot;,
+        &quot;Grind&quot;: &quot;This trophy requires repetitive tasks or a significant time investment.&quot;,
+        &quot;MP ONLY&quot;: &quot; This trophy requires an online connection and is Player vs Player.&quot;,
+        &quot;CO-OP ONLY&quot;: &quot;This trophy requires an online connection and is Player vs Enviroment.&quot;,
+        &quot;SOLO Rec.&quot;: &quot;This trophy is recommended to be done alone for ease or efficiency.&quot;,
+        &quot;CO-OP Rec.&quot;: &quot;This trophy is easier or more efficient to perform in Co-op.&quot;,
+        &quot;MP Rec.&quot;: &quot;This trophy is recommended to be done in Multiplayer as it is not worth boosting.&quot;,
+        &quot;Boost Rec.&quot;: &quot;This trophy is best earned by coordinating with others to boost.&quot;,
+        &quot;Time Limited&quot;: &quot;This trophy has a time limit.&quot;,
+        &quot;Buggy&quot;: &quot;Be careful: This trophy is known to be glitchy and may not pop when intended. Save often.&quot;,
+        &quot;Paid DLC&quot;: &quot;This trophy requires a paid expansion pack.&quot;,
+        &quot;Free DLC&quot;: &quot;This trophy is part of a free update.&quot;
+    };
 
-  document.querySelectorAll(".op-card").forEach((card) => {
-    const nameTag = card.querySelector(".op-name");
-
-    if (nameTag) {
-      nameTag.addEventListener("mouseenter", () => {
-        const roleText = nameTag.getAttribute("data-tooltip");
-        if (roleText) {
-          tooltip.textContent = roleText;
-          tooltip.style.display = "block";
+    // 2. The Mapper: Injects the attribute for CSS to read
+    document.querySelectorAll(&#39;.hud-tag&#39;).forEach(tag =&gt; {
+        const text = tag.textContent.trim();
+        if (tooltips[text]) {
+            tag.setAttribute(&#39;data-tooltip&#39;, tooltips[text]);
         }
-      });
+    });
+});
 
-      nameTag.addEventListener("mousemove", (e) => {
-        tooltip.style.left = e.clientX + 15 + "px";
-        tooltip.style.top = e.clientY + 15 + "px";
-      });
+  document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
+    const tooltip = document.getElementById(&#39;custom-tooltip&#39;);
 
-      nameTag.addEventListener("mouseleave", () => {
-        tooltip.style.display = "none";
-      });
+    // Handle all interactions on .op-card
+    document.querySelectorAll(&#39;.op-card&#39;).forEach(card =&gt; {
+      const nameTag = card.querySelector(&#39;.op-name&#39;);
 
-      nameTag.addEventListener("click", (e) => {
-        e.stopPropagation();
-        card.classList.toggle("active");
-      });
-    }
+      // 1. Hover over Operator Name -&gt; Show Intended Role Tooltip
+      if (nameTag) {
+        nameTag.addEventListener(&#39;mouseenter&#39;, () =&gt; {
+          const roleText = nameTag.getAttribute(&#39;data-tooltip&#39;);
+          if (roleText) {
+            tooltip.textContent = roleText;
+            tooltip.style.display = &#39;block&#39;;
+          }
+        });
+
+        nameTag.addEventListener(&#39;mousemove&#39;, (e) =&gt; {
+          tooltip.style.left = (e.clientX + 15) + &#39;px&#39;;
+          tooltip.style.top = (e.clientY + 15) + &#39;px&#39;;
+        });
+
+        nameTag.addEventListener(&#39;mouseleave&#39;, () =&gt; {
+          tooltip.style.display = &#39;none&#39;;
+        });
+
+        // 2. Click Operator Name -&gt; Expand/Collapse Full Card Description
+        nameTag.addEventListener(&#39;click&#39;, (e) =&gt; {
+          e.stopPropagation(); // Prevents double-triggering if clicking header
+          card.classList.toggle(&#39;active&#39;);
+        });
+      }
+    });
   });
+
+document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+    const trophies = document.querySelectorAll(&quot;.trophy&quot;);
+
+    trophies.forEach(trophy =&gt; {
+        const id = trophy.dataset.name;
+        const checkbox = trophy.querySelector(&quot;.earned-checkbox&quot;);
+        const textBlock = trophy.querySelector(&quot;.trophy-text&quot;);
+
+        if (localStorage.getItem(id) === &quot;earned&quot;) {
+            checkbox.checked = true;
+            trophy.dataset.earned = &quot;true&quot;;
+            textBlock.style.display = &quot;none&quot;;
+        }
+
+        checkbox.addEventListener(&quot;change&quot;, () =&gt; {
+            if (checkbox.checked) {
+                localStorage.setItem(id, &quot;earned&quot;);
+                trophy.dataset.earned = &quot;true&quot;;
+                textBlock.style.display = &quot;none&quot;;
+            } else {
+                localStorage.removeItem(id);
+                trophy.dataset.earned = &quot;false&quot;;
+                textBlock.style.display = &quot;&quot;;
+            }
+        });
+    });
 });
