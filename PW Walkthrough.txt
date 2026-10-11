@@ -90,9 +90,11 @@ Use NVG to help you spot the Claymores easier and carefully crouch walk up them,
 Extra Ops 036
 Fal Design Specs in the side room in the warehouse. M10 BJ Design Spec in the northern shed to the left of the exit.
 
+Extra Op 046
+M16A1 (STG + Laser) Design Spec in the north end of the warehouse (Mill).
+
 Extra Ops 051
 Magazine Layout Design Spec on the incline to the left of your starting position.
 
 Extra Ops 059
 Splitter is on top of the crate in the NW corner, equip the love box then press x to drop it you can then climb on top of it to reach it. The ghost can be found on the western staircase. Pull out the camera and when in range it will glow orange. Initially it climbs up from the south, it can and will attack if it spots you. Use the Sonic Eye to track it's movement.
-

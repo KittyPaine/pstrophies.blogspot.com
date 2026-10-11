@@ -1,56 +1,70 @@
-{
-  "Trophy Item": {
-    "prefix": "trophy",
-    "body": [
-      "<div class=\"trophy\" data-name=\"$1\">",
-      "    <img src=\"$2\" class=\"trophy-img\" alt=\"${3: Trophy}\">",
-      "    <div class=\"trophy-desc\">",
-      "        <strong>$4</strong>",
-      "        <div class=\"trophy-tags\">",
-      "            <span class=\"hud-tag tag-story\">Story</span>",
-      "            <span class=\"hud-tag tag-sidequest\">Sidequest</span>",
-      "            <span class=\"hud-tag tag-difficulty-specific\">Difficulty Specific</span>",
-      "            <span class=\"hud-tag tag-stackable\">Stackable</span>",
-      "            <span class=\"hud-tag tag-collectable\">Collectable</span>",
-      "            <span class=\"hud-tag tag-grind\">Grind</span>",
-      "            <span class=\"hud-tag tag-online-only\">Online Only</span>",
-      "            <span class=\"hud-tag tag-multiplayer-required\">Multiplayer Required</span>",
-      "            <span class=\"hud-tag tag-coop-required\">Co-op Required</span>",
-      "            <span class=\"hud-tag tag-solo-recommended\">Solo Recommended</span>",
-      "            <span class=\"hud-tag tag-coop-recommended\">Co-op Recommended</span>",
-      "            <span class=\"hud-tag tag-multiplayer-recommended\">Multiplayer Recommended</span>",
-      "            <span class=\"hud-tag tag-boosting-recommended\">Boosting Recommended</span>",
-      "            <span class=\"hud-tag tag-time-limited\">Time Limited</span>",
-      "            <span class=\"hud-tag tag-buggy\">Buggy</span>",
-      "            <span class=\"hud-tag tag-paid-dlc\">Paid DLC</span>",
-      "            <span class=\"hud-tag tag-free-dlc\">Free DLC</span>",
-      "        </div>",
-      "        <p>$5</p>",
-      "    </div>",
-      "</div>"
-    ],
-    "description": "Insert a formatted trophy block with custom HUD tags"
-  },
+"Trophy Item": {
+  "prefix": "trophy",
+  "body": [
+    "<div class=\"trophy\" data-name=\"$1\">",
+    "    <label class=\"earned-wrapper\">",
+    "        <input type=\"checkbox\" class=\"earned-check\">",
+    "        <span class=\"earned-label\">Earned</span>",
+    "    </label>",
+    "",
+    "    <img src=\"$2\" class=\"trophy-img\" alt=\"${3:Trophy}\">",
+    "",
+    "    <div class=\"trophy-desc\">",
+    "        <strong>$4</strong>",
+    "",
+    "        <div class=\"trophy-tags\">",
+    "            <span class=\"hud-tag tag-story\">Story</span>",
+    "            <span class=\"hud-tag tag-sidequest\">Sidequest</span>",
+    "            <span class=\"hud-tag tag-difficulty-specific\">Difficulty Specific</span>",
+    "            <span class=\"hud-tag tag-stackable\">Stackable</span>",
+    "            <span class=\"hud-tag tag-collectable\">Collectable</span>",
+    "            <span class=\"hud-tag tag-grind\">Grind</span>",
+    "            <span class=\"hud-tag tag-online-only\">Online Only</span>",
+    "            <span class=\"hud-tag tag-multiplayer-required\">Multiplayer Required</span>",
+    "            <span class=\"hud-tag tag-coop-required\">Co-op Required</span>",
+    "            <span class=\"hud-tag tag-solo-recommended\">Solo Recommended</span>",
+    "            <span class=\"hud-tag tag-coop-recommended\">Co-op Recommended</span>",
+    "            <span class=\"hud-tag tag-multiplayer-recommended\">Multiplayer Recommended</span>",
+    "            <span class=\"hud-tag tag-boosting-recommended\">Boosting Recommended</span>",
+    "            <span class=\"hud-tag tag-time-limited\">Time Limited</span>",
+    "            <span class=\"hud-tag tag-buggy\">Buggy</span>",
+    "            <span class=\"hud-tag tag-paid-dlc\">Paid DLC</span>",
+    "            <span class=\"hud-tag tag-free-dlc\">Free DLC</span>",
+    "        </div>",
+    "",
+    "        <div class=\"trophy-text\">",
+    "            <p>$5</p>",
+    "        </div>",
+    "    </div>",
+    "</div>"
+  ],
+  "description": "Insert a formatted trophy block with checkbox + hide-desc support"
+},
+
   "Video": {
     "prefix": "video",
     "body": ["<div class=\"video-container\">", "    <iframe src=\"https://www.youtube.com/embed/${1:VideoID}\" width=\"320\" height=\"266\" frameborder=\"0\" allowfullscreen></iframe>", "</div>"],
     "description": "Insert a 320x266 YouTube embed"
   },
+
   "Overview": {
     "prefix": "overview",
-    "body": ["<div class=\"banner\">", "    <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${2:Game Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "<p>${3:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${4:Online/Offline status.}</p>", "", "<span><!--more--></span>", "<div class=\"search-container\">", "    <input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\" placeholder=\"Filter by Trophy Name...\">", "    <p id=\"counter\">Showing all Trophies</p>", "</div>", "<hr />"],
+    "body": ["<div class=\"banner\">", "    <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${2:Game Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "<p>${3:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${4:Online/Offline status.}</p>", "", "<hr>", "<p id=\"platinumCounter\">Platinum Progress: 0 / 0</p>", "", "<span><!--more--></span>", "<div class=\"search-container\">", "    <input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\" placeholder=\"Filter by Trophy Name...\">", "    <p id=\"counter\">Showing all Trophies</p>", "</div>", "<hr />"],
     "description": "Insert the overview"
   },
+
   "Universal Link": {
     "prefix": "ext-link",
     "body": ["<a href=\"${1:https://URL}\" target=\"_blank\" rel=\"noopener noreferrer\">${2:Link Text}</a>"],
     "description": "Insert a secure link to any external site (Boosting, Guides, etc.)"
   },
+
   "Searchable Overview": {
     "prefix": "dlc-overview",
-    "body": ["<div class=\"overview-node\" data-group=\"${1:DLC Name}\">", "    <div class=\"banner\">", "        <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">", "    </div>", "    <div class=\"overview-heading\">DLC Name</div>", "", "    <div class=\"overview-heading\">Quick Overview</div>", "    <p>${3:DLC Description}</p>", "", "    <div class=\"overview-heading\">Difficulty Rating</div>", "    <p>${4:5/10}</p>", "", "    <div class=\"overview-heading\">Online/Offline Trophies</div>", "    <p>${5:Online/Offline status.}</p>", "</div>"],
+    "body": ["<div class=\"overview-node\" data-group=\"${1:DLC Name}\" data-dlc-type=\"${6:paid/free}\">", "    <div class=\"banner\">", "        <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">", "    </div>", "", "    <div class=\"overview-heading\">DLC Name</div>", "", "    <div class=\"overview-heading\">Quick Overview</div>", "    <p>${3:DLC Description}</p>", "", "    <div class=\"overview-heading\">Difficulty Rating</div>", "    <p>${4:5/10}</p>", "", "    <div class=\"overview-heading\">Online/Offline Trophies</div>", "    <p>${5:Online/Offline status.}</p>", "", "    <p class=\"dlc-counter\">DLC Progress: 0 / 0</p>", "</div>"],
     "description": "Insert the searchable Payday/DBD overview"
   },
+
   "DLC Trophy Item": {
     "prefix": "dlc-trophy",
     "body": [
@@ -84,13 +98,14 @@
     ],
     "description": "Insert a formatted DLC trophy block with custom HUD tags"
   },
+
   "Simple Image Template": {
     "prefix": "img",
     "body": ["<img src=\"${1:url}\" alt=\"${2:description}\">"],
     "description": "Inserts an image tag with placeholders for the URL and alt text."
   },
   "Overview Heading": {
-    "prefix": "overiew-heading",
+    "prefix": "overview-heading",
     "body": ["<div class=\"overview-heading\">${1:Overview Heading}</div>"],
     "description": "Standardized heading with the overview-heading class."
   },

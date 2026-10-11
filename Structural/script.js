@@ -2,6 +2,7 @@
 // PSTrophyGuides — Main Client-Side Utility Engine
 // ==================================================
 
+
 //<![CDATA[
 document.addEventListener("DOMContentLoaded", function() {
     var searchInputs = document.querySelectorAll('#trophySearch');
@@ -129,30 +130,60 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
     });
   });
 
-document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
-    const trophies = document.querySelectorAll(&quot;.trophy&quot;);
+document.addEventListener("DOMContentLoaded", function () {
+    const trophies = document.querySelectorAll(".trophy");
 
-    trophies.forEach(trophy =&gt; {
+    // -----------------------------
+    // Load checkbox state + hide text
+    // -----------------------------
+    trophies.forEach(trophy => {
         const id = trophy.dataset.name;
-        const checkbox = trophy.querySelector(&quot;.earned-checkbox&quot;);
-        const textBlock = trophy.querySelector(&quot;.trophy-text&quot;);
+        const checkbox = trophy.querySelector(".earned-checkbox");
+        const textBlock = trophy.querySelector(".trophy-text");
 
-        if (localStorage.getItem(id) === &quot;earned&quot;) {
+        if (localStorage.getItem(id) === "earned") {
             checkbox.checked = true;
-            trophy.dataset.earned = &quot;true&quot;;
-            textBlock.style.display = &quot;none&quot;;
+            trophy.dataset.earned = "true";
+            textBlock.style.display = "none";
         }
 
-        checkbox.addEventListener(&quot;change&quot;, () =&gt; {
+        checkbox.addEventListener("change", () => {
             if (checkbox.checked) {
-                localStorage.setItem(id, &quot;earned&quot;);
-                trophy.dataset.earned = &quot;true&quot;;
-                textBlock.style.display = &quot;none&quot;;
+                localStorage.setItem(id, "earned");
+                trophy.dataset.earned = "true";
+                textBlock.style.display = "none";
             } else {
                 localStorage.removeItem(id);
-                trophy.dataset.earned = &quot;false&quot;;
-                textBlock.style.display = &quot;&quot;;
+                trophy.dataset.earned = "false";
+                textBlock.style.display = "";
             }
+            updateCounters(); // NEW
         });
     });
+
+    function updateCounters() {
+        const allTrophies = document.querySelectorAll(".trophy");
+        const earned = document.querySelectorAll('.trophy[data-earned="true"]');
+
+        // Platinum Counter
+        const platinumCounter = document.getElementById("platinumCounter");
+        if (platinumCounter) {
+            platinumCounter.textContent = `Platinum Progress: ${earned.length} / ${allTrophies.length}`;
+        }
+
+        // DLC Counters
+        const dlcNodes = document.querySelectorAll(".overview-node[data-group]");
+        dlcNodes.forEach(node => {
+            const group = node.dataset.group;
+            const dlcTrophies = document.querySelectorAll(`.trophy[data-group="${group}"]`);
+            const dlcEarned = document.querySelectorAll(`.trophy[data-group="${group}"][data-earned="true"]`);
+
+            const dlcCounter = node.querySelector(".dlc-counter");
+            if (dlcCounter) {
+                dlcCounter.textContent = `DLC Progress: ${dlcEarned.length} / ${dlcTrophies.length}`;
+            }
+        });
+    }
+
+    updateCounters(); // Initial load
 });
