@@ -63,6 +63,15 @@ Metal Gear ZEKE
   <li><b>Locate Zadornov (Extra Ops 001):</b> Sortie as <b>Snake</b> into <i>Extra Ops 001: Target Practice</i>, head to the 2nd floor catwalk, and locate Zadornov behind the wall.</li>
 </ol>
 
+Outside of a few specific Extra Ops with Special Unlock requirements most Extra Ops are unlocked by completing All the main ops and available extra ops.
+
+1. Listen to Chico's Tapes: Enter the Mission Preparation screen, select Briefing Files, and open Chico’s files. You must play through his audio tapes regarding the local myths and monsters until the exclamation marks (!) disappear.
+2. Launch Extra Ops 029: Start Extra Ops 029: Item Capture playing as Snake.
+3. Ignore the Objective: Do NOT complete the mission objective (destroying the crate/collecting the item), as stepping into the resulting extraction zone will instantly end the mission.
+4. Locate the Cat: From your starting spawn point, immediately turn around and run south down the path to the beach area (Playa del Alba). Walk all the way to the end of the wooden dock to find a talking cat named Trenya in a small boat.
+5. Trigger the Cutscene: Approach the boat to trigger a cutscene. Once the cutscene finishes, you can safely complete or abort the mission. Extra Ops 121 will now be permanently unlocked in your mission list, allowing you to progress through the rest of the Monster Hunter chain (Extra Ops 121–128).
+Please see MAIN OPS All Rank S for more details regarding the Monster Hunter Missions.
+
 Extra Ops 001
 T-Shirt is found on the upper catwalk.
 
@@ -98,3 +107,9 @@ Magazine Layout Design Spec on the incline to the left of your starting position
 
 Extra Ops 059
 Splitter is on top of the crate in the NW corner, equip the love box then press x to drop it you can then climb on top of it to reach it. The ghost can be found on the western staircase. Pull out the camera and when in range it will glow orange. Initially it climbs up from the south, it can and will attack if it spots you. Use the Sonic Eye to track it's movement.
+
+Extra Ops 067
+Replay after S Rank to pick up the Trunks Uniform from the pier.
+
+Extra Ops 067
+Replay after S Rank to pick up the Bikini Uniform from the pier.
