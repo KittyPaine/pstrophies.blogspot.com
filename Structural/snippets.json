@@ -1,26 +1,26 @@
 {
   "Overview": {
     "prefix": "overview",
-    "body": ["<div class=\"banner\">", "    <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${2:Game Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "<p>${3:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${4:Online/Offline status.}</p>", "", "<span><!--more--></span>", "", "<hr>", "<p id=\"platinumCounter\">Platinum Progress: 0 / 0</p>", "<div class=\"search-container\">", "<input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\">", " <p id=\"counter\">Showing all Trophies</p>", "</div>", "<hr />"],
+    "body": ["<div class=\"banner\">", "    <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${2:Game Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "<p>${3:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${4:Online/Offline status.}</p>", "", "<span><!--more--></span>", "", "<hr>", "<div class=\"search-container\">", "    <input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\">", "</div>", "<hr />"],
     "description": "Insert the overview"
   },
 
   "Searchable Overview": {
     "prefix": "dlc-overview",
-    "body": ["<div class=\"overview-node\" data-group=\"${1:DLC Name}\" data-paid=\"${6:true/false}\">", "    <div class=\"banner\">", "        <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">", "    </div>", "", "    <div class=\"overview-heading\">${1:DLC Name}</div>", "", "    <div class=\"overview-heading\">Quick Overview</div>", "    <p>${3:DLC Description}</p>", "", "    <div class=\"overview-heading\">Difficulty Rating</div>", "    <p>${4:5/10}</p>", "", "    <div class=\"overview-heading\">Online/Offline Trophies</div>", "    <p>${5:Online/Offline status.}</p>", "", "    <p class=\"dlc-counter\">${1:DLC Name} Progress: 0 / 0</p>", "</div>"],
+    "body": ["<div class=\"overview-node\" data-group=\"${1:DLC Name}\" data-paid=\"${6:true/false}\">", "    <div class=\"banner\">", "        <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">", "    </div>", "", "    <div class=\"overview-heading\">${1:DLC Name}</div>", "", "    <div class=\"overview-heading\">Quick Overview</div>", "    <p>${3:DLC Description}</p>", "", "    <div class=\"overview-heading\">Difficulty Rating</div>", "    <p>${4:5/10}</p>", "", "    <div class=\"overview-heading\">Online/Offline Trophies</div>", "    <p>${5:Online/Offline status.}</p>", "", "</div>"],
     "description": "Insert the searchable DLC overview"
   },
 
   "Trophy Item": {
     "prefix": "trophy",
-    "body": ["<div class=\"trophy\" data-name=\"$1\">", "    <label class=\"earned-wrapper\">", "        <input type=\"checkbox\" class=\"earned-check\">", "        <span class=\"earned-label\">Earned</span>", "    </label>", "", "    <img src=\"$2\" class=\"trophy-img\" alt=\"${3:Trophy}\">", "", "    <div class=\"trophy-desc\">", "        <strong>$4</strong>", "", "        <div class=\"trophy-text\">", "            <p>$5</p>", "        </div>", "    </div>", "</div>"],
-    "description": "Insert a formatted trophy block with checkbox + hide-desc support"
+    "body": ["<div class=\"trophy\" data-name=\"$1\">", "    <img src=\"$2\" class=\"trophy-img\" alt=\"${3:Trophy}\">", "", "    <div class=\"trophy-desc\">", "        <strong>$4</strong>", "", "        <div class=\"trophy-text\">", "            <p>$5</p>", "        </div>", "    </div>", "</div>"],
+    "description": "Insert a formatted trophy block"
   },
 
   "DLC Trophy Item": {
     "prefix": "dlc-trophy",
-    "body": ["<div class=\"dlc-trophy\" data-name=\"$1\" data-group=\"$2\" data-paid=\"$7\">", "", "    <label class=\"earned-wrapper\">", "        <input type=\"checkbox\" class=\"earned-checkbox\">", "        <span class=\"earned-label\">Earned</span>", "    </label>", "", "    <img src=\"$3\" class=\"trophy-img\" alt=\"${4:Trophy}\">", "", "    <div class=\"trophy-desc\">", "        <strong>$5</strong>", "", "        <div class=\"trophy-text\">", "            <p>$6</p>", "        </div>", "    </div>", "</div>"],
-    "description": "Insert a formatted DLC trophy block with checkbox + hide-desc support"
+    "body": ["<div class=\"dlc-trophy\" data-name=\"$1\" data-group=\"$2\" data-paid=\"$7\">", "    <img src=\"$3\" class=\"trophy-img\" alt=\"${4:Trophy}\">", "", "    <div class=\"trophy-desc\">", "        <strong>$5</strong>", "", "        <div class=\"trophy-text\">", "            <p>$6</p>", "        </div>", "    </div>", "</div>"],
+    "description": "Insert a formatted DLC trophy block"
   },
 
   "Video": {
@@ -32,18 +32,19 @@
   "Universal Link": {
     "prefix": "ext-link",
     "body": ["<a href=\"${1:https://URL}\" target=\"_blank\" rel=\"noopener noreferrer\">${2:Link Text}</a>"],
-    "description": "Insert a secure link to any external site (Boosting, Guides, etc.)"
+    "description": "Insert a secure link to any external site"
   },
 
   "Simple Image Template": {
     "prefix": "img",
     "body": ["<img src=\"${1:url}\" alt=\"${2:description}\">"],
-    "description": "Inserts an image tag with placeholders for the URL and alt text."
+    "description": "Insert an image tag"
   },
+
   "Overview Heading": {
     "prefix": "overview-heading",
     "body": ["<div class=\"overview-heading\">${1:Overview Heading}</div>"],
-    "description": "Standardized heading with the overview-heading class."
+    "description": "Standardized heading"
   },
 
   "Delta Location Header": {
@@ -56,17 +57,17 @@
     "body": [
       "<div data-group=\"${1:AREA NAME HERE}\" data-name=\"${2:COLLECTIBLE NAME & NUMBER HERE}\" style=\"margin-bottom: 25px;\">",
       "  <h4 style=\"margin-bottom: 5px;\">${2:COLLECTIBLE NAME & NUMBER HERE}</h4>",
-      "  ",
+      "",
       "  <details>",
       "    <summary style=\"cursor: pointer; font-weight: bold;\">🔍 Click to Expand Location &amp; Screenshots</summary>",
       "    <div style=\"padding-top: 10px;\">",
-      "      ",
-      "      <p style=\"text-align: left\">${3:Insert step-by-step description of how to reach/find the collectible here...}</p>",
-      "      ",
+      "",
+      "      <p style=\"text-align: left\">${3:Insert step-by-step description}</p>",
+      "",
       "      <div style=\"text-align: center; margin-top: 15px;\">",
-      "        <img src=\"${4:YOUR_LOCATION_IMAGE_1_URL.png}\" alt=\"Location Screenshot 1\" style=\"max-width: 100%; height: auto; display: block; margin: 8px auto;\">",
-      "        <img src=\"${5:YOUR_LOCATION_IMAGE_2_URL.png}\" alt=\"Location Screenshot 2\" style=\"max-width: 100%; height: auto; display: block; margin: 8px auto;\">",
-      "        <img src=\"${6:YOUR_MAP_IMAGE_URL.png}\" alt=\"Map Screenshot\" style=\"max-width: 100%; height: auto; display: block; margin: 8px auto;\">",
+      "        <img src=\"${4:YOUR_LOCATION_IMAGE_1_URL.png}\" alt=\"Location Screenshot 1\" style=\"max-width: 100%; height: auto; margin: 8px auto;\">",
+      "        <img src=\"${5:YOUR_LOCATION_IMAGE_2_URL.png}\" alt=\"Location Screenshot 2\" style=\"max-width: 100%; height: auto; margin: 8px auto;\">",
+      "        <img src=\"${6:YOUR_MAP_IMAGE_URL.png}\" alt=\"Map Screenshot\" style=\"max-width: 100%; height: auto; margin: 8px auto;\">",
       "      </div>",
       "    </div>",
       "  </details>",
@@ -98,7 +99,7 @@
       "        <div class=\"item-head\">Option 1: ${6:PRIMARY_WEAPON_1_NAME}</div>",
       "        <div class=\"loadout-build\">",
       "          <strong>Primary:</strong> ${7:PRIMARY_WEAPON_1} <span class=\"atts\">(Recommended: ${9:BARREL} / ${10:GRIP})</span><br>",
-      "          <strong>Secondary:</strong> ${11:SECONDARY_WEAPON_1} <span class=\"atts\">(Recommended: ${12:Muzzle if applicable})</span><br>",
+      "          <strong>Secondary:</strong> ${11:SECONDARY_WEAPON_1} <span class=\"atts\">(Recommended: ${12:Muzzle})</span><br>",
       "          <strong>Gadget:</strong> ${14:UTILITY_GADGET_1}",
       "        </div>",
       "      </div>",
@@ -108,7 +109,7 @@
       "        <div class=\"item-head\">Option 2: ${15:PRIMARY_WEAPON_2_NAME}</div>",
       "        <div class=\"loadout-build\">",
       "          <strong>Primary:</strong> ${16:PRIMARY_WEAPON_2} <span class=\"atts\">(Recommended: ${18:BARREL} / ${19:GRIP})</span><br>",
-      "          <strong>Secondary:</strong> ${20:SECONDARY_WEAPON_2} <span class=\"atts\">(Recommended: ${21:Muzzle if applicable})</span><br>",
+      "          <strong>Secondary:</strong> ${20:SECONDARY_WEAPON_2} <span class=\"atts\">(Recommended: ${21:Muzzle})</span><br>",
       "          <strong>Gadget:</strong> ${23:UTILITY_GADGET_2}",
       "        </div>",
       "      </div>",
@@ -118,12 +119,11 @@
       "        <div class=\"item-head\">Option 3: ${24:PRIMARY_WEAPON_3_NAME}</div>",
       "        <div class=\"loadout-build\">",
       "          <strong>Primary:</strong> ${25:PRIMARY_WEAPON_3} <span class=\"atts\">(Recommended: ${27:BARREL} / ${28:GRIP})</span><br>",
-      "          <strong>Secondary:</strong> ${29:SECONDARY_WEAPON_2} <span class=\"atts\">(Recommended: ${30:Muzzle if applicable})</span><br>",
+      "          <strong>Secondary:</strong> ${29:SECONDARY_WEAPON_3} <span class=\"atts\">(Recommended: ${30:Muzzle})</span><br>",
       "          <strong>Gadget:</strong> ${32:UTILITY_GADGET_3}",
       "        </div>",
       "      </div>",
       "",
-      "      <!-- Personal Recommendation Box -->",
       "      <div class=\"personal-pick\">",
       "        <p class=\"loadout-notes\">",
       "          <strong>Personal Choice &amp; Reason:</strong> ${33:WHY_YOU_USE_THIS_SPECIFIC_SETUP}",

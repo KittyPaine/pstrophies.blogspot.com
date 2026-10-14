@@ -1,14 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Global placeholder override (clean + correct)
     const input = document.querySelector('#trophySearch');
     input.placeholder = "Filter by Trophy Name, DLC Name, Paid or Free for DLC";
 });
 
 function filterTrophies() {
     const input = document.getElementById('trophySearch').value.toLowerCase().trim();
-    const trophies = document.querySelectorAll('.trophy');
+    const trophies = document.querySelectorAll('.trophy, .dlc-trophy');
     const sections = document.querySelectorAll('.category-section');
-    let totalVisible = 0;
 
     // Word-boundary search (matches "Grin" in "Grinch" but NOT "Grind")
     const searchRegex = new RegExp('\\b' + input, 'i');
@@ -16,18 +14,23 @@ function filterTrophies() {
     // 1. TROPHY FILTERING
     for (let i = 0; i < trophies.length; i++) {
         const t = trophies[i];
-        const nameAttr = t.getAttribute('data-name') || "";
-        const groupAttr = t.getAttribute('data-group') || "";
+
+        const nameAttr  = (t.getAttribute('data-name')  || "").toLowerCase();
+        const groupAttr = (t.getAttribute('data-group') || "").toLowerCase();
+        const paidAttr  = t.getAttribute('data-paid'); // "true" or "false"
+
+        // Convert paid/free into readable search terms
+        const paidText = paidAttr === "true" ? "paid" : "free";
 
         const isMatch =
             input === "" ||
             searchRegex.test(nameAttr) ||
-            searchRegex.test(groupAttr);
+            searchRegex.test(groupAttr) ||
+            paidText.includes(input);
 
         if (isMatch) {
             t.style.setProperty("display", "flex", "important");
             t.classList.remove('is-hidden');
-            totalVisible++;
         } else {
             t.style.setProperty("display", "none", "important");
             t.classList.add('is-hidden');
@@ -37,19 +40,13 @@ function filterTrophies() {
     // 2. SECTION HIDING / SHOWING
     for (let j = 0; j < sections.length; j++) {
         const sec = sections[j];
-        const hasVisible = sec.querySelector('.trophy:not(.is-hidden)');
+        const hasVisible = sec.querySelector('.trophy:not(.is-hidden), .dlc-trophy:not(.is-hidden)');
 
         if (input === "" || hasVisible) {
             sec.style.setProperty("display", "block", "important");
         } else {
             sec.style.setProperty("display", "none", "important");
         }
-    }
-
-    // 3. COUNTER UPDATE
-    const counter = document.getElementById('counter');
-    if (counter) {
-        counter.innerText = "Showing " + totalVisible + " Trophies";
     }
 }
 
@@ -59,6 +56,8 @@ document.addEventListener('input', function (e) {
         filterTrophies();
     }
 });
+
+////
 
   document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
     const tooltip = document.getElementById(&#39;custom-tooltip&#39;);
