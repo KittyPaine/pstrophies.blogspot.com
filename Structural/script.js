@@ -5,10 +5,9 @@
 
 //<![CDATA[
 document.addEventListener("DOMContentLoaded", function() {
-    var searchInputs = document.querySelectorAll('#trophySearch');
-    searchInputs.forEach(function(input) {
-        input.setAttribute('placeholder', 'Filter by Trophy or DLC Name...');
-    });
+    // Global placeholder override (clean + correct)
+    const input = document.querySelector('#trophySearch');
+    input.placeholder = "Filter by Trophy Name, DLC Name, Paid or Free for DLC";
 });
 
 function filterTrophies() {
@@ -17,17 +16,19 @@ function filterTrophies() {
     const sections = document.querySelectorAll('.category-section');
     let totalVisible = 0;
 
-    // \b = Word Boundary. Matches "Grin" in "Grinch" but NOT "Grind".
+    // Word-boundary search (matches "Grin" in "Grinch" but NOT "Grind")
     const searchRegex = new RegExp('\\b' + input, 'i');
 
-    // 1. DUAL-ATTRIBUTE FILTER
+    // 1. TROPHY FILTERING
     for (let i = 0; i < trophies.length; i++) {
         const t = trophies[i];
         const nameAttr = t.getAttribute('data-name') || "";
         const groupAttr = t.getAttribute('data-group') || "";
 
-        // Success if input matches either the name OR the group
-        const isMatch = (input === "" || searchRegex.test(nameAttr) || searchRegex.test(groupAttr));
+        const isMatch =
+            input === "" ||
+            searchRegex.test(nameAttr) ||
+            searchRegex.test(groupAttr);
 
         if (isMatch) {
             t.style.setProperty("display", "flex", "important");
@@ -39,9 +40,7 @@ function filterTrophies() {
         }
     }
 
-    // 2. PARENT SECTION REACTION
-    // Now that your </div> is fixed, this correctly wipes the 
-    // Banner/Overview/Difficulty if no trophies inside match.
+    // 2. SECTION HIDING / SHOWING
     for (let j = 0; j < sections.length; j++) {
         const sec = sections[j];
         const hasVisible = sec.querySelector('.trophy:not(.is-hidden)');
@@ -53,10 +52,14 @@ function filterTrophies() {
         }
     }
 
+    // 3. COUNTER UPDATE
     const counter = document.getElementById('counter');
-    if (counter) counter.innerText = "Showing " + totalVisible + " Trophies";
+    if (counter) {
+        counter.innerText = "Showing " + totalVisible + " Trophies";
+    }
 }
 
+// Live filtering on input
 document.addEventListener('input', function (e) {
     if (e.target && e.target.id === 'trophySearch') {
         filterTrophies();
@@ -130,11 +133,12 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
     });
   });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const trophies = document.querySelectorAll(".trophy");
+document.addEventListener("DOMContentLoaded", function() {
+
+    const trophies = document.querySelectorAll(".trophy, .dlc-trophy");
 
     // -----------------------------
-    // Load checkbox state + hide text
+    // 1. LOAD & SAVE EARNED STATE
     // -----------------------------
     trophies.forEach(trophy => {
         const id = trophy.dataset.name;
@@ -144,46 +148,67 @@ document.addEventListener("DOMContentLoaded", function () {
         if (localStorage.getItem(id) === "earned") {
             checkbox.checked = true;
             trophy.dataset.earned = "true";
-            textBlock.style.display = "none";
+            if (textBlock) textBlock.style.display = "none";
         }
 
         checkbox.addEventListener("change", () => {
             if (checkbox.checked) {
                 localStorage.setItem(id, "earned");
                 trophy.dataset.earned = "true";
-                textBlock.style.display = "none";
+                if (textBlock) textBlock.style.display = "none";
             } else {
                 localStorage.removeItem(id);
                 trophy.dataset.earned = "false";
-                textBlock.style.display = "";
+                if (textBlock) textBlock.style.display = "";
             }
-            updateCounters(); // NEW
         });
     });
 
-    function updateCounters() {
-        const allTrophies = document.querySelectorAll(".trophy");
-        const earned = document.querySelectorAll('.trophy[data-earned="true"]');
+    // -----------------------------
+    // 2. COUNTING SYSTEM
+    // -----------------------------
 
-        // Platinum Counter
-        const platinumCounter = document.getElementById("platinumCounter");
-        if (platinumCounter) {
-            platinumCounter.textContent = `Platinum Progress: ${earned.length} / ${allTrophies.length}`;
+    let baseTotal = 0;
+    let baseEarned = 0;
+
+    const dlcTotals = {};   // { "Chapter II": 5, "Lullaby of the Dark": 5 }
+    const dlcEarned = {};   // { "Chapter II": 2, "Lullaby of the Dark": 3 }
+
+    trophies.forEach(trophy => {
+
+        const isPlatinum = trophy.querySelector(".tag-platinum") !== null;
+        const isDLC = trophy.classList.contains("dlc-trophy");
+        const group = trophy.dataset.group || "Base";
+        const earned = trophy.dataset.earned === "true";
+
+        // --- DLC Trophy ---
+        if (isDLC) {
+            if (!dlcTotals[group]) dlcTotals[group] = 0;
+            dlcTotals[group]++;
+
+            if (earned) {
+                if (!dlcEarned[group]) dlcEarned[group] = 0;
+                dlcEarned[group]++;
+            }
+            return;
         }
 
-        // DLC Counters
-        const dlcNodes = document.querySelectorAll(".overview-node[data-group]");
-        dlcNodes.forEach(node => {
-            const group = node.dataset.group;
-            const dlcTrophies = document.querySelectorAll(`.trophy[data-group="${group}"]`);
-            const dlcEarned = document.querySelectorAll(`.trophy[data-group="${group}"][data-earned="true"]`);
+        // --- Base Game Trophy (includes Platinum) ---
+        baseTotal++;
+        if (earned) baseEarned++;
+    });
 
-            const dlcCounter = node.querySelector(".dlc-counter");
-            if (dlcCounter) {
-                dlcCounter.textContent = `DLC Progress: ${dlcEarned.length} / ${dlcTrophies.length}`;
-            }
-        });
-    }
+    // -----------------------------
+    // 3. OUTPUT COUNTERS
+    // -----------------------------
+    // You will place these wherever you want in your HTML.
 
-    updateCounters(); // Initial load
+    console.log("Base Game Progress:", baseEarned + "/" + baseTotal);
+
+    Object.keys(dlcTotals).forEach(group => {
+        const earned = dlcEarned[group] || 0;
+        const total = dlcTotals[group];
+        console.log(group + " Progress:", earned + "/" + total);
+    });
+
 });

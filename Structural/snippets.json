@@ -1,14 +1,14 @@
 {
   "Overview": {
     "prefix": "overview",
-    "body": ["<div class=\"banner\">", "    <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${2:Game Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "<p>${3:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${4:Online/Offline status.}</p>", "", "<span><!--more--></span>", "", "<hr>", "<p id=\"platinumCounter\">Platinum Progress: 0 / 0</p>", "<div class=\"search-container\">", "<input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\" placeholder=\"Filter by Trophy Name...\">", "    <p id=\"counter\">Showing all Trophies</p>", "</div>", "<hr />"],
+    "body": ["<div class=\"banner\">", "    <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${2:Game Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "<p>${3:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${4:Online/Offline status.}</p>", "", "<span><!--more--></span>", "", "<hr>", "<p id=\"platinumCounter\">Platinum Progress: 0 / 0</p>", "<div class=\"search-container\">", "<input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\">", " <p id=\"counter\">Showing all Trophies</p>", "</div>", "<hr />"],
     "description": "Insert the overview"
   },
 
   "Searchable Overview": {
     "prefix": "dlc-overview",
-    "body": ["<div class=\"overview-node\" data-group=\"${1:DLC Name}\" data-dlc-type=\"${6:paid/free}\">", "    <div class=\"banner\">", "        <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">", "    </div>", "", "    <div class=\"overview-heading\">DLC Name</div>", "", "    <div class=\"overview-heading\">Quick Overview</div>", "    <p>${3:DLC Description}</p>", "", "    <div class=\"overview-heading\">Difficulty Rating</div>", "    <p>${4:5/10}</p>", "", "    <div class=\"overview-heading\">Online/Offline Trophies</div>", "    <p>${5:Online/Offline status.}</p>", "", "    <p class=\"dlc-counter\">DLC Progress: 0 / 0</p>", "</div>"],
-    "description": "Insert the searchable Payday/DBD overview"
+    "body": ["<div class=\"overview-node\" data-group=\"${1:DLC Name}\" data-paid=\"${6:true/false}\">", "    <div class=\"banner\">", "        <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">", "    </div>", "", "    <div class=\"overview-heading\">${1:DLC Name}</div>", "", "    <div class=\"overview-heading\">Quick Overview</div>", "    <p>${3:DLC Description}</p>", "", "    <div class=\"overview-heading\">Difficulty Rating</div>", "    <p>${4:5/10}</p>", "", "    <div class=\"overview-heading\">Online/Offline Trophies</div>", "    <p>${5:Online/Offline status.}</p>", "", "    <p class=\"dlc-counter\">${1:DLC Name} Progress: 0 / 0</p>", "</div>"],
+    "description": "Insert the searchable DLC overview"
   },
 
   "Trophy Item": {
@@ -57,10 +57,10 @@
   "DLC Trophy Item": {
     "prefix": "dlc-trophy",
     "body": [
-      "<div class=\"trophy\" data-name=\"$1\" data-group=\"$2\">",
+      "<div class=\"dlc-trophy\" data-name=\"$1\" data-group=\"$2\" data-paid=\"$7\">",
       "",
       "    <label class=\"earned-wrapper\">",
-      "        <input type=\"checkbox\" class=\"earned-check\">",
+      "        <input type=\"checkbox\" class=\"earned-checkbox\">",
       "        <span class=\"earned-label\">Earned</span>",
       "    </label>",
       "",
@@ -87,7 +87,6 @@
       "            <span class=\"hud-tag tag-buggy\">Buggy</span>",
       "            <span class=\"hud-tag tag-paid-dlc\">Paid DLC</span>",
       "            <span class=\"hud-tag tag-free-dlc\">Free DLC</span>",
-      "            <span class=\"hud-tag tag-platinum\">Platinum</span>",
       "        </div>",
       "",
       "        <div class=\"trophy-text\">",
