@@ -17,10 +17,18 @@ function filterTrophies() {
 
         const nameAttr  = (t.getAttribute('data-name')  || "").toLowerCase();
         const groupAttr = (t.getAttribute('data-group') || "").toLowerCase();
-        const paidAttr  = t.getAttribute('data-paid'); // "true" or "false"
 
-        // Convert paid/free into readable search terms
-        const paidText = paidAttr === "true" ? "paid" : "free";
+        // Find the parent DLC overview wrapper
+        const parentOverview = document.querySelector(
+            `.overview-node[data-group="${groupAttr}"]`
+        );
+
+        // Inherit paid/free from the overview wrapper
+        let paidText = "";
+        if (parentOverview) {
+            const paidAttr = parentOverview.getAttribute('data-paid'); // "true" or "false"
+            paidText = paidAttr === "true" ? "paid" : "free";
+        }
 
         const isMatch =
             input === "" ||
