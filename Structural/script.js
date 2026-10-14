@@ -1,9 +1,3 @@
-// ==================================================
-// PSTrophyGuides — Main Client-Side Utility Engine
-// ==================================================
-
-
-//<![CDATA[
 document.addEventListener("DOMContentLoaded", function() {
     // Global placeholder override (clean + correct)
     const input = document.querySelector('#trophySearch');
@@ -65,38 +59,6 @@ document.addEventListener('input', function (e) {
         filterTrophies();
     }
 });
-//]]>
-
-document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
-    // 1. The Source of Truth: Mapping exact tag text to definitions
-    const tooltips = {
-        &quot;Platinum&quot;: &quot;Unlocked after earning all other base game trophies.&quot;,
-        &quot;Story&quot;: &quot;This trophy is earned by completing certain in game checkpoints, such as chapter end or ending.&quot;,
-        &quot;Sidequest&quot;: &quot;This trophy is earned by completing optional side content.&quot;,
-        &quot;Diff. Spec.&quot;: &quot;This trophy is tied to completing the game on a specific difficulty setting.&quot;,
-        &quot;Stackable&quot;: &quot;This trophy can be earned simultaneously with other trophies in the same playthrough.&quot;,
-        &quot;Collect.&quot;: &quot;This trophy involves collecting items or collectibles.&quot;,
-        &quot;Grind&quot;: &quot;This trophy requires repetitive tasks or a significant time investment.&quot;,
-        &quot;MP ONLY&quot;: &quot; This trophy requires an online connection and is Player vs Player.&quot;,
-        &quot;CO-OP ONLY&quot;: &quot;This trophy requires an online connection and is Player vs Enviroment.&quot;,
-        &quot;SOLO Rec.&quot;: &quot;This trophy is recommended to be done alone for ease or efficiency.&quot;,
-        &quot;CO-OP Rec.&quot;: &quot;This trophy is easier or more efficient to perform in Co-op.&quot;,
-        &quot;MP Rec.&quot;: &quot;This trophy is recommended to be done in Multiplayer as it is not worth boosting.&quot;,
-        &quot;Boost Rec.&quot;: &quot;This trophy is best earned by coordinating with others to boost.&quot;,
-        &quot;Time Limited&quot;: &quot;This trophy has a time limit.&quot;,
-        &quot;Buggy&quot;: &quot;Be careful: This trophy is known to be glitchy and may not pop when intended. Save often.&quot;,
-        &quot;Paid DLC&quot;: &quot;This trophy requires a paid expansion pack.&quot;,
-        &quot;Free DLC&quot;: &quot;This trophy is part of a free update.&quot;
-    };
-
-    // 2. The Mapper: Injects the attribute for CSS to read
-    document.querySelectorAll(&#39;.hud-tag&#39;).forEach(tag =&gt; {
-        const text = tag.textContent.trim();
-        if (tooltips[text]) {
-            tag.setAttribute(&#39;data-tooltip&#39;, tooltips[text]);
-        }
-    });
-});
 
   document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
     const tooltip = document.getElementById(&#39;custom-tooltip&#39;);
@@ -132,83 +94,3 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
       }
     });
   });
-
-document.addEventListener("DOMContentLoaded", function() {
-
-    const trophies = document.querySelectorAll(".trophy, .dlc-trophy");
-
-    // -----------------------------
-    // 1. LOAD & SAVE EARNED STATE
-    // -----------------------------
-    trophies.forEach(trophy => {
-        const id = trophy.dataset.name;
-        const checkbox = trophy.querySelector(".earned-checkbox");
-        const textBlock = trophy.querySelector(".trophy-text");
-
-        if (localStorage.getItem(id) === "earned") {
-            checkbox.checked = true;
-            trophy.dataset.earned = "true";
-            if (textBlock) textBlock.style.display = "none";
-        }
-
-        checkbox.addEventListener("change", () => {
-            if (checkbox.checked) {
-                localStorage.setItem(id, "earned");
-                trophy.dataset.earned = "true";
-                if (textBlock) textBlock.style.display = "none";
-            } else {
-                localStorage.removeItem(id);
-                trophy.dataset.earned = "false";
-                if (textBlock) textBlock.style.display = "";
-            }
-        });
-    });
-
-    // -----------------------------
-    // 2. COUNTING SYSTEM
-    // -----------------------------
-
-    let baseTotal = 0;
-    let baseEarned = 0;
-
-    const dlcTotals = {};   // { "Chapter II": 5, "Lullaby of the Dark": 5 }
-    const dlcEarned = {};   // { "Chapter II": 2, "Lullaby of the Dark": 3 }
-
-    trophies.forEach(trophy => {
-
-        const isPlatinum = trophy.querySelector(".tag-platinum") !== null;
-        const isDLC = trophy.classList.contains("dlc-trophy");
-        const group = trophy.dataset.group || "Base";
-        const earned = trophy.dataset.earned === "true";
-
-        // --- DLC Trophy ---
-        if (isDLC) {
-            if (!dlcTotals[group]) dlcTotals[group] = 0;
-            dlcTotals[group]++;
-
-            if (earned) {
-                if (!dlcEarned[group]) dlcEarned[group] = 0;
-                dlcEarned[group]++;
-            }
-            return;
-        }
-
-        // --- Base Game Trophy (includes Platinum) ---
-        baseTotal++;
-        if (earned) baseEarned++;
-    });
-
-    // -----------------------------
-    // 3. OUTPUT COUNTERS
-    // -----------------------------
-    // You will place these wherever you want in your HTML.
-
-    console.log("Base Game Progress:", baseEarned + "/" + baseTotal);
-
-    Object.keys(dlcTotals).forEach(group => {
-        const earned = dlcEarned[group] || 0;
-        const total = dlcTotals[group];
-        console.log(group + " Progress:", earned + "/" + total);
-    });
-
-});

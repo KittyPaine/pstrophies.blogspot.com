@@ -1,11 +1,5 @@
 <style>
-  /* ==========================================================================
-     [ ENGINE: SURGICAL HUD MASTER CONFIGURATION v4.5 ]
-     ========================================================================== */
-
-  /* ==========================================================================
-     [ CATEGORY 01: GLOBAL RESET, BOX SIZING & OVERLAY PURGE ]
-     ========================================================================== */
+  /* --- Global Reset --- */
   *,
   *::before,
   *::after {
@@ -36,14 +30,11 @@
   .post-outer,
   .post-body-container {
     background: transparent !important;
-    background-color: transparent !important;
     box-shadow: none !important;
     border: none !important;
   }
 
-  /* ==========================================================================
-     [ CATEGORY 02: CINEMATIC HEADER LAYOUT ]
-     ========================================================================== */
+  /* --- Header --- */
   .header-outer,
   header,
   #header {
@@ -81,9 +72,7 @@
     margin-top: 10px !important;
   }
 
-  /* ==========================================================================
-     [ CATEGORY 03: PLATINUM HUD BOXES & CONTENT FRAMEWORKS ]
-     ========================================================================== */
+  /* --- Post Boxes --- */
   div.post,
   .sidebar .widget {
     background-color: rgba(11, 14, 19, 0.94) !important;
@@ -135,9 +124,7 @@
     padding: 10px 25px 25px 25px !important;
   }
 
-  /* ==========================================================================
-     [ CATEGORY 04: TITLES, HEADINGS & INTERACTIVE ACTIONS ]
-     ========================================================================== */
+  /* --- Titles & Headings --- */
   .post-title,
   .post-title a,
   .date-header,
@@ -174,9 +161,7 @@
     color: #7ab9f0 !important;
   }
 
-  /* ==========================================================================
-     [ CATEGORY 05: MEDIA CENTERING ENGINE ]
-     ========================================================================== */
+  /* --- Media Centering --- */
   .banner,
   .video-container {
     display: flex !important;
@@ -195,9 +180,7 @@
     height: auto !important;
   }
 
-  /* ==========================================================================
-     [ CATEGORY 06: LEGACY ELEMENT LAYOUT TABLES ]
-     ========================================================================== */
+  /* --- Tables --- */
   table {
     border-collapse: collapse;
     width: 100%;
@@ -217,10 +200,9 @@
     color: #c5c5c5 !important;
   }
 
-  /* ==========================================================================
-     [ CATEGORY 07: STABLE CLASS-BASED TROPHY GRID ENGINE ]
-     ========================================================================== */
-  .trophy .dlc-trophy {
+  /* --- Trophy Grid (FIXED) --- */
+  .trophy,
+  .dlc-trophy {
     display: grid !important;
     grid-template-columns: 100px 1fr !important;
     column-gap: 20px !important;
@@ -243,55 +225,12 @@
     margin: 0 0 108px 0 !important;
     display: block !important;
     background: transparent !important;
-    background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
     padding: 0 !important;
   }
 
-  .trophy-tags {
-    position: absolute !important;
-    left: 0 !important;
-    top: 108px !important;
-    width: 100px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* HIGH-SPECIFICITY CRISP HUD TAG SIZING ENGINE */
-  .trophy-tags .hud-tag,
-  .trophy-tags span.hud-tag,
-  div.post-body .trophy-tags .hud-tag,
-  div.post-body .trophy-tags span.hud-tag {
-    position: relative !important;
-    cursor: help !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    max-width: 100px !important;
-    text-align: center !important;
-    box-sizing: border-box !important;
-    font-size: 10px !important;
-    font-weight: 700 !important;
-    line-height: 1.15 !important;
-    padding: 5px 3px !important;
-    white-space: normal !important;
-    word-break: normal !important;
-    overflow-wrap: normal !important;
-    letter-spacing: 0.2px !important;
-    border-radius: 3px !important;
-  }
-
-  .trophy-tags .hud-tag *,
-  div.post-body .trophy-tags .hud-tag * {
-    font-size: 10px !important;
-    line-height: 1.15 !important;
-  }
+  /* --- REMOVED: .trophy-tags + .hud-tag + tag themes + tag tooltips --- */
 
   .trophy-desc {
     grid-column: 2 !important;
@@ -316,104 +255,13 @@
     margin: 0 0 10px 0 !important;
     font-size: 15px !important;
     line-height: 1.6 !important;
-    color: #c5c5c5 !important;
   }
 
   .trophy-desc p:last-child {
     margin-bottom: 0 !important;
   }
 
-  .hud-tag::after {
-    content: attr(data-tooltip);
-    display: none;
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    background: #111;
-    color: #fff;
-    padding: 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    z-index: 9999;
-    pointer-events: none;
-  }
-
-  .hud-tag:hover::after {
-    display: block;
-  }
-
-  /* --- TROPHY TAG CLASSIFICATIONS & THEMES --- */
-  .trophy-tags .tag-platinum {
-    background: linear-gradient(135deg, rgba(138, 180, 248, 0.25), rgba(210, 227, 252, 0.15)) !important;
-    color: #a6c8ff !important;
-    border: 1px dashed rgba(166, 200, 255, 0.6) !important;
-  }
-
-  .trophy-tags .tag-story,
-  .trophy-tags .tag-sidequest {
-    background-color: rgba(122, 185, 240, 0.15) !important;
-    color: #7ab9f0 !important;
-    border: 1px solid rgba(122, 185, 240, 0.4) !important;
-  }
-
-  .trophy-tags .tag-difficulty-specific,
-  .trophy-tags .tag-online-only,
-  .trophy-tags .tag-multiplayer-required,
-  .trophy-tags .tag-multiplayer-recommended {
-    background-color: rgba(255, 204, 0, 0.15) !important;
-    color: #ffcc00 !important;
-    border: 1px solid rgba(255, 204, 0, 0.4) !important;
-  }
-
-  .trophy-tags .tag-stackable {
-    background-color: rgba(0, 230, 115, 0.15) !important;
-    color: #00e673 !important;
-    border: 1px solid rgba(0, 230, 115, 0.4) !important;
-  }
-
-  .trophy-tags .tag-grind,
-  .trophy-tags .tag-collectable {
-    background-color: rgba(204, 102, 255, 0.15) !important;
-    color: #cc66ff !important;
-    border: 1px solid rgba(204, 102, 255, 0.4) !important;
-  }
-
-  .trophy-tags .tag-coop-required,
-  .trophy-tags .tag-coop-recommended,
-  .trophy-tags .tag-solo-recommended,
-  .trophy-tags .tag-boosting-recommended {
-    background-color: rgba(180, 180, 180, 0.12) !important;
-    color: #b4b4b4 !important;
-    border: 1px solid rgba(180, 180, 180, 0.3) !important;
-  }
-
-  .trophy-tags .tag-time-limited,
-  .trophy-tags .tag-missable {
-    background-color: rgba(255, 102, 0, 0.15) !important;
-    color: #ff6600 !important;
-    border: 1px solid rgba(255, 102, 0, 0.4) !important;
-  }
-
-  .trophy-tags .tag-buggy {
-    background-color: rgba(255, 51, 51, 0.15) !important;
-    color: #ff3333 !important;
-    border: 1px solid rgba(255, 51, 51, 0.4) !important;
-  }
-
-  .trophy-tags .tag-paid-dlc,
-  .trophy-tags .tag-free-dlc {
-    background-color: rgba(255, 0, 255, 0.12) !important;
-    color: #ff00ff !important;
-    border: 1px solid rgba(255, 0, 255, 0.3) !important;
-  }
-
-  /* ==========================================================================
-     [ CATEGORY 08: GAME ENGINE ARCHETYPES & COMPONENT CARD SYSTEM ]
-     ========================================================================== */
-
-  /* --- SYSTEM B: DANGANRONPA CARD COMPONENTS --- */
+  /* --- DR Mode Cards --- */
   .dr-mode-container {
     width: 100%;
     box-sizing: border-box;
@@ -489,7 +337,7 @@
     margin-bottom: 4px;
   }
 
-  /* --- SYSTEM C: PARADISE KILLER CUSTOM RESPONSE GRID --- */
+  /* --- Paradise Killer Grid --- */
   .pk-generic-grid {
     display: grid;
     grid-template-columns: 200px 240px 1fr;
@@ -550,13 +398,10 @@
     }
   }
 
-  /* ==========================================================================
-     [ CATEGORY 09: HUD CRITICAL ALERT ARCHETYPE WARNING ENGINE ]
-     ========================================================================== */
+  /* --- Warning Blocks --- */
   .warning {
     grid-column: 1 / span 2 !important;
     background: rgba(40, 0, 0, 0.6) !important;
-    background-color: rgba(40, 0, 0, 0.6) !important;
     border-left: 5px solid #ff3333 !important;
     border-top: 1px solid rgba(255, 51, 51, 0.3) !important;
     border-right: 1px solid rgba(255, 51, 51, 0.3) !important;
@@ -611,9 +456,7 @@
     font-weight: 900 !important;
   }
 
-  /* ==========================================================================
-     [ CATEGORY 10: FORM ELEMENTS & UTILITIES DYNAMIC FILTERS ]
-     ========================================================================== */
+  /* --- Search Bar --- */
   .search-container {
     width: 100%;
     max-width: 450px;
