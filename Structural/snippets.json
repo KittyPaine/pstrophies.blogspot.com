@@ -1,25 +1,25 @@
 {
   "Overview": {
     "prefix": "overview",
-    "body": ["<div class=\"banner\">", "    <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${2:Game Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "<p>${3:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${4:Online/Offline status.}</p>", "", "<span><!--more--></span>", "", "<hr>", "<div class=\"search-container\">", "    <input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\">", "</div>", "<hr />"],
+    "body": ["<div class=\"banner\">", "<img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${2:Game Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "<p>${3:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${4:Online/Offline status.}</p>", "", "<span><!--more--></span>", "<hr>", "<div class=\"search-container\">", "<input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\">", "</div>", "<hr />"],
     "description": "Insert the overview"
   },
 
   "Searchable Overview": {
     "prefix": "dlc-overview",
-    "body": ["<div class=\"overview-node\" data-group=\"${1:DLC Name}\" data-paid=\"${6:true/false}\">", "    <div class=\"banner\">", "        <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">", "    </div>", "", "    <div class=\"overview-heading\">${1:DLC Name}</div>", "", "    <div class=\"overview-heading\">Quick Overview</div>", "    <p>${3:DLC Description}</p>", "", "    <div class=\"overview-heading\">Difficulty Rating</div>", "    <p>${4:5/10}</p>", "", "    <div class=\"overview-heading\">Online/Offline Trophies</div>", "    <p>${5:Online/Offline status.}</p>", "", "</div>"],
+    "body": ["<div class=\"overview-node\" data-group=\"${1:DLC Name}\" data-paid=\"${6:true/false}\">", "<div class=\"banner\">", "<img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">${1:DLC Name}</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${3:DLC Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "", "<p>${4:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${5:Online/Offline status.}</p>", "</div>"],
     "description": "Insert the searchable DLC overview"
   },
 
   "Trophy Item": {
     "prefix": "trophy",
-    "body": ["<div class=\"trophy\" data-name=\"$1\">", "    <img src=\"$2\" class=\"trophy-img\" alt=\"${3:Trophy}\">", "", "    <div class=\"trophy-desc\">", "        <strong>$4</strong>", "", "        <div class=\"trophy-text\">", "            <p>$5</p>", "        </div>", "    </div>", "</div>"],
+    "body": ["<div class=\"trophy\" data-name=\"$1\">", "    <img src=\"$2\" class=\"trophy-img\" alt=\"${3:Trophy}\">", "    <div class=\"trophy-desc\">", "        <strong>$4</strong>", "        <p>$5</p>", "    </div>", "</div>"],
     "description": "Insert a formatted trophy block"
   },
 
   "DLC Trophy Item": {
     "prefix": "dlc-trophy",
-    "body": ["<div class=\"dlc-trophy\" data-name=\"$1\" data-group=\"$2\">", "    <img src=\"$3\" class=\"trophy-img\" alt=\"${4:Trophy}\">", "", "    <div class=\"trophy-desc\">", "        <strong>$5</strong>", "", "        <div class=\"trophy-text\">", "            <p>$6</p>", "        </div>", "    </div>", "</div>"],
+    "body": ["<div class=\"dlc-trophy\" data-name=\"$1\" data-group=\"$2\">", "    <img src=\"$3\" class=\"trophy-img\" alt=\"${4:Trophy}\">", "    <div class=\"trophy-desc\">", "        <strong>$5</strong>", "        <div class=\"trophy-text\">", "            <p>$6</p>", "        </div>", "    </div>", "</div>"],
     "description": "Insert a formatted DLC trophy block"
   },
 
