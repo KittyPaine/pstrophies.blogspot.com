@@ -1,0 +1,86 @@
+<!-- PSTrophyGuides HTML Component Library
+
+This file serves as a proof-of-concept reference library
+containing the standardized HTML blocks used throughout
+PSTrophyGuides Version 1.0.0.
+
+These components form the foundation for:
+- Trophy Guides
+- DLC Guides
+- Walkthroughs
+- Media Embeds
+- Search Integration -->
+
+<!-- Overview Block -->
+<div class="banner">
+  <img src="Banner_Image_URL" width="400" alt="" />
+</div>
+
+<div class="overview-heading">Quick Overview</div>
+<p>Game Description</p>
+
+<div class="overview-heading">Difficulty Rating</div>
+<p>5/10</p>
+
+<div class="overview-heading">Online/Offline Trophies</div>
+<p>Online/Offline status.</p>
+
+<span><!--more--></span>
+<hr />
+<div class="search-container">
+  <input type="text" id="trophySearch" onkeyup="filterTrophies()" />
+</div>
+<hr />
+
+<!-- Trophy Block -->
+<div class="trophy" data-name="">
+  <img src="" class="trophy-img" alt="Trophy" />
+  <div class="trophy-desc">
+    <strong></strong>
+    <p></p>
+  </div>
+</div>
+
+<!--DLC Overview Block-->
+<div class="overview-node" data-group="DLC Name" data-paid="true/false">
+  <div class="banner">
+    <img src="Banner_Image_URL" width="400" alt="" />
+  </div>
+
+  <div class="overview-heading">DLC Name</div>
+
+  <div class="overview-heading">Quick Overview</div>
+  <p>DLC Description</p>
+
+  <div class="overview-heading">Difficulty Rating</div>
+
+  <p>5/10</p>
+
+  <div class="overview-heading">Online/Offline Trophies</div>
+  <p>Online/Offline status.</p>
+</div>
+
+<!-- DLC Trophy Block-->
+<div class="dlc-trophy" data-name="" data-group="">
+  <img src="" class="trophy-img" alt="Trophy" />
+  <div class="trophy-desc">
+    <strong></strong>
+    <div class="trophy-text">
+      <p></p>
+    </div>
+  </div>
+</div>
+
+<!-- Stylized Heading -->
+<div class="overview-heading">Overview Heading</div>
+
+<!-- Embedded Video -->
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/VideoID" width="320" height="266" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<!-- External Link -->
+<a href="https://URL" target="_blank" rel="noopener noreferrer">Link Text</a>
+
+<!-- Trophy Image Block -->
+<img src="url" alt="description" />
