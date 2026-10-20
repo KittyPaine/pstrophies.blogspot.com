@@ -1,8 +1,8 @@
 {
-  "Overview": {
-    "prefix": "overview",
-    "body": ["<div class=\"banner\">", "<img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${2:Game Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "<p>${3:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${4:Online/Offline status.}</p>", "", "<span><!--more--></span>", "<hr>", "<div class=\"search-container\">", "<input type=\"text\" id=\"trophySearch\" onkeyup=\"filterTrophies()\">", "</div>", "<hr />"],
-    "description": "Insert the overview"
+  "PSTrophyGuides Overview": {
+    "prefix": "pst-overview",
+    "body": ["<div class=\"banner\">", "  <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"${2:}\" />", "</div>", "", "<div class=\"overview-heading\" style=\"text-align: center;\">${3:Quick Overview}</div>", "<p>${4:Game Description}</p>", "", "<div class=\"overview-heading\">${5:Difficulty Rating}</div>", "<p>${6:5/10}</p>", "", "<div class=\"overview-heading\">${7:Online/Offline Trophies}</div>", "<p>${8:Online/Offline status.}</p>", "", "<span><!--more--></span>", "", "<hr />", "<div class=\"search-container\">", "  <input type=\"text\" id=\"trophySearch\" aria-label=\"Filter by trophy name, DLC name, or whether DLC is paid or free\" />", "</div>", "<hr />", "$0"],
+    "description": "Reusable PSTrophyGuides overview and trophy search block"
   },
 
   "Searchable Overview": {

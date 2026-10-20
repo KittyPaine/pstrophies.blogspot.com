@@ -14,7 +14,7 @@ These components form the foundation for:
   <img src="Banner_Image_URL" width="400" alt="" />
 </div>
 
-<div class="overview-heading">Quick Overview</div>
+<div class="overview-heading" style="text-align: center">Quick Overview</div>
 <p>Game Description</p>
 
 <div class="overview-heading">Difficulty Rating</div>
@@ -24,20 +24,12 @@ These components form the foundation for:
 <p>Online/Offline status.</p>
 
 <span><!--more--></span>
+
 <hr />
 <div class="search-container">
-  <input type="text" id="trophySearch" onkeyup="filterTrophies()" />
+  <input type="text" id="trophySearch" aria-label="Filter by trophy name, DLC name, or whether DLC is paid or free" />
 </div>
 <hr />
-
-<!-- Trophy Block -->
-<div class="trophy" data-name="">
-  <img src="" class="trophy-img" alt="Trophy" />
-  <div class="trophy-desc">
-    <strong></strong>
-    <p></p>
-  </div>
-</div>
 
 <!--DLC Overview Block-->
 <div class="overview-node" data-group="DLC Name" data-paid="true/false">
@@ -105,7 +97,7 @@ These components form the foundation for:
   </details>
 </div>
 
-<!-- Tom Clancy's Rainbow Six Operator Master Guide Components (Pending) -->
+<!-- Tom Clancy's Rainbow Six Operator Master Guide Components (Pending due to project scale increasing) -->
 <!-- OPERATOR ACCORDION TEMPLATE -->
 <details class="op-card">
   <summary class="op-header">
