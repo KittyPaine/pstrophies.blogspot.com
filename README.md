@@ -1,27 +1,27 @@
 # PSTrophyGuides — Trophy Guide Archive & Documentation Platform
 
-PSTrophyGuides is an independent trophy guide and game documentation platform focused on completionist content, walkthrough design, and long-term guide maintenance.
+PSTrophyGuides is an independent trophy guide and game documentation platform focused on completionist content, walkthrough design, documentation preservation, and long-term guide maintenance.
 
 Created by trophy hunter and technical content creator Kitty_Paine, the platform was built to address a recurring problem within gaming communities: abandoned guides that become outdated as games evolve through patches, balance changes, DLC, and trophy-list revisions.
 
-Rather than treating guides as one-time publications, PSTrophyGuides approaches guides as living documentation projects that are reviewed, expanded, and maintained over time.
+Rather than treating guides as one-time publications, PSTrophyGuides approaches them as living documentation projects that can be reviewed, modernized, and preserved over time.
 
 ---
 
 ## Repository Purpose
 
-Unlike a traditional GitHub software project, this repository functions as a documentation archive and version-controlled guide library.
+This repository serves as a version-controlled archive of PSTrophyGuides content and platform development.
 
-Its primary goals are to:
+Unlike a traditional software repository, the primary objective of this project is documentation preservation, modernization tracking, structural organization, and long-term archival management.
 
-- Preserve completed guide work.
-- Track structural changes and revisions.
-- Archive historical versions.
-- Organize guides by franchise and category.
-- Improve discoverability of PSTrophyGuides content.
-- Maintain long-term access to gaming documentation.
+This repository exists to:
 
-This repository is intended to document the evolution of the platform and its supporting guide infrastructure rather than distribute a standalone application.
+- Preserve trophy guide history.
+- Maintain archived guide versions.
+- Track modernization efforts.
+- Organize content evolution.
+- Provide rollback and comparison points.
+- Improve discoverability of PSTrophyGuides documentation.
 
 ---
 
@@ -29,23 +29,43 @@ This repository is intended to document the evolution of the platform and its su
 
 ### Completed Version 1.0.0
 
-Contains finalized guide conversions and current archive-ready content.
+Contains guides that have been successfully modernized to current PSTrophyGuides standards.
+
+These guides are considered stable archive releases and represent the current documentation format moving forward.
 
 ### In Progress
 
-Guides currently undergoing conversion, revision, expansion, or quality review.
+Contains guides currently undergoing modernization, conversion, restructuring, quality review, or expansion.
 
-### Legacy Code Version 0.5.0
+These guides are actively being transitioned toward the Version 1.0.0 standard.
 
-Historical versions maintained for archival purposes and development reference.
+### Legacy Code Version 0.5.0 - 0.9.0
+
+Preserved archive of the original PSTrophyGuides guide library and platform structure spanning versions 0.5.0 through 0.9.0.
+
+This archive serves as:
+
+- Historical preservation
+- Development reference
+- Content backup
+- Structural comparison
+- Rollback protection
+
+Legacy content remains preserved in its original form while modernization work is performed separately.
 
 ### Structural
 
-Shared templates, stylesheets, scripts, snippets, and supporting assets used throughout the platform.
+Contains shared platform assets and supporting infrastructure including:
+
+- Stylesheets
+- Scripts
+- Templates
+- Snippets
+- Shared framework assets
 
 ---
 
-## 📊 Archive Statistics
+## Archive Statistics
 
 Current archive includes:
 
@@ -53,7 +73,7 @@ Current archive includes:
 - Multiple live-service games maintained after launch
 - Coverage across PS3, PS4, and PS5 platforms
 - Tactical shooters, detective games, visual novels, RPGs, horror titles, and cooperative multiplayer games
-- Documentation spanning multiple years of updates and revisions
+- Documentation spanning multiple years of game updates and platform revisions
 
 ---
 
@@ -76,7 +96,7 @@ Every guide is written from firsthand completion experience, testing, research, 
 
 ## 📝 Documentation Philosophy
 
-Unlike traditional guide sites that focus solely on publication, PSTrophyGuides prioritizes ongoing maintenance.
+Unlike traditional guide sites that focus solely on publication, PSTrophyGuides prioritizes long-term documentation management.
 
 Documentation is reviewed when:
 
@@ -85,10 +105,11 @@ Documentation is reviewed when:
 - New strategies become available.
 - DLC expansions introduce additional content.
 - Existing methods become outdated.
+- Structural modernization becomes necessary.
 
 Where appropriate, guides include verification notes and update dates so players can determine whether methods have been confirmed under current game mechanics.
 
-For live-service games, update dates should be treated as verification dates rather than publication dates.
+For live-service games, update dates should be interpreted as verification dates rather than publication dates.
 
 This philosophy originated from maintaining large live-service titles and continues throughout the archive.
 
@@ -157,13 +178,25 @@ Custom search, filtering, and tagging systems allow visitors to quickly locate t
 
 ---
 
+## 📚 Preservation Strategy
+
+PSTrophyGuides follows a preservation-first approach to documentation.
+
+Legacy guides are archived rather than discarded, allowing historical versions to remain available for reference, comparison, and recovery.
+
+Modernization efforts are performed on separate working copies, ensuring the original content remains preserved while improvements are developed.
+
+This approach maintains both documentation history and future flexibility.
+
+---
+
 ## 📚 Archive Scope
 
 The archive spans multiple genres and platforms, ranging from visual novels and detective games to tactical shooters and live-service multiplayer experiences.
 
 Many guides continue to serve as active reference material years after publication and are periodically reviewed as games evolve.
 
-The long-term objective of PSTrophyGuides is to create a reliable, searchable, and maintainable knowledge base that helps players achieve 100% completion with confidence.
+The long-term objective of PSTrophyGuides is to create a reliable, searchable, maintainable, and historically preserved knowledge base that helps players achieve 100% completion with confidence.
 
 ---
 
