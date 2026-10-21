@@ -43,7 +43,7 @@
 
   "Overview Heading": {
     "prefix": "overview-heading",
-    "body": ["<h2 class=\"overview-heading\">${1:Overview Heading}</h2>"],
+    "body": ["div class=\"overview-heading\">${1:Overview Heading}</div>"],
     "description": "Standardized heading"
   },
 
