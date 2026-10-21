@@ -1,72 +1,94 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const input = document.querySelector('#trophySearch');
-    input.placeholder = "Filter by Trophy Name, DLC Name, Paid or Free for DLC";
-});
-
+<!-- Trophy Filtering System -->
+//<![CDATA[
 function filterTrophies() {
-    const input = document.getElementById('trophySearch').value.toLowerCase().trim();
-    const trophies = document.querySelectorAll('.trophy, .dlc-trophy');
-    const sections = document.querySelectorAll('.category-section');
+  const input = document.querySelector("#trophySearch");
+  if (!input) return;
 
-    // Word-boundary search (matches "Grin" in "Grinch" but NOT "Grind")
-    const searchRegex = new RegExp('\\b' + input, 'i');
+  const query = input.value.toLowerCase().trim();
+  const isStatusSearch = query === "paid" || query === "free";
+  const overviews = document.querySelectorAll(".overview-node");
+  const overviewByGroup = new Map();
 
-    // 1. TROPHY FILTERING
-    for (let i = 0; i < trophies.length; i++) {
-        const t = trophies[i];
+  for (const overview of overviews) {
+    const group = (overview.dataset.group || "").toLowerCase().trim();
+    if (group) overviewByGroup.set(group, overview);
+  }
 
-        const nameAttr  = (t.getAttribute('data-name')  || "").toLowerCase();
-        const groupAttr = (t.getAttribute('data-group') || "").toLowerCase();
+  const matchingGroups = new Set();
 
-        // Find the parent DLC overview wrapper
-        const parentOverview = document.querySelector(
-            `.overview-node[data-group="${groupAttr}"]`
-        );
+  for (const [group, overview] of overviewByGroup) {
+    const statusMatches =
+      isStatusSearch &&
+      overview.dataset.paid === (query === "paid" ? "true" : "false");
+    const groupMatches = !isStatusSearch && query !== "" && group.includes(query);
 
-        // Inherit paid/free from the overview wrapper
-        let paidText = "";
-        if (parentOverview) {
-            const paidAttr = parentOverview.getAttribute('data-paid'); // "true" or "false"
-            paidText = paidAttr === "true" ? "paid" : "free";
-        }
-
-        const isMatch =
-            input === "" ||
-            searchRegex.test(nameAttr) ||
-            searchRegex.test(groupAttr) ||
-            paidText.includes(input);
-
-        if (isMatch) {
-            t.style.setProperty("display", "flex", "important");
-            t.classList.remove('is-hidden');
-        } else {
-            t.style.setProperty("display", "none", "important");
-            t.classList.add('is-hidden');
-        }
+    if (!query || statusMatches || groupMatches) {
+      matchingGroups.add(group);
     }
 
-    // 2. SECTION HIDING / SHOWING
-    for (let j = 0; j < sections.length; j++) {
-        const sec = sections[j];
-        const hasVisible = sec.querySelector('.trophy:not(.is-hidden), .dlc-trophy:not(.is-hidden)');
+    overview.style.setProperty(
+      "display",
+      !query || statusMatches || groupMatches ? "block" : "none",
+      "important"
+    );
+  }
 
-        if (input === "" || hasVisible) {
-            sec.style.setProperty("display", "block", "important");
-        } else {
-            sec.style.setProperty("display", "none", "important");
-        }
+  for (const trophy of document.querySelectorAll(".trophy, .dlc-trophy")) {
+    const name = (trophy.dataset.name || "").toLowerCase();
+    const group = (trophy.dataset.group || "").toLowerCase().trim();
+    const overview = overviewByGroup.get(group);
+
+    let matches;
+
+    if (!query) {
+      matches = true;
+    } else if (isStatusSearch) {
+      matches =
+        !!overview &&
+        overview.dataset.paid === (query === "paid" ? "true" : "false");
+    } else {
+      matches = name.includes(query) || matchingGroups.has(group);
     }
+
+    trophy.style.setProperty("display", matches ? "flex" : "none", "important");
+    trophy.classList.toggle("is-hidden", !matches);
+  }
+
+  for (const section of document.querySelectorAll(".category-section")) {
+    const hasVisibleTrophy = section.querySelector(
+      ".trophy:not(.is-hidden), .dlc-trophy:not(.is-hidden)"
+    );
+
+    section.style.setProperty(
+      "display",
+      !query || hasVisibleTrophy ? "block" : "none",
+      "important"
+    );
+  }
 }
 
-// Live filtering on input
-document.addEventListener('input', function (e) {
-    if (e.target && e.target.id === 'trophySearch') {
-        filterTrophies();
-    }
+function initializeTrophySearch() {
+  const input = document.querySelector("#trophySearch");
+  if (input) {
+    input.placeholder = "Filter by Trophy Name, DLC Name, Paid or Free for DLC";
+    filterTrophies();
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeTrophySearch);
+} else {
+  initializeTrophySearch();
+}
+
+document.addEventListener("input", function (event) {
+  if (event.target && event.target.id === "trophySearch") {
+    filterTrophies();
+  }
 });
+//]]>
 
-////
-
+<!-- Operator Matery Guide -->
   document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
     const tooltip = document.getElementById(&#39;custom-tooltip&#39;);
 
