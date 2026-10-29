@@ -1,14 +1,63 @@
 {
   "PSTrophyGuides Overview": {
     "prefix": "pst-overview",
-    "body": ["<div class=\"banner\">", "  <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"${2:}\" />", "</div>", "", "<div class=\"overview-heading\" style=\"text-align: center;\">${3:Quick Overview}</div>", "<p>${4:Game Description}</p>", "", "<div class=\"overview-heading\">${5:Difficulty Rating}</div>", "<p>${6:5/10}</p>", "", "<div class=\"overview-heading\">${7:Online/Offline Trophies}</div>", "<p>${8:Online/Offline status.}</p>", "", "<span><!--more--></span>", "", "<hr />", "<div class=\"search-container\">", "  <input type=\"text\" id=\"trophySearch\" aria-label=\"Filter by trophy name, DLC name, or whether DLC is paid or free\" />", "</div>", "<hr />", "$0"],
-    "description": "Reusable PSTrophyGuides overview and trophy search block"
+    "body": [
+      "<div class=\"banner\">",
+      "  <img src=\"${1:Banner_Image_URL}\" width=\"400\" alt=\"${2:}\" />",
+      "</div>",
+      "",
+      "<h3 class=\"overview-heading\">${3:Quick Overview}</h3>",
+      "<p>${4:Game Description}</p>",
+      "",
+      "<h3 class=\"overview-heading\">${5:Difficulty Rating}</h3>",
+      "<p>${6:5/10}</p>",
+      "",
+      "<h3 class=\"overview-heading\">${7:Online/Offline Trophies}</h3>",
+      "<p>${8:Online/Offline status.}</p>",
+      "",
+      "<h3 class=\"overview-heading\">My Method of Verification for Unlock Methods</h3>",
+      "<p>Instead of pulling raw data from automated database aggregates, the documentation on this blog is built using a rigorous, hands-on optimization workflow:</p>",
+      "<ul>",
+      "  <li><strong>First-Hand System Testing:</strong> Every guide begins by playing the game using existing data as a baseline to track requirements in real time.</li>",
+      "  <li><strong>Identifying &amp; Correcting Inaccuracies:</strong> When existing resources are non-existent, unoptimized, or completely contradict themselves (such as the widespread documentation errors surrounding the <em>Main Ops 33 unlock</em> in Peace Walker), I research the precise internal mechanics in-game.</li>",
+      "  <li><strong>Reworking &amp; Optimizing:</strong> Faulty or bloated strategies are completely overhauled from my personal testing notes, replacing outdated steps with the absolute most efficient execution methods possible.</li>",
+      "  <li><strong>The Blueprint Stress-Test:</strong> Once a guide is published, I use my own finalized documentation as the primary blueprint to play through and fully complete the game myself to verify the logic works flawlessly under live conditions.</li>",
+      "</ul>",
+      "",
+      "<span><!--more--></span>",
+      "",
+      "<hr />",
+      "<div class=\"search-container\">",
+      "  <input type=\"text\" id=\"trophySearch\" aria-label=\"Filter by trophy name, DLC name, or whether DLC is paid or free\" />",
+      "</div>",
+      "<hr />",
+      "$0"
+    ],
+    "description": "Reusable PSTrophyGuides overview, methodology breakdown, and trophy search block"
   },
 
+{
   "Searchable Overview": {
     "prefix": "dlc-overview",
-    "body": ["<div class=\"overview-node\" data-group=\"${1:DLC Name}\" data-paid=\"${6:true/false}\">", "<div class=\"banner\">", "<img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\">", "</div>", "", "<div class=\"overview-heading\">${1:DLC Name}</div>", "", "<div class=\"overview-heading\">Quick Overview</div>", "<p>${3:DLC Description}</p>", "", "<div class=\"overview-heading\">Difficulty Rating</div>", "", "<p>${4:5/10}</p>", "", "<div class=\"overview-heading\">Online/Offline Trophies</div>", "<p>${5:Online/Offline status.}</p>", "</div>"],
-    "description": "Insert the searchable DLC overview"
+    "body": [
+      "<div class=\"overview-node\" data-group=\"${1:DLC Name}\" data-paid=\"${6:true/false}\">",
+      "  <div class=\"banner\">",
+      "    <img src=\"${2:Banner_Image_URL}\" width=\"400\" alt=\"\" />",
+      "  </div>",
+      "",
+      "  <h3 class=\"overview-heading\">${1:DLC Name}</h3>",
+      "",
+      "  <h3 class=\"overview-heading\">Quick Overview</h3>",
+      "  <p>${3:DLC Description}</p>",
+      "",
+      "  <h3 class=\"overview-heading\">Difficulty Rating</h3>",
+      "  <p>${4:5/10}</p>",
+      "",
+      "  <h3 class=\"overview-heading\">Online/Offline Trophies</h3>",
+      "  <p>${5:Online/Offline status.}</p>",
+      "</div>"
+    ],
+    "description": "Insert the searchable DLC overview with semantic H3 headings"
   },
 
   "Trophy Item": {
@@ -43,7 +92,7 @@
 
   "Overview Heading": {
     "prefix": "overview-heading",
-    "body": ["div class=\"overview-heading\">${1:Overview Heading}</div>"],
+    "body": ["h2 class=\"overview-heading\">${1:Overview Heading}</div>"],
     "description": "Standardized heading"
   },
 

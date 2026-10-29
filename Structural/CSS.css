@@ -409,6 +409,144 @@ td {
   }
 }
 
+/*SPECIALIST CHALLENGES */
+
+.operator-challenges-container {
+  margin-top: 15px;
+}
+
+/* Attacker / Defender Dividers */
+
+.faction-division {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 25px 0 15px;
+  letter-spacing: 1px;
+}
+
+.offense-title {
+  background: #1e3a5f;
+  color: #8fc8ff;
+  border: 1px solid #336699;
+}
+
+.defense-title {
+  background: #3f2d18;
+  color: #ffcc80;
+  border: 1px solid #7a5525;
+}
+
+/* Challenge Card */
+
+.op-challenge-card {
+  background: #1c1f24;
+  border: 1px solid #34495e;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+
+.op-meta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+
+  padding: 12px 15px;
+  background: #14171b;
+  border-bottom: 1px solid #34495e;
+}
+
+.op-specialty {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #62b6ff;
+  text-transform: uppercase;
+}
+
+/* Reward Badge */
+
+.op-reward-badge {
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 30px;
+
+  background: #2a4f30;
+  color: #9cf59f;
+  border: 1px solid #4caf50;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Challenges Grid */
+
+.challenges-flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  padding: 15px;
+}
+
+/* Individual Challenge */
+
+.challenge-column {
+  flex: 1 1 250px;
+
+  background: #252932;
+  border: 1px solid #3a4656;
+  border-radius: 8px;
+
+  padding: 15px;
+}
+
+.challenge-column strong {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.challenge-column ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.challenge-column li {
+  margin-bottom: 6px;
+}
+
+/* Rewards Styling */
+
+.challenge-column li:last-child {
+  color: #7ec8ff;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .op-meta-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .challenges-flex-row {
+    flex-direction: column;
+  }
+
+  .challenge-column {
+    width: 100%;
+  }
+}
+
 /* --- Warning Blocks --- */
 .warning {
   grid-column: 1 / span 2 !important;
