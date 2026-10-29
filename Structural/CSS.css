@@ -428,15 +428,15 @@ td {
 }
 
 .offense-title {
-  background: #1e3a5f;
+  background: #cc0000;
   color: #8fc8ff;
   border: 1px solid #336699;
 }
 
 .defense-title {
-  background: #3f2d18;
-  color: #ffcc80;
-  border: 1px solid #7a5525;
+  background: #0000ff;
+  color: #8fc8ff;
+  border: 1px solid #336699;
 }
 
 /* Challenge Card */
