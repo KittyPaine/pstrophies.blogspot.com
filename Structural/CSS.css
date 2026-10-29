@@ -241,13 +241,25 @@ td {
   min-width: 0 !important;
 }
 
-.trophy-desc strong {
+/* This makes h3 look EXACTLY like your original gold trophy title */
+.trophy-desc h3 {
   font-size: 1.25rem !important;
   font-weight: bold !important;
   color: #c5a059 !important;
   display: block !important;
-  margin: 0 !important;
+  margin: 0 0 10px 0 !important;
   text-shadow: 0 0 8px rgba(197, 160, 89, 0.2) !important;
+  text-transform: none !important;
+}
+
+/* This handles your sub-headings below the title (slightly smaller & bold) */
+.trophy-desc h4 {
+  font-size: 1.05rem !important; /* Slightly smaller than the 1.25rem title */
+  font-weight: bold !important;
+  color: #7ab9f0 !important; /* Matches your light blue headings theme */
+  display: block !important;
+  margin: 15px 0 8px 0 !important; /* Adds clean spacing around sections */
+  text-transform: none !important;
 }
 
 .trophy-desc p {

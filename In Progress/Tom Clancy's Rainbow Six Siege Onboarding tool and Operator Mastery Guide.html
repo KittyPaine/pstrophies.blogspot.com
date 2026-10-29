@@ -1,0 +1,664 @@
+<style>
+  .operator-mastery {
+    --om-bg: #101318;
+    --om-panel: #171c24;
+    --om-panel-raised: #202733;
+    --om-border: #39414d;
+    --om-text: #e2e6eb;
+    --om-muted: #b7c0cb;
+    --om-gold: #e2bd70;
+    --om-attack: #ff9ca2;
+    --om-defense: #9ecaff;
+    color: var(--om-text);
+    line-height: 1.65;
+  }
+
+  .operator-mastery *,
+  .operator-mastery *::before,
+  .operator-mastery *::after {
+    box-sizing: border-box;
+  }
+
+  .operator-mastery .om-title {
+    margin: 0 0 1rem;
+    color: var(--om-text);
+  }
+
+  .operator-mastery .om-tabs {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 1.25rem 0;
+  }
+
+  .operator-mastery .om-tab {
+    min-height: 3rem;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--om-border);
+    border-radius: 0.45rem;
+    background: var(--om-panel);
+    color: var(--om-text);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .operator-mastery .om-tab:hover {
+    background: var(--om-panel-raised);
+  }
+
+  .operator-mastery .om-tab:focus-visible,
+  .operator-mastery summary:focus-visible {
+    outline: 3px solid var(--om-gold);
+    outline-offset: 3px;
+  }
+
+  .operator-mastery .om-tab[aria-selected="true"] {
+    border-color: var(--om-gold);
+    background: #29251c;
+    color: #f3d994;
+  }
+
+  .operator-mastery .om-tab--attackers {
+    border-color: #8f3840;
+    color: var(--om-attack);
+  }
+
+  .operator-mastery .om-tab--attackers[aria-selected="true"] {
+    border-color: #e34b55;
+    background: #421d23;
+    color: #ffb2b7;
+  }
+
+  .operator-mastery .om-tab--defenders {
+    border-color: #32649b;
+    color: var(--om-defense);
+  }
+
+  .operator-mastery .om-tab--defenders[aria-selected="true"] {
+    border-color: #438fe0;
+    background: #172c43;
+    color: #b9d9ff;
+  }
+
+  .operator-mastery .om-panel {
+    padding: clamp(1rem, 3vw, 1.5rem);
+    border: 1px solid var(--om-border);
+    border-radius: 0.6rem;
+    background: var(--om-bg);
+  }
+
+  .operator-mastery .om-panel[hidden] {
+    display: none !important;
+  }
+
+  .operator-mastery .om-panel > :first-child {
+    margin-top: 0;
+  }
+
+  .operator-mastery .om-panel > :last-child {
+    margin-bottom: 0;
+  }
+
+  .operator-mastery .om-section,
+  .operator-mastery .op-card,
+  .operator-mastery .om-glossary details {
+    margin: 0 0 0.85rem;
+    border: 1px solid var(--om-border);
+    border-radius: 0.45rem;
+    background: var(--om-panel);
+  }
+
+  .operator-mastery .om-section {
+    padding: 1rem;
+  }
+
+  .operator-mastery .om-section h3,
+  .operator-mastery .om-section h4 {
+    margin-top: 0;
+  }
+
+  .operator-mastery .om-section h3 {
+    color: var(--om-gold);
+  }
+
+  .operator-mastery .om-callout {
+    padding: 0.85rem 1rem;
+    border-left: 4px solid var(--om-gold);
+    border-radius: 0.25rem;
+    background: var(--om-panel);
+  }
+
+  .operator-mastery .om-list-tight li {
+    margin: 0.35rem 0;
+  }
+
+  .operator-mastery .om-glossary details {
+    padding: 0.7rem 0.9rem;
+  }
+
+  .operator-mastery .om-glossary summary {
+    color: var(--om-gold);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .operator-mastery .om-glossary details p {
+    margin-bottom: 0.2rem;
+  }
+
+  .operator-mastery .op-card {
+    overflow: hidden;
+  }
+
+  .operator-mastery .op-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    background: var(--om-panel-raised);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .operator-mastery .op-header::-webkit-details-marker {
+    display: none;
+  }
+
+  .operator-mastery .op-header::after {
+    content: "+";
+    flex: 0 0 auto;
+    color: var(--om-gold);
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  .operator-mastery .op-card[open] .op-header::after {
+    content: "−";
+  }
+
+  .operator-mastery .op-name {
+    color: var(--om-text);
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+
+  .operator-mastery .op-stats {
+    color: var(--om-muted);
+    font-size: 0.92rem;
+    text-align: right;
+  }
+
+  .operator-mastery .op-details {
+    padding: 1rem;
+  }
+
+  .operator-mastery .op-details h4 {
+    margin: 1.1rem 0 0.4rem;
+    color: var(--om-gold);
+  }
+
+  .operator-mastery .op-details h4:first-child {
+    margin-top: 0;
+  }
+
+  .operator-mastery .op-details p:first-child {
+    margin-top: 0;
+  }
+
+  .operator-mastery .op-loadout {
+    margin: 0.7rem 0;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--om-border);
+    border-radius: 0.4rem;
+    background: #12171e;
+  }
+
+  .operator-mastery .op-loadout h5 {
+    margin: 0 0 0.4rem;
+    color: var(--om-text);
+    font-size: 1rem;
+  }
+
+  .operator-mastery .om-muted {
+    color: var(--om-muted);
+  }
+
+  .operator-mastery .om-placeholder {
+    color: var(--om-muted);
+    font-style: italic;
+  }
+
+  @media (max-width: 900px) {
+    .operator-mastery .om-tabs {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .operator-mastery .om-tabs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .operator-mastery .op-header {
+      flex-wrap: wrap;
+    }
+
+    .operator-mastery .op-stats {
+      text-align: left;
+    }
+  }
+</style>
+
+<div class="operator-mastery" id="operator-mastery">
+  <h1 class="om-title">Rainbow Six Siege Operator Mastery Guide</h1>
+
+  <div class="om-tabs" role="tablist" aria-label="Operator Mastery Guide sections">
+    <button class="om-tab" id="om-tab-start" type="button" role="tab" aria-controls="om-panel-start" aria-selected="true" tabindex="0">Start Here</button>
+    <button class="om-tab" id="om-tab-glossary" type="button" role="tab" aria-controls="om-panel-glossary" aria-selected="false" tabindex="-1">Roles &amp; Glossary</button>
+    <button class="om-tab" id="om-tab-core" type="button" role="tab" aria-controls="om-panel-core" aria-selected="false" tabindex="-1">Core Gameplay</button>
+    <button class="om-tab" id="om-tab-maps" type="button" role="tab" aria-controls="om-panel-maps" aria-selected="false" tabindex="-1">Map Knowledge</button>
+    <button class="om-tab om-tab--attackers" id="om-tab-attackers" type="button" role="tab" aria-controls="om-panel-attackers" aria-selected="false" tabindex="-1">Attackers</button>
+    <button class="om-tab om-tab--defenders" id="om-tab-defenders" type="button" role="tab" aria-controls="om-panel-defenders" aria-selected="false" tabindex="-1">Defenders</button>
+  </div>
+
+  <section class="om-panel" id="om-panel-start" role="tabpanel" aria-labelledby="om-tab-start" tabindex="0">
+    <h2>Start Here</h2>
+    <p>Use this as a flexible starting path, not a set of mandatory rules. Adjust recommendations to your comfort and the operators you enjoy playing.</p>
+
+    <section class="om-section">
+      <h3>Recommended Attachments</h3>
+      <p>These are starting recommendations, not universal rules. Optics are personal preference: use Magnified A when available, or Holo B for a 1.0x optic. Shotguns use Holo B in this guide. No lasers are recommended because the visible beam can reveal your position while holding an angle.</p>
+      <p class="om-placeholder">Add the finalized weapon-by-weapon attachment reference here. Shared weapons should appear once, alphabetically within weapon type, with all operators listed and operator-specific attachment exceptions noted.</p>
+      <details>
+        <summary><strong>Assault Rifles</strong></summary>
+        <ul class="om-list-tight">
+          <li><strong>Gun Name</strong> — <strong>Muzzle:</strong> [Muzzle attachment]; <strong>Grip:</strong> [Grip attachment]. <strong>Used by:</strong> [Operator name(s).]</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="om-section">
+      <h3>Calibrate Sensitivity and Recoil</h3>
+      <ol class="om-list-tight">
+        <li>Start in the Shooting Range after setting up your preferred attachments.</li>
+        <li>Use the F2 as a challenging baseline for recoil practice; it is a reference, not a requirement.</li>
+        <li>Adjust sensitivity gradually and test one change at a time.</li>
+        <li>Try the settings in Deathmatch to see whether they work in live fights.</li>
+      </ol>
+      <p>AI feedback from a clip and your settings can be an optional troubleshooting aid, not a required step or a definitive prescription.</p>
+    </section>
+
+    <section class="om-section">
+      <h3>Recommended Training Modes</h3>
+      <ul class="om-list-tight">
+        <li><strong>Clear House:</strong> Learn map layouts and room connections.</li>
+        <li><strong>Deathmatch:</strong> Practice recoil control in live engagements.</li>
+        <li><strong>Field Training:</strong> Practice site setup and teamwork.</li>
+      </ul>
+      <p>These modes are available under <strong>Training</strong> in the <strong>Playlists</strong> menu.</p>
+    </section>
+
+    <section class="om-section">
+      <h3>Beginner-Friendly Operators to Try</h3>
+      <p><strong>Attack:</strong> Sledge introduces soft breaching and gadget destruction; IQ helps locate electronics; Thermite teaches hard breaching; Thatcher supports hard breaches with EMPs.</p>
+      <p><strong>Defense:</strong> Rook offers simple, place-and-forget armor; Frost teaches awareness of entry routes with her Welcome Mats; Vigil is an approachable example of roaming and wasting attacker time.</p>
+    </section>
+  </section>
+
+  <section class="om-panel" id="om-panel-glossary" role="tabpanel" aria-labelledby="om-tab-glossary" tabindex="0" hidden>
+    <h2>Roles &amp; Glossary</h2>
+    <p>Ubisoft's operator-select labels describe intended functions. Community roles describe how an operator or strategy is commonly used in a round; the operator cards connect those ideas to practical play.</p>
+
+    <div class="om-glossary">
+      <details>
+        <summary>6 / “I've got your six”</summary>
+        <p>“Six” means behind or to the rear. “I've got your six” means a teammate is watching the area behind you, often a flank route.</p>
+      </details>
+      <details>
+        <summary>90</summary>
+        <p>An L-shaped hallway or corner callout. The exact location depends on the map.</p>
+      </details>
+      <details>
+        <summary>Anchor</summary>
+        <p>A defender who stays near site to hold important routes, protect the objective, and support teammates with information.</p>
+      </details>
+      <details>
+        <summary>Anti-Gadget</summary>
+        <p>An operator role focused on finding, disabling, or destroying enemy gadgets.</p>
+      </details>
+      <details>
+        <summary>Anti-Entry</summary>
+        <p>Utility or positioning that obstructs routes, punishes unchecked entries, or helps deny access to site.</p>
+      </details>
+      <details>
+        <summary>Area Denial</summary>
+        <p>Utility that makes an area dangerous or difficult to occupy, helping delay or redirect a push.</p>
+      </details>
+      <details>
+        <summary>CC / Crowd Control</summary>
+        <p>Tools that impair vision, movement, or effectiveness to control an area or slow a push. CC is also an Ubisoft operator-select label.</p>
+      </details>
+      <details>
+        <summary>Crossfire</summary>
+        <p>Two or more players covering different angles on the same area so an opponent cannot safely challenge one without being exposed to another.</p>
+      </details>
+      <details>
+        <summary>EMP (Electromagnetic Pulse)</summary>
+        <p>An effect that disrupts electronic gadgets within its range, including Bandit Batteries, Kaid Electroclaws, Kapkan Traps, and Alibi Prismas. It can also temporarily remove the aiming reticle from an operator's optic if they are caught in the blast radius.</p>
+      </details>
+      <details>
+        <summary>Entry Fragger / Front Line</summary>
+        <p>An attacker who takes space at the front of a push and helps create the first opportunities to engage defenders.</p>
+      </details>
+      <details>
+        <summary>Flank Watch</summary>
+        <p>Watching routes attackers may use to approach from behind or from the side of the main push.</p>
+      </details>
+      <details>
+        <summary>Hard Breach</summary>
+        <p>Opening reinforced walls or hatches to create new entry points and pressure defenders.</p>
+      </details>
+      <details>
+        <summary>Intel</summary>
+        <p>Information gathered from cameras, gadgets, sound, or observation. Intel is also an Ubisoft operator-select label.</p>
+      </details>
+      <details>
+        <summary>Intel Denial</summary>
+        <p>Preventing opponents from gathering or using information, such as by disabling cameras or interfering with drones.</p>
+      </details>
+      <details>
+        <summary>Last Known Position</summary>
+        <p>The most recent location where an opponent was seen or reliably detected.</p>
+      </details>
+      <details>
+        <summary>Lurk / Lurker</summary>
+        <p>A player who stays near the main group or in an adjacent area to control space, gather information, or punish rotations.</p>
+      </details>
+      <details>
+        <summary>Map Control</summary>
+        <p>Control of rooms and routes that let a team move safely, deny rotations, and apply pressure.</p>
+      </details>
+      <details>
+        <summary>OBJ</summary>
+        <p>Short for objective: the bomb site or area the team must attack or defend.</p>
+      </details>
+      <details>
+        <summary>Plant</summary>
+        <p>Planting the defuser at a bomb site to begin the attacker-side post-plant phase.</p>
+      </details>
+      <details>
+        <summary>Power Position</summary>
+        <p>A position that provides a strong view or control over important routes while limiting exposure.</p>
+      </details>
+      <details>
+        <summary>Roam / Roamer</summary>
+        <p>A defender playing away from site to gather information, threaten attackers, and consume their time before returning or taking a fight.</p>
+      </details>
+      <details>
+        <summary>Shallow Roam / Deep Roam</summary>
+        <p>A shallow roam stays close enough to site to rotate back quickly. A deep roam operates farther away and should still account for site pressure and the time needed to return.</p>
+      </details>
+      <details>
+        <summary>Soft Breach</summary>
+        <p>Opening destructible, unreinforced surfaces to create lines of sight, routes, or vertical pressure.</p>
+      </details>
+      <details>
+        <summary>Utility</summary>
+        <p>Gadgets, abilities, and other resources operators bring to help the team.</p>
+      </details>
+      <details>
+        <summary>Utility Removal / Gadget Destruction</summary>
+        <p>Destroying or disabling enemy utility so it cannot affect the round.</p>
+      </details>
+      <details>
+        <summary>Utility Sink</summary>
+        <p>An attacker or strategy that pressures defenders into spending utility, time, or other resources to stop the push, leaving fewer resources to defend against the rest of the team.</p>
+      </details>
+      <details>
+        <summary>Vertical Play</summary>
+        <p>Pressuring players or utility through destructible floors or ceilings from another level.</p>
+      </details>
+      <details>
+        <summary>Yellow Ping</summary>
+        <p>A contextual ping that marks a location for teammates without necessarily identifying an opponent.</p>
+      </details>
+      <details>
+        <summary>Red Ping</summary>
+        <p>A ping that identifies an opponent's location when the game's spotting rules allow it.</p>
+      </details>
+      <details>
+        <summary>RFF</summary>
+        <p>Reverse Friendly Fire, a system that penalizes friendly fire to discourage harmful team damage.</p>
+      </details>
+      <details>
+        <summary>Trade / Trade Kill</summary>
+        <p>Eliminating an opponent immediately after they eliminate a teammate, so the team does not lose the engagement without a response.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="om-panel" id="om-panel-core" role="tabpanel" aria-labelledby="om-tab-core" tabindex="0" hidden>
+    <h2>Core Gameplay</h2>
+
+    <section class="om-section">
+      <h3>Choose for the Round</h3>
+      <p>Consider what the team needs and what the site calls for, but also choose an operator you are comfortable using. If you want to learn an unfamiliar role, try it in a lower-pressure mode; in a higher-stakes match, a familiar pick can help you contribute confidently.</p>
+    </section>
+
+    <section class="om-section">
+      <h3>Play to Your Strengths</h3>
+      <p>Use your operator's ability and your own strengths to help the team. Mechanical skill matters, but it is not the only way to contribute.</p>
+    </section>
+
+    <section class="om-section">
+      <h3>Attack Together and Stay Objective-Focused</h3>
+      <p>Move with your team and avoid spending too long clearing roamers. Isolated fights can waste time and leave you exposed. If challenged, reposition or regroup. When a teammate takes a fight, look for a different angle rather than following into the same firing lane.</p>
+    </section>
+
+    <section class="om-section">
+      <h3>Roam with a Purpose</h3>
+      <p>Roaming can delay attackers and create pressure away from site, but watch the site situation and leave enough time to rotate back. Waiting until anchors are already overwhelmed can make recovery difficult.</p>
+    </section>
+
+    <section class="om-section">
+      <h3>Anchor with Intention</h3>
+      <p>Hold important routes, listen for pushes, and use cameras to support teammates. If opponents identify or challenge your position, change your angle or relocate instead of repeatedly exposing yourself from the same spot.</p>
+    </section>
+
+    <section class="om-section">
+      <h3>Create Value Beyond Kills</h3>
+      <p>Intel, gadget destruction, area denial, breaching, healing, flank watch, crowd control, and wasting attacker time can all help win a round. A player can make a meaningful contribution without getting an elimination.</p>
+    </section>
+
+    <section class="om-section">
+      <h3>Weapon Setup and Recoil</h3>
+      <p>Attachment choices are personal. This guide prioritizes controllable recoil—especially horizontal recoil—while balancing rate of fire, damage, and handling. Sensitivity is individual; higher is not automatically better. Make adjustments gradually and test them in the Shooting Range and Deathmatch. Lasers can reveal your position when holding an angle.</p>
+    </section>
+  </section>
+
+  <section class="om-panel" id="om-panel-maps" role="tabpanel" aria-labelledby="om-tab-maps" tabindex="0" hidden>
+    <h2>Map Knowledge</h2>
+
+    <details class="om-section">
+      <summary><strong>Map Name</strong></summary>
+
+      <section>
+        <h3>Bomb Site: In-Game Site Name</h3>
+        <p><strong>Common name or aliases:</strong> [Add aliases, if any.]</p>
+
+        <h4>Adjacent Rooms and Callouts</h4>
+        <ul class="om-list-tight">
+          <li><strong>In-game room name:</strong> [Common callout or clarification.]</li>
+          <li><strong>In-game room name:</strong> [Common callout or clarification.]</li>
+        </ul>
+
+        <h4>High-Traffic Areas</h4>
+        <ul class="om-list-tight">
+          <li><strong>Area or callout:</strong> [Why it matters or how it is commonly used.]</li>
+          <li><strong>Area or callout:</strong> [Why it matters or how it is commonly used.]</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Bomb Site: Another In-Game Site Name</h3>
+        <p><strong>Common name or aliases:</strong> [Add aliases, if any.]</p>
+
+        <h4>Adjacent Rooms and Callouts</h4>
+        <ul class="om-list-tight">
+          <li><strong>In-game room name:</strong> [Common callout or clarification.]</li>
+        </ul>
+
+        <h4>High-Traffic Areas</h4>
+        <ul class="om-list-tight">
+          <li><strong>Area or callout:</strong> [Why it matters or how it is commonly used.]</li>
+        </ul>
+      </section>
+    </details>
+  </section>
+
+  <section class="om-panel" id="om-panel-attackers" role="tabpanel" aria-labelledby="om-tab-attackers" tabindex="0" hidden>
+    <h2>Attackers</h2>
+
+    <details class="op-card">
+      <summary class="op-header"><span class="op-name">Sledge</span><span class="op-stats">2-Speed / 2-Armor · Difficulty 1/3</span></summary>
+      <div class="op-details">
+        <p><strong>Ubisoft labels:</strong> Breach, Anti-Gadget<br /><strong>Expected roles:</strong> Soft Breach, Gadget Destruction</p>
+        <h4>Basic Use</h4>
+        <p>Sledge's hammer can open soft walls, hatches, and floors around or above site. It can also destroy barbed wire, deployable shields, and Castle barricades with one swing. Because the hammer is non-electronic, jamming signals will not disable it.</p>
+        <h4>Advanced Play: Vertical Play</h4>
+        <p>Use the Caber to open soft floors and pressure the area below. Its durability allows multiple openings, but Sledge must get close to the floor, which can expose him to danger.</p>
+        <h4>Loadout 1</h4>
+        <div class="op-loadout">
+          <p><strong>Primary:</strong> L85A2<br /><strong>Secondary:</strong> Reaper MK2 or P226<br /><strong>Secondary gadget:</strong> Frag Grenades or Stun Grenades</p>
+        </div>
+        <h4>Loadout 2</h4>
+        <div class="op-loadout">
+          <p><strong>Primary:</strong> M590A1<br /><strong>Secondary:</strong> Reaper MK2<br /><strong>Secondary gadget:</strong> Frag Grenades or Stun Grenades</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="op-card">
+      <summary class="op-header"><span class="op-name">Thatcher</span><span class="op-stats">1-Speed / 3-Armor · Difficulty 2/3</span></summary>
+      <div class="op-details">
+        <p><strong>Ubisoft labels:</strong> Anti-Gadget, Support<br /><strong>Expected role:</strong> EMP</p>
+        <h4>Basic Use</h4>
+        <p>Thatcher should usually support the team's hard breacher. His EMPs temporarily disrupt Bandit Batteries, Kaid Electroclaws, and Mute Jammers, helping the hard breacher open reinforced walls or hatches.</p>
+        <h4>Advanced Play</h4>
+        <p>If Bandit or Kaid is tricking—or Tubarão is delaying the breach—watch the disruption timers on affected gadgets that remain intact. Use another EMP just before the effect wears off to refresh the disruption and give the hard breacher more time.</p>
+        <h4>Synergy</h4>
+        <p>Thatcher works well with Thermite, Hibana, and Ace, as well as operators carrying secondary hard-breach gadgets. His EMPs can help clear electronic denial so they can breach.</p>
+        <h4>Loadout</h4>
+        <div class="op-loadout">
+          <p><strong>Primary:</strong> L85A2, AR33, PMR90A2, or M590A1<br /><strong>Secondary:</strong> P226 Mk 25<br /><strong>Secondary gadget:</strong> Claymore or Breach Charges</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="op-card">
+      <summary class="op-header"><span class="op-name">Ash</span><span class="op-stats">3-Speed / 1-Armor · Difficulty 2/3</span></summary>
+      <div class="op-details">
+        <p><strong>Ubisoft labels:</strong> Breach, Front Line<br /><strong>Expected roles:</strong> Utility Destruction, Utility Sink, Entry Fragger</p>
+        <h4>Basic Use</h4>
+        <p>Use Ash's breaching rounds to open soft walls and hatches or destroy deployable shields. She can also take an aggressive entry-fragger role, leading pushes.</p>
+        <h4>Advanced Play: Vertical Gadget Destruction</h4>
+        <p>Ash can breach soft floors to destroy defender utility above and potentially damage defenders. On Kanal, if the objective is 2F Radar / 2F Server Room and Bandit Batteries are blocking the exterior breach on the 2F Renovations wall, Ash can move to 1F Security Room and breach the floor beneath them. This can destroy the batteries and may damage Bandit if he is trying to trick the wall.</p>
+        <p>Her breaching rounds can also destroy Maestro's Evil Eyes.</p>
+        <h4>Counter-Play</h4>
+        <p>Ash can destroy Castle barricades with her breaching rounds. Pairing Castle with Kaid or Mute can prevent the round from detonating, leaving the barricade in place. Jäger and Wamai can intercept her rounds. If Bandit electrifies barbed wire, Ash's breaching round will be destroyed if fired at the wire; she must shoot the battery with her gun first, then breach the wire.</p>
+        <h4>Loadout</h4>
+        <div class="op-loadout">
+          <p><strong>Primary:</strong> R4-C or G36C<br /><strong>Secondary:</strong> 5.7 USG or M45 MEUSOC<br /><strong>Secondary gadget:</strong> Claymore or Breach Charges</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="op-card">
+      <summary class="op-header"><span class="op-name">Thermite</span><span class="op-stats">2-Speed / 2-Armor · Difficulty 1/3</span></summary>
+      <div class="op-details">
+        <p><strong>Ubisoft label:</strong> Breach Support<br /><strong>Expected role:</strong> Hard Breach</p>
+        <h4>Basic Use</h4>
+        <p>Thermite can breach reinforced walls and hatches when anti-breach utility is not stopping his Exothermic Charges. This includes Bandit Batteries, Kaid Electroclaws, Mute Jammers, and Tubarão Zoto Canisters. His main target should usually be an exterior site wall: opening it applies pressure and creates options for the team's push.</p>
+        <h4>Advanced Play: Coordinating Through Anti-Breach</h4>
+        <p>When anti-breach utility is present, Thermite needs to coordinate with teammates to clear or disable it. Timing and communication are important. On applicable sites, IQ can use her scanner to locate electronic gadgets and shoot them through floors or ceilings. Thatcher, Twitch, and Kali can also help disable or remove anti-breach utility.</p>
+        <p>If a Zoto Canister is affecting a placed charge, leave the charge in place; it can be activated once the anti-breach is destroyed or disabled and the freeze no longer prevents detonation.</p>
+        <h4>Synergy</h4>
+        <p>Thermite pairs well with Thatcher, Twitch, Kali, and IQ. Their utility or gadget-clearing plays help him get an Exothermic Charge through anti-breach denial.</p>
+        <h4>Counter-Play</h4>
+        <p><strong>Hard counters:</strong> Bandit, Kaid, and Mute can prevent his charges from opening reinforced surfaces.<br /><strong>Soft counter:</strong> Tubarão can delay the breach with Zoto Canisters.</p>
+        <h4>Loadout</h4>
+        <div class="op-loadout">
+          <p><strong>Primary:</strong> 556XI<br /><strong>Secondary:</strong> ITA12S<br /><strong>Secondary gadget:</strong> Smoke Grenades or Stun Grenades</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="op-card">
+      <summary class="op-header"><span class="op-name">Twitch</span><span class="op-stats">2-Speed / 2-Armor · Difficulty 2/3</span></summary>
+      <div class="op-details">
+        <p><strong>Ubisoft labels:</strong> Anti-Gadget, Intel<br /><strong>Expected roles:</strong> Gadget Destruction, Utility Sink</p>
+        <h4>Basic Use</h4>
+        <p>Twitch's drone can destroy or disable defender utility. Common targets include:</p>
+        <ul class="om-list-tight">
+          <li>Static cameras; Kapkan Traps; Thorn's Razorbloom Shells; Ela's Grzmot Mines; Mozzie's Pests.</li>
+          <li>Bandit Batteries; Kaid Electroclaws; Mute Jammers; Jäger's ADS; Wamai's MAG-NETs.</li>
+          <li>Thunderbird's Kona Stations; Valkyrie's Black Eyes; Fenrir's F-NATT Dread Mines; Alibi's Prismas; Denari's T.R.I.P. Connectors.</li>
+        </ul>
+        <p>Her drone can also act as a utility sink: defenders may spend impacts or time chasing it to destroy it, diverting resources and attention.</p>
+        <h4>Advanced Play: Additional Targets</h4>
+        <p>Look for Mira's Black Mirror gas canister, Aruni's Surya Gates, Echo's Yokai Drones, Maestro's Evil Eyes when open, Lesion's GU Mines, Melusi's Banshees when active, and Goyo's Canisters.</p>
+        <h4>Synergy</h4>
+        <p>Twitch works well with Thermite, Hibana, and Ace, as well as operators carrying secondary hard-breach gadgets. Her drone can help clear anti-breach utility so they can open reinforced surfaces.</p>
+        <h4>Counter-Play</h4>
+        <p>Mute is Twitch's only identified hard counter; his jammers can disable her drones.</p>
+        <p class="om-placeholder">Loadout options have not been provided yet.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="om-panel" id="om-panel-defenders" role="tabpanel" aria-labelledby="om-tab-defenders" tabindex="0" hidden>
+    <h2>Defenders</h2>
+    <p class="om-placeholder">Defender operator breakdowns have not been added yet.</p>
+  </section>
+</div>
+
+<script>
+  (function () {
+    var guide = document.getElementById("operator-mastery");
+    if (!guide) return;
+
+    var tabs = Array.prototype.slice.call(guide.querySelectorAll('[role="tab"]'));
+
+    function activateTab(tab, moveFocus) {
+      tabs.forEach(function (item) {
+        var selected = item === tab;
+        item.setAttribute("aria-selected", selected ? "true" : "false");
+        item.setAttribute("tabindex", selected ? "0" : "-1");
+        var panel = guide.querySelector("#" + item.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !selected;
+      });
+
+      if (moveFocus) tab.focus();
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener("click", function () {
+        activateTab(tab, false);
+      });
+
+      tab.addEventListener("keydown", function (event) {
+        var nextIndex = index;
+        if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+        else if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === "Home") nextIndex = 0;
+        else if (event.key === "End") nextIndex = tabs.length - 1;
+        else return;
+
+        event.preventDefault();
+        activateTab(tabs[nextIndex], true);
+      });
+    });
+  })();
+</script>

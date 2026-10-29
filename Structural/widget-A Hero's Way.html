@@ -1,0 +1,237 @@
+<style>
+  #kp-journey,
+  #kp-journey * {
+    box-sizing: border-box;
+  }
+
+  #kp-journey {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: #edf5fa;
+    background: linear-gradient(135deg, #0a1218, #10212b);
+    border: 1px solid #0786e8;
+    border-radius: 14px;
+    box-shadow: 0 0 24px rgba(0, 136, 255, 0.12);
+    font-family: inherit;
+  }
+
+  #kp-journey summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  #kp-journey summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #kp-journey .kp-eyebrow {
+    margin: 0 0 5px;
+    color: #66bdff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  #kp-journey h2 {
+    margin: 0;
+    color: #f1bb59;
+    font-size: clamp(20px, 2.5vw, 27px);
+    line-height: 1.25;
+  }
+
+  #kp-journey .kp-hook {
+    margin: 5px 0 0;
+    color: #d5e2eb;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  #kp-journey .kp-toggle {
+    flex: 0 0 auto;
+    color: #66bdff;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  #kp-journey .kp-toggle::after {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 0 2px 8px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  #kp-journey[open] .kp-toggle::after {
+    transform: rotate(225deg);
+  }
+
+  #kp-journey .kp-content {
+    padding: 0 24px 24px;
+  }
+
+  #kp-journey .kp-intro {
+    max-width: 780px;
+    margin: 0 0 18px;
+    color: #d5e2eb;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  #kp-journey .kp-timeline,
+  #kp-journey .kp-projects {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  #kp-journey .kp-stage,
+  #kp-journey .kp-project {
+    padding: 14px;
+    background: rgba(5, 12, 17, 0.58);
+    border: 1px solid rgba(102, 189, 255, 0.24);
+    border-radius: 9px;
+  }
+
+  #kp-journey .kp-date {
+    display: block;
+    margin-bottom: 7px;
+    color: #66bdff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  #kp-journey h3 {
+    margin: 0 0 6px;
+    color: #f1bb59;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  #kp-journey .kp-stage p,
+  #kp-journey .kp-project p {
+    margin: 0;
+    color: #d5e2eb;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  #kp-journey .kp-projects-heading {
+    margin: 20px 0 10px;
+    color: #edf5fa;
+    font-size: 17px;
+  }
+
+  #kp-journey .kp-project a {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: #66bdff;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+  #kp-journey .kp-project a:hover,
+  #kp-journey .kp-project a:focus {
+    color: #f1bb59;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 700px) {
+    #kp-journey summary {
+      align-items: flex-start;
+      padding: 18px;
+    }
+
+    #kp-journey .kp-toggle {
+      padding-top: 22px;
+      font-size: 12px;
+    }
+
+    #kp-journey .kp-content {
+      padding: 0 18px 18px;
+    }
+
+    #kp-journey .kp-timeline,
+    #kp-journey .kp-projects {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 440px) {
+    #kp-journey summary {
+      display: block;
+    }
+
+    #kp-journey .kp-toggle {
+      display: inline-block;
+      padding-top: 10px;
+    }
+  }
+</style>
+
+<details id="kp-journey">
+  <summary>
+    <div>
+      <p class="kp-eyebrow">Technical writer turned front-end developer</p>
+      <h2>Making complex things clear and usable.</h2>
+      <p class="kp-hook">From trophy guides to front-end development, clarity has been the through-line.</p>
+    </div>
+    <span class="kp-toggle">Explore my journey</span>
+  </summary>
+
+  <div class="kp-content">
+    <p class="kp-intro">I started writing trophy guides after finding inefficient or abandoned resources—and changed requirements that existing guides never covered. Improving that experience grew into years of hands-on UX/UI work, then into front-end development and systems thinking.</p>
+
+    <div class="kp-timeline">
+      <article class="kp-stage">
+        <span class="kp-date">2018–2025</span>
+        <h3>Documentation &amp; UX/UI</h3>
+        <p>Started writing guides in late 2018. Developed my approach to usable, maintainable documentation on TrueTrophies (2018–2024) and Blogger (2020–2025).</p>
+      </article>
+
+      <article class="kp-stage">
+        <span class="kp-date">Sep 2025–May 2026</span>
+        <h3>Web &amp; mobile development</h3>
+        <p>Began formal study, then continued through self-directed learning as my pace and learning style moved beyond the coursework.</p>
+      </article>
+
+      <article class="kp-stage">
+        <span class="kp-date">Sep 2025–Oct 2026</span>
+        <h3>Systems thinking</h3>
+        <p>Developed the structural framework behind my portfolio, connecting content, interface, and the systems that support them.</p>
+      </article>
+    </div>
+
+    <h3 class="kp-projects-heading">Foundational guide projects</h3>
+    <div class="kp-projects">
+      <article class="kp-project">
+        <a href="https://pstrophyguides.blogspot.com/2020/11/rainbow-six-siege-platinum-trophy-guide.html"> Tom Clancy’s Rainbow Six Siege </a>
+        <p>A guide shaped by evolving requirements and player needs.</p>
+      </article>
+
+      <article class="kp-project">
+        <a href="https://pstrophyguides.blogspot.com/2021/01/dead-by-daylight-100-guide-ps4-and-ps5.html"> Dead by Daylight </a>
+        <p>A long-form guide organized to make a large trophy set easier to use.</p>
+      </article>
+
+      <article class="kp-project">
+        <a href="https://pstrophyguides.blogspot.com/2020/11/payday-2-crimewave-edition-100-guide.html"> Payday 2: Crimewave Edition </a>
+        <p>A detailed walkthrough bringing base-game and DLC guidance together.</p>
+      </article>
+    </div>
+  </div>
+</details>
