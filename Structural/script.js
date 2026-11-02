@@ -6,31 +6,30 @@ function filterTrophies() {
 
   const query = input.value.toLowerCase().trim();
   const isStatusSearch = query === "paid" || query === "free";
+  const wantedStatus = query === "paid" ? "true" : "false";
   const overviews = document.querySelectorAll(".overview-node");
   const overviewByGroup = new Map();
+  const matchingGroups = new Set();
 
   for (const overview of overviews) {
     const group = (overview.dataset.group || "").toLowerCase().trim();
     if (group) overviewByGroup.set(group, overview);
-  }
 
-  const matchingGroups = new Set();
-
-  for (const [group, overview] of overviewByGroup) {
-    const statusMatches =
-      isStatusSearch &&
-      overview.dataset.paid === (query === "paid" ? "true" : "false");
     const groupMatches = !isStatusSearch && query !== "" && group.includes(query);
+    const matches =
+      !query ||
+      (isStatusSearch
+        ? overview.dataset.paid === wantedStatus
+        : groupMatches);
 
-    if (!query || statusMatches || groupMatches) {
-      matchingGroups.add(group);
-    }
-
+    overview.classList.toggle("is-hidden", !matches);
     overview.style.setProperty(
       "display",
-      !query || statusMatches || groupMatches ? "block" : "none",
+      matches ? "block" : "none",
       "important"
     );
+
+    if (matches && group) matchingGroups.add(group);
   }
 
   for (const trophy of document.querySelectorAll(".trophy, .dlc-trophy")) {
@@ -43,25 +42,27 @@ function filterTrophies() {
     if (!query) {
       matches = true;
     } else if (isStatusSearch) {
-      matches =
-        !!overview &&
-        overview.dataset.paid === (query === "paid" ? "true" : "false");
+      matches = !!overview && overview.dataset.paid === wantedStatus;
     } else {
       matches = name.includes(query) || matchingGroups.has(group);
     }
 
-    trophy.style.setProperty("display", matches ? "flex" : "none", "important");
     trophy.classList.toggle("is-hidden", !matches);
+    trophy.style.setProperty(
+      "display",
+      matches ? "flex" : "none",
+      "important"
+    );
   }
 
   for (const section of document.querySelectorAll(".category-section")) {
-    const hasVisibleTrophy = section.querySelector(
-      ".trophy:not(.is-hidden), .dlc-trophy:not(.is-hidden)"
+    const hasVisibleContent = section.querySelector(
+      ".overview-node:not(.is-hidden), .trophy:not(.is-hidden), .dlc-trophy:not(.is-hidden)"
     );
 
     section.style.setProperty(
       "display",
-      !query || hasVisibleTrophy ? "block" : "none",
+      !query || hasVisibleContent ? "block" : "none",
       "important"
     );
   }
@@ -69,6 +70,7 @@ function filterTrophies() {
 
 function initializeTrophySearch() {
   const input = document.querySelector("#trophySearch");
+
   if (input) {
     input.placeholder = "Filter by Trophy Name, DLC Name, Paid or Free for DLC";
     filterTrophies();
