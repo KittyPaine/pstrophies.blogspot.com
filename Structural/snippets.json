@@ -54,7 +54,7 @@
 
   "Video": {
     "prefix": "video",
-    "body": ["<div class=\"video-container\">", "    <iframe src=\"https://www.youtube.com/embed/${1:VideoID}\" width=\"320\" height=\"266\" frameborder=\"0\" allowfullscreen></iframe>", "</div>"],
+    "body": ["<div class=\"video-container\">", "    <iframe src=\"https://www.youtube.com/embed/${1:VideoID}\" frameborder=\"0\" allowfullscreen></iframe>", "</div>"],
     "description": "Insert a 320x266 YouTube embed"
   },
 

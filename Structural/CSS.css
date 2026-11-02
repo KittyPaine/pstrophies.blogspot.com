@@ -161,18 +161,29 @@ a:hover {
 }
 
 /* --- Media Centering --- */
-.banner,
+.banner {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
 .video-container {
   display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
+  flex-wrap: wrap !important;
   justify-content: center !important;
+  gap: 20px !important;
   width: 100% !important;
   margin: 25px 0 !important;
 }
 
-.banner img,
 .video-container iframe {
+  width: 480px !important;
+  height: 270px !important;
+  max-width: 100% !important;
+  border: 0 !important;
+}
+
+.banner img {
   display: block !important;
   margin: 0 auto !important;
   max-width: 100% !important;
@@ -207,7 +218,7 @@ td {
   column-gap: 20px !important;
   align-items: start !important;
   width: 100% !important;
-  max-width: 800px !important;
+  max-width: 1200px !important;
   margin: 0 auto 30px auto !important;
   padding-bottom: 25px !important;
   border-bottom: 2px solid #333 !important;
