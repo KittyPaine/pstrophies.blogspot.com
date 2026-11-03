@@ -1,0 +1,107 @@
+<!-- KITTY_PAINE'S COMPLETE AUTOMATED HUB SCHEMA -->
+
+<!-- 1. HOMEPAGE: Global Creator Entity & Footprint -->
+<b:if cond='data:view.isHomepage'>
+  <script type='application/ld+json'>
+  //<![CDATA[
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Kitty_Paine",
+      "jobTitle": "Technical Content Engineer",
+      "description": "Dedicated to optimizing user experience through high-precision documentation.",
+      "sameAs": [
+        "https://truetrophies.com",
+        "https://github.com",
+        "https://x.com"
+      ]
+    }
+  }
+  //]]>
+  </script>
+</b:if>
+
+<!-- 2. MASTER ARCHIVE INDEX: Directory Target for Crawlers -->
+<b:if cond='data:blog.url == "https://pstrophyguides.blogspot.com/2026/06/trophy-guides-master-list.html" or data:blog.url == "https://blogspot.com"'>
+  <script type='application/ld+json'>
+  //<![CDATA[
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Kitty_Paine's Trophy Guides Master List",
+    "description": "Alphabetical directory hub for high-precision live-service gaming guides and technical documentation portfolios.",
+    "url": "https://pstrophyguides.blogspot.com/2026/06/trophy-guides-master-list.html",
+    "about": {
+      "@type": "CreativeWorkSeries",
+      "name": "Video Game Achievement Documentation Ecosystem"
+    }
+  }
+  //]]>
+  </script>
+</b:if>
+
+<!-- 3. INDIVIDUAL POSTS: Automates Article Content & Category Breadcrumbs -->
+<b:if cond='data:view.isPost and data:blog.url != "https://pstrophyguides.blogspot.com/2026/06/trophy-guides-master-list.html" and data:blog.url != "https://blogspot.com"'>
+  <script type='application/ld+json'>
+  //<![CDATA[
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "<data:view.title.escaped/>",
+      "description": "High-precision live-service tactical documentation baseline.",
+      "datePublished": "<data:view.createdDate.iso8601/>",
+      "dateModified": "<data:view.updatedDate.iso8601/>",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "<data:view.url.canonical/>"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Kitty_Paine",
+        "url": "<data:blog.homepageUrl.canonical/>",
+        "sameAs": [
+          "https://truetrophies.com",
+          "https://github.com",
+          "https://x.com"
+        ]
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Kitty_Paine"
+      },
+      "about": {
+        "@type": "VideoGame",
+        "name": "<data:view.title.escaped/>"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "<data:blog.homepageUrl.canonical/>"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides Hub",
+          "item": "https://pstrophyguides.blogspot.com/2026/06/trophy-guides-master-list.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "<data:view.title.escaped/>",
+          "item": "<data:view.url.canonical/>"
+        }
+      ]
+    }
+  ]
+  //]]>
+  </script>
+</b:if>
