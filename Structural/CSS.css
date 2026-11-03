@@ -147,6 +147,19 @@ div.post,
   display: block !important;
 }
 
+.dlc-heading {
+  border-bottom: 2px solid #c5a059 !important;
+  padding-bottom: 8px !important;
+  margin-bottom: 15px !important;
+  color: #7ab9f0 !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  font-size: 25px !important;
+  width: 100% !important;
+  clear: both !important;
+  display: block !important;
+}
+
 .silver-btn {
   background-color: #c5c5c5 !important;
   color: #000 !important;
