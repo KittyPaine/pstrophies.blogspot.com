@@ -1,44 +1,94 @@
 <style>
-  .widget h2 {
-    font-size: 12px !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    margin-bottom: 10px !important;
+  .dev-side-box,
+  .dev-side-box * {
+    box-sizing: border-box !important;
   }
 
-  .dev-log-header {
-    font-size: 16px !important;
-    font-weight: bold !important;
+  /* Exactly matches #kp-journey container styling */
+  .dev-side-box {
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto 20px auto !important;
+    padding: 16px 20px !important;
+    color: #edf5fa !important;
+    background: linear-gradient(135deg, #0a1218, #10212b) !important;
+    border: 1px solid #0786e8 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 0 24px rgba(0, 136, 255, 0.12) !important;
+    font-family: inherit !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+
+  /* Individual Columns */
+  .dev-side-col {
+    flex: 1 1 280px !important;
+    text-align: center !important;
+  }
+
+  /* Eyebrow / Category Header matching #kp-eyebrow style */
+  .dev-side-header {
+    margin: 0 0 4px 0 !important;
     color: #c5a059 !important;
-    margin: 15px 0 10px 0 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
   }
 
-  .log-link {
-    font-size: 14px !important;
-    display: block !important;
-    padding: 5px 0 !important;
+  /* Metadata text matching secondary text tokens */
+  .dev-side-meta {
+    margin: 0 0 8px 0 !important;
+    color: #d5e2eb !important;
+    font-size: 12px !important;
+    font-style: italic !important;
+    opacity: 0.8 !important;
+  }
+
+  /* Action Links styled cleanly with your accent colors */
+  .dev-side-link {
+    display: inline-block !important;
+    margin-top: 4px !important;
+    color: #66bdff !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
     text-decoration: none !important;
-    color: #ffffff !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    background: rgba(102, 189, 255, 0.06) !important;
+    border: 1px solid rgba(102, 189, 255, 0.2) !important;
+    transition: all 0.2s ease-in-out !important;
   }
 
-  .log-link:hover {
-    color: #cccccc !important;
+  .dev-side-link:hover,
+  .dev-side-link:focus {
+    color: #f1bb59 !important;
+    border-color: #f1bb59 !important;
+    background: rgba(241, 187, 89, 0.08) !important;
+    text-decoration: none !important;
   }
 
-  .dev-hr {
-    border: 0 !important;
-    border-top: 1px solid #444 !important;
-    margin: 15px 0 !important;
+  .dev-side-link .bullet {
+    margin-right: 4px !important;
+    font-size: 11px !important;
   }
 </style>
 
-<!-- Section 1: Trophy Guide Archive -->
-<div class="dev-log-header" style="text-align: center">Trophy Guides Master List</div>
-<a href="https://pstrophyguides.blogspot.com/2026/06/trophy-guides-master-list.html" class="log-link" style="text-align: center"> <span class="bullet">►</span> Access Full Archive </a>
+<div class="dev-side-box">
+  <!-- Column 1: Master Index -->
+  <div class="dev-side-col">
+    <div class="dev-side-header">Trophy Guide Repository</div>
+    <a href="https://pstrophyguides.blogspot.com/2026/06/trophy-guides-master-list.html" class="dev-side-link"> <span class="bullet">►</span> View Master Repository </a>
+  </div>
 
-<hr class="dev-hr" />
-
-<!-- Section 2: Boosting Assistance -->
-<div class="dev-log-header" style="text-align: center">Offering Boosting Assistance</div>
-<div style="font-size: 0.85rem; text-align: center; margin-bottom: 5px">(List updated as of July 4th, 2026)</div>
-<a href="https://pstrophyguides.blogspot.com/2025/12/welcome-to-my-site.html" class="log-link" style="text-align: center"> <span class="bullet">►</span> Request Deployment </a>
+  <!-- Column 2: Assistance Request -->
+  <div class="dev-side-col">
+    <div class="dev-side-header">Co-Op & Boosting Requests</div>
+    <div class="dev-side-meta">List updated as of July 4th, 2026</div>
+    <a href="https://pstrophyguides.blogspot.com/2025/12/welcome-to-my-site.html" class="dev-side-link"> <span class="bullet">►</span> Submit Request </a>
+  </div>
+</div>
