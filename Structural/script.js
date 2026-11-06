@@ -89,39 +89,3 @@ document.addEventListener("input", function (event) {
   }
 });
 //]]>
-
-<!-- Operator Matery Guide -->
-  document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
-    const tooltip = document.getElementById(&#39;custom-tooltip&#39;);
-
-    // Handle all interactions on .op-card
-    document.querySelectorAll(&#39;.op-card&#39;).forEach(card =&gt; {
-      const nameTag = card.querySelector(&#39;.op-name&#39;);
-
-      // 1. Hover over Operator Name -&gt; Show Intended Role Tooltip
-      if (nameTag) {
-        nameTag.addEventListener(&#39;mouseenter&#39;, () =&gt; {
-          const roleText = nameTag.getAttribute(&#39;data-tooltip&#39;);
-          if (roleText) {
-            tooltip.textContent = roleText;
-            tooltip.style.display = &#39;block&#39;;
-          }
-        });
-
-        nameTag.addEventListener(&#39;mousemove&#39;, (e) =&gt; {
-          tooltip.style.left = (e.clientX + 15) + &#39;px&#39;;
-          tooltip.style.top = (e.clientY + 15) + &#39;px&#39;;
-        });
-
-        nameTag.addEventListener(&#39;mouseleave&#39;, () =&gt; {
-          tooltip.style.display = &#39;none&#39;;
-        });
-
-        // 2. Click Operator Name -&gt; Expand/Collapse Full Card Description
-        nameTag.addEventListener(&#39;click&#39;, (e) =&gt; {
-          e.stopPropagation(); // Prevents double-triggering if clicking header
-          card.classList.toggle(&#39;active&#39;);
-        });
-      }
-    });
-  });
