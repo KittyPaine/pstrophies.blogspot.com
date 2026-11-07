@@ -44,14 +44,14 @@
 
   "Trophy Item": {
     "prefix": "trophy",
-    "body": ["<div class=\"trophy\" data-name=\"$1\">", "  <img src=\"$2\" class=\"trophy-img\" alt=\"${3:Trophy}\">", "  <div class=\"trophy-desc\">", "    <h3>$4</h3>", "    <p>$5</p>", "  </div>", "</div>"],
-    "description": "Insert a formatted trophy block"
+    "body": ["<div class=\"trophy\" data-name=\"$1\">", "  <img src=\"$2\" class=\"trophy-img\" alt=\"${3:Trophy}\">", "  <div class=\"trophy-desc\">", "    <h3 id=\"${1/(.*)/${1:game-name-of-trophy}\">$4</h3>", "    <p>$5</p>", "  </div>", "</div>"],
+    "description": "Insert a formatted trophy block with automatic lowercase GSC ID tracking"
   },
 
   "DLC Trophy Item": {
     "prefix": "dlc-trophy",
-    "body": ["<div class=\"dlc-trophy\" data-name=\"$1\" data-group=\"$2\">", "  <img src=\"$3\" class=\"trophy-img\" alt=\"${4:Trophy}\">", "  <div class=\"trophy-desc\">", "    <h3>$5</h3>", "    <p>$6</p>", "  </div>", "</div>"],
-    "description": "Insert a formatted DLC trophy block"
+    "body": ["<div class=\"dlc-trophy\" data-name=\"$1\" data-group=\"$2\">", "  <img src=\"$3\" class=\"trophy-img\" alt=\"${4:Trophy}\">", "  <div class=\"trophy-desc\">", "    <h3 id=\"${1:game-name-of-trophy}\">$5</h3>", "    <p>$6</p>", "  </div>", "</div>"],
+    "description": "Insert a formatted DLC trophy block with automatic lowercase GSC ID tracking"
   },
 
   "Video": {
